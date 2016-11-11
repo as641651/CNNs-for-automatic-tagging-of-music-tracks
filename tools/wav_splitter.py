@@ -7,8 +7,7 @@ import os
 from optparse import OptionParser
 
 """Creates a separate directory for each song and stores the chunks in .wav format.
-   The segmentation details of the tracks are in "database.json". Please make sure that 
-   this file is in the same directory as the python script"""
+   You can also specify your own output directory. This script expects a .json script containing segmentation details """
 
 OKGREEN = '\033[92m'
 ENDC = '\033[0m'

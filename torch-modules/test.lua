@@ -1,5 +1,7 @@
-require 'torch';
-require 'DataLoader';
+require 'torch'
+require 'DataLoader'
+net = require 'cnns.choi_crnn.cnn'
+
 local opts = require 'exp_opts'
 
 local opt = opts.parse(arg)
@@ -26,6 +28,9 @@ local labels
 clip_id,input,labels = loader:getBatch(opt)
 
 print(clip_id, input:size())
+
+output = net.cnn:forward(input[1]) 
+print(output:size())
 
 clip_id,input,labels = loader:getBatch(opt)
 

@@ -13,7 +13,7 @@ function M.parse(arg)
   
 
   -- Data input settings
-  cmd:option('-data_h5', '../databases/dd_new.h5', 
+  cmd:option('-data_h5', '../databases/debug_choi.h5', 
     'HDF5 file containing the preprocessed dataset (from proprocess.py)')
   cmd:option('-data_json', '../experiment.json',
     'JSON file containing additional dataset info (from preprocess.py)')
@@ -24,7 +24,7 @@ function M.parse(arg)
   cmd:option('-id', '',
     'an id identifying this run/job; useful for cross-validation')
   cmd:option('-seed', 123, 'random number generator seed to use')
-  cmd:option('-gpu', -1, 'which gpu to use. -1 = use CPU')
+  cmd:option('-gpu', 0, 'which gpu to use. -1 = use CPU')
   cmd:option('-timing', false, 'whether to time parts of the net')
 
   cmd:text()

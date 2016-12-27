@@ -1,13 +1,15 @@
 require 'torch'
 require 'DataLoader'
-net = require 'cnns.choi_crnn.cnn'
+cnn = require 'cnns.choi_crnn.cnn'
 
 local opts = require 'exp_opts'
 
 local opt = opts.parse(arg)
 print(opt)
 
-torch.setdefaulttensortype('torch.FloatTensor')
+local dtype = 'torch.FloatTensor'
+
+torch.setdefaulttensortype(dtype)
 torch.manualSeed(opt.seed)
 if opt.gpu >= 0 then
   -- cuda related includes and settings
@@ -16,7 +18,12 @@ if opt.gpu >= 0 then
   require 'cudnn'
   cutorch.manualSeed(opt.seed)
   cutorch.setDevice(opt.gpu + 1) -- note +1 because lua is 1-indexed
+  dtype = 'torch.CudaTensor'
+  cudnn.convert(cnn.cnn, cudnn)
+  cudnn.convert(cnn.input_normalization, cudnn)
 end
+
+cnn.type(dtype)
 
 -- initialize the data loader class
 local loader = DataLoader(opt)
@@ -25,17 +32,19 @@ local clip_id
 local input
 local labels
 
-clip_id,input,labels = loader:getBatch(opt)
+local net_input = torch.zeros(3,1,96,1366)
 
-print(clip_id, input:size())
+clip_id,input1,labels = loader:getBatch(opt)
+net_input[{1}] = input1[{1}]
 
-output = net.cnn:forward(input[1]) 
+clip_id,input2, labels = loader:getBatch(opt)
+net_input[{2}] = input1[{1}]
+
+clip_id,input3,labels = loader:getBatch(opt)
+net_input[{3}] = input1[{1}]
+
+print(clip_id, net_input:size())
+
+output = cnn.forward(net_input:type(dtype)) 
+--output = cnn.forward(input1:type(dtype)) 
 print(output:size())
-
-clip_id,input,labels = loader:getBatch(opt)
-
-print(clip_id, input:size())
-
-clip_id,input,labels = loader:getBatch(opt)
-
-print(clip_id, input:size())

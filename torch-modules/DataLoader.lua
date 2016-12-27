@@ -66,6 +66,6 @@ function DataLoader:getBatch(opt)
   
   local labels = self.info.gt[tostring(clip_id)]
 
-  return clip_id,input,labels
+  return clip_id,input:view(1,input:size(1),input:size(2),input:size(3)),labels
 end
 

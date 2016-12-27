@@ -1,12 +1,14 @@
 require 'torch'
 require 'DataLoader'
 cnn = require 'cnns.choi_crnn.cnn'
+rnn = require 'rnns.densecap_lstm.my_rnn'
+
 
 local opts = require 'exp_opts'
 
 local opt = opts.parse(arg)
 print(opt)
-
+rnn.init_rnn()
 local dtype = 'torch.FloatTensor'
 
 torch.setdefaulttensortype(dtype)
@@ -21,10 +23,11 @@ if opt.gpu >= 0 then
   dtype = 'torch.CudaTensor'
   cudnn.convert(cnn.cnn, cudnn)
   cudnn.convert(cnn.input_normalization, cudnn)
+  cudnn.convert(rnn.rnn, cudnn)
 end
 
 cnn.type(dtype)
-
+rnn.type(dtype)
 -- initialize the data loader class
 local loader = DataLoader(opt)
 
@@ -48,3 +51,7 @@ print(clip_id, net_input:size())
 output = cnn.forward(net_input:type(dtype)) 
 --output = cnn.forward(input1:type(dtype)) 
 print(output:size())
+
+labels = rnn.forward(output:view(output:size(1),-1))
+
+print(labels)

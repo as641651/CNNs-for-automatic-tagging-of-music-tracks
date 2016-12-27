@@ -18,6 +18,7 @@ local NULL_TOKEN = net.opt.classifier_vocab_size + 2
 local rnn_view_in = nn.View(1, -1):setNumInputDims(3)
 local rnn_view_out = nn.View(1, 1, -1):setNumInputDims(2)
 
+
 function get_cnn_encoder(D,W)
 
    local cnn_encoder = nn.Sequential()
@@ -72,6 +73,8 @@ function net.init_rnn()
   net.rnn:add(parallel)
   net.rnn:add(nn.JoinTable(1, 2))
 
+  net.rnn:add(rnn_view_out)
+
   net.lstm = get_rnn()
   net.rnn:add(net.lstm)
 
@@ -80,16 +83,19 @@ function net.init_rnn()
 
 end
 
+function net.type(dtype)
+   net.rnn:type(dtype)
+end
 
 function sample(cnn_vectors, add_sequence)
   local C,T = cnn_vectors:size(1), net.opt.seq_length
   local L = 0
   if add_sequence ~= nil then
-    L = add_sequence:size(1)
+    if add_sequence:numel()>0 then L = add_sequence:size(1) end
   end
 
-  local seq = torch.LongTensor(T+1):zero()
-  local word = torch.LongTensor(1):zero()
+  local seq = torch.Tensor(T+1):zero():type(cnn_vectors:type())
+  local word = torch.Tensor(1):zero():type(cnn_vectors:type())
   local softmax = nn.SoftMax():type(cnn_vectors:type())
   
   -- During sampling we want our LSTM modules to remember states
@@ -151,20 +157,22 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
     -- 0 with NULL_TOKEN
     local T = gt_sequence:size(1)
     local L = 0
-    if add_sequence ~= nil then
+    if add_sequence:numel() > 0 then
        L = add_sequence:size(1)
     end
     local C = cnn_vectors:size(1)
 
-    local gt_with_start = gt_sequence.new(C+L+T)
-    gt_with_start[{{1,C+L}}]:fill(START_TOKEN)
-    gt_with_start[{{C+L+1, C+L+T}}]:copy(gt_sequence)
+    local gt_with_start = gt_sequence.new(L+T+1)
+    gt_with_start[{{1,1}}]:fill(START_TOKEN)
+    if L>0 then gt_with_start[{{2,L+1}}]:copy(add_sequence) end
+    gt_with_start[{{L+2,L+T+1}}]:copy(gt_sequence)
     local mask = torch.eq(gt_with_start, 0)
     gt_with_start[mask] = NULL_TOKEN
-   
-    --rnn_view_in:resetSize(C+L+T+1,-1)
-    --rnn_view_in:resetSize(1,C+L+T+1,-1)
-    local output = net.rnn:updateOutput{cnn_vectors:view(1,cnn_vectors:size(1),cnn_vectors:size(2)), gt_with_start}
+  
+    
+    rnn_view_in:resetSize(L+T+C+1,-1)
+    rnn_view_out:resetSize(1,C+L+T+1,-1)
+    local output = net.rnn:updateOutput{cnn_vectors, gt_with_start}
 
     return output
   else
@@ -172,19 +180,18 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
   end
 end
 
-
+--[[
 net.init_rnn()
 c = torch.randn(3,1664)
-l = torch.zeros(2)
+l = torch.Tensor(2)
 l[1] = 1
 l[2] = 2
 g = torch.zeros(2)
 g[1] = 4
 g[2] = 5
-print(net.forward(c,l,g))
-
+print(net.forward(c))
+--]]
 return net
-
 --[[
 local LM, parent = torch.class('nn.LanguageModel', 'nn.Module')
 

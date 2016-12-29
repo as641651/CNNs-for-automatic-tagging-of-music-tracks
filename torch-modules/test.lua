@@ -71,8 +71,10 @@ gt_seq[1] = 3
 gt_seq[2] = 4
 labels = rnn.forward(output:view(output:size(1),-1), add_seq, gt_seq)
 
+print(rnn.gt_tokens)
+
 grad_labels = torch.randn(#labels):type(dtype)
-print(labels:size())
+print(labels)
 grad_cnn = rnn.backward(output:view(output:size(1),-1),grad_labels,1)
 grad_cnn = grad_cnn[1]:view(output:size())
 

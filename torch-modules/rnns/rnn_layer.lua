@@ -11,6 +11,7 @@ net.opt.rnn_layers = 2
 net.opt.dropout = 0
 net.opt.seq_length = 7
 net.gt_tokens = nil
+net.called_forward = false
 net.opt.rnn_model = 'rnns.models.lstm_model1'
 
 local START_TOKEN = net.opt.classifier_vocab_size  + 1
@@ -178,6 +179,7 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
     local net_input = {cnn_vectors,net.gt_tokens}
     local output = net.model:forward(net_input)
     --forward_train(cnn_vectors, net.gt_tokens)
+    net.called_forward = true
     return output
   else
     return sample(cnn_vectors,add_sequence)
@@ -185,13 +187,13 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
 end
 
 function net.backward(cnn_vectors,gradOutput,scale)
-  assert(net.gt_tokens ~= nil, "forward with gt not called")
+  assert(net.called_forward == true, "forward with gt not called")
   assert(scale == nil or scale == 1.0)
 
   local net_input = {cnn_vectors,net.gt_tokens}
   local gradInput = net.model:backward(net_input, gradOutput,scale)
   gradInput[2]:zero()
-  net.gt_tokens = nil
+  net.called_forward = false
 
   return gradInput
 end

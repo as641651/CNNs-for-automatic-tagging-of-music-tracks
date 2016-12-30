@@ -10,15 +10,16 @@ net.opt.rnn_hidden_size = 512
 net.opt.rnn_layers = 2
 net.opt.dropout = 0
 net.opt.seq_length = 7
-net.gt_tokens = nil
+net.target_tokens = nil
 net.called_forward = false
 net.opt.rnn_model = 'rnns.models.lstm_model1'
 
 local START_TOKEN = net.opt.classifier_vocab_size  + 1
 local NULL_TOKEN = net.opt.classifier_vocab_size + 2
+local label_tokens = nil
 
-local rnn_view_in = nn.View(1, 1, -1):setNumInputDims(3)
-local rnn_view_out = nn.View(1, -1):setNumInputDims(2)
+--local rnn_view_in = nn.View(1, 1, -1):setNumInputDims(3)
+--local rnn_view_out = nn.View(1, -1):setNumInputDims(2)
 
 
 function get_cnn_encoder(D,W)
@@ -95,7 +96,8 @@ end
 function sample(cnn_vectors, add_sequence)
   local C,T = cnn_vectors:size(1), net.opt.seq_length
   local L = 0
-  if add_sequence ~= nil then
+  if add_sequence ~= nil then 
+    add_sequence = add_sequence[add_sequence:gt(0)]
     if add_sequence:numel()>0 then L = add_sequence:size(1) end
   end
 
@@ -104,8 +106,8 @@ function sample(cnn_vectors, add_sequence)
   local softmax = nn.SoftMax():type(cnn_vectors:type())
   
   -- During sampling we want our LSTM modules to remember states
-  for i = 1, #net.lstm do
-    local layer = net.lstm:get(i)
+  for i = 1, #net.rnn_model do
+    local layer = net.rnn_model:get(i)
     if torch.isTypeOf(layer, nn.LSTM) then
       layer:resetStates()
       layer.remember_states = true
@@ -116,12 +118,12 @@ function sample(cnn_vectors, add_sequence)
   -- First C+L timesteps: ignore output
   for ci = 1,C do
      local cnn_vecs_encoded = net.cnn_encoder:forward(cnn_vectors[ci])
-     net.lstm:forward(cnn_vecs_encoded)
+     net.rnn_model:forward(cnn_vecs_encoded)
   end
   for li = 1,L do
      word[1] = add_sequence[li]
      local vocab_encoded = net.vocab_encoder:forward(word)
-     net.lstm:forward(vocab_encoded)
+     net.rnn_model:forward(vocab_encoded)
   end
 
   -- Now feed words through RNN
@@ -134,7 +136,7 @@ function sample(cnn_vectors, add_sequence)
       word[1] = seq[t-1]
     end
     local wordvec = net.vocab_encoder:forward(word)
-    local scores = net.lstm:forward(wordvec):view(-1)
+    local scores = net.rnn_model:forward(wordvec):view(-1)
     local idx = nil
     _, idx = torch.max(scores,1)
      
@@ -142,8 +144,8 @@ function sample(cnn_vectors, add_sequence)
   end
 
   -- After sampling stop remembering states
-  for i = 1, #net.lstm do
-    local layer = net.lstm:get(i)
+  for i = 1, #net.rnn_model do
+    local layer = net.rnn_model:get(i)
     if torch.isTypeOf(layer, nn.LSTM) then
       layer:resetStates()
       layer.remember_states = false
@@ -162,21 +164,30 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
     -- 0 with NULL_TOKEN
     local T = gt_sequence:size(1)
     local L = 0
+    local mask = nil
     if add_sequence:numel() > 0 then
-       L = add_sequence:size(1)
+       add_sequence = add_sequence[add_sequence:gt(0)]
+       L = add_sequence:numel()
     end
     local C = cnn_vectors:size(1)
 
-    net.gt_tokens = gt_sequence.new(L+T+1)
-    net.gt_tokens[{{1,1}}]:fill(START_TOKEN)
-    if L>0 then net.gt_tokens[{{2,L+1}}]:copy(add_sequence) end
-    net.gt_tokens[{{L+2,L+T+1}}]:copy(gt_sequence)
-    local mask = torch.eq(net.gt_tokens, 0)
-    net.gt_tokens[mask] = NULL_TOKEN
-      
-    rnn_view_in:resetSize(L+T+C+1,-1)
-    rnn_view_out:resetSize(1,C+L+T+1,-1)
-    local net_input = {cnn_vectors,net.gt_tokens}
+    label_tokens = gt_sequence.new(L+T+1)
+    label_tokens[{{1,1}}]:fill(START_TOKEN)
+    if L>0 then label_tokens[{{2,L+1}}]:copy(add_sequence) end
+    label_tokens[{{L+2,L+T+1}}]:copy(gt_sequence)
+    mask = torch.eq(label_tokens, 0)
+    label_tokens[mask] = NULL_TOKEN
+
+    net.target_tokens = gt_sequence.new(C+L+T+1)
+    net.target_tokens[C+L+1] = START_TOKEN - net.opt.additional_vocab_size
+    net.target_tokens[{{C+L+2,C+L+T+1}}]:copy(gt_sequence)
+    mask = torch.eq(net.target_tokens,0)
+    net.target_tokens[mask] = START_TOKEN - net.opt.additional_vocab_size
+    net.target_tokens[{{1,C+L}}]:fill(0)
+
+    --rnn_view_in:resetSize(L+T+C+1,-1)
+    --rnn_view_out:resetSize(1,C+L+T+1,-1)
+    local net_input = {cnn_vectors,label_tokens}
     local output = net.model:forward(net_input)
     --forward_train(cnn_vectors, net.gt_tokens)
     net.called_forward = true
@@ -190,7 +201,7 @@ function net.backward(cnn_vectors,gradOutput,scale)
   assert(net.called_forward == true, "forward with gt not called")
   assert(scale == nil or scale == 1.0)
 
-  local net_input = {cnn_vectors,net.gt_tokens}
+  local net_input = {cnn_vectors,label_tokens}
   local gradInput = net.model:backward(net_input, gradOutput,scale)
   gradInput[2]:zero()
   net.called_forward = false

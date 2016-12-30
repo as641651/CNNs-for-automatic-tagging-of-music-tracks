@@ -1,5 +1,5 @@
 require 'hdf5'
-local utils = require 'utils'
+local utils = require 'modules.utils'
 
 
 local DataLoader = torch.class('DataLoader')

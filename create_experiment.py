@@ -53,14 +53,17 @@ def build_vocab(dataDict):
 def encodeGroundTruth(dataDict,vocab,minFreq):
 
    gt = {}
+   song_clips = {}
    token_to_idx = {}
    idx_to_token = {}
    idd = 0
-   num_samples = 0
+   num_clips = 0
+   num_songs = 0
    for k,v in dataDict.iteritems():
        if k == 'song_id_to_name':
           continue
 
+       clips = []
        for k2,v2 in v.iteritems():
           if k2 != 'song_id':
              tags = []
@@ -73,32 +76,45 @@ def encodeGroundTruth(dataDict,vocab,minFreq):
                   tags.append(token_to_idx[t]) 
              if tags:
                 gt[k2] = tags
-                num_samples = num_samples + 1
-   return gt,num_samples,token_to_idx,idx_to_token
+                clips.append(int(k2))
+                num_clips = num_clips + 1
+       if clips:
+          song_clips[dataDict[k]['song_id']] = clips
+          num_songs = num_songs + 1
+
+   return gt,num_clips,token_to_idx,idx_to_token,song_clips,num_songs
 
 def random_split(dataDict,exp):
    
    vocab = build_vocab(dataDict)
-   exp["gt"],num_clips,exp["token_to_idx"],exp["idx_to_token"] = encodeGroundTruth(dataDict,vocab,exp["label_min_freq"])
+   exp["gt"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["song_clips"],num_songs = encodeGroundTruth(dataDict,vocab,exp["label_min_freq"])
 
    print("Vocab in use :")
    print(exp["idx_to_token"])
-   
-   train = int(math.ceil(exp["train"]*num_clips))
-   val = int(math.floor(exp["val"]*num_clips))
-   test = int(math.floor(exp["test"]*num_clips))
 
-   diff = train + val + test - num_clips
+   num_samples = num_clips
+   sample_idx = exp["gt"]
+   if exp["group"]:
+      num_samples = num_songs
+      sample_idx = exp["song_clips"]
+   
+   train = int(math.ceil(exp["train"]*num_samples))
+   val = int(math.floor(exp["val"]*num_samples))
+   test = int(math.floor(exp["test"]*num_samples))
+
+   diff = train + val + test - num_samples
    test = test - diff
    
+   print "Total Songs :" + str(num_songs) 
    print "Total clips :" + str(num_clips) 
+   print "Group by songs :" + str(exp["group"]) 
    print OKGREEN + "Split : " + str(train) + "/" + str(val) + "/" + str(test) + ENDC
 
 
    it = 0
    j=0
 
-   for k,v in exp["gt"].iteritems():
+   for k,v in sample_idx.iteritems():
       if it == 0:
          exp["train_idxs"].append(int(k))
       if it == 1:
@@ -114,19 +130,20 @@ def random_split(dataDict,exp):
 
 def main(args):
 
-   json_file = "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/dd_new_additional.json"
-  
-   with open(json_file) as f:
+   with open(args.config_file, "r") as f:
+      split_config = json.load(f)
+ 
+   with open(split_config["data_json"], "r") as f:
       dataDict = json.load(f)
 
    experiment = {}
    experiment["gt"] = {}
-   experiment["group"] = False
-   experiment["max_group"] = 5
-   experiment["label_min_freq"] = 2
-   experiment["train"] = 0.7
-   experiment["val"] = 0.3
-   experiment["test"] = 0.
+   experiment["song_clips"] = {}
+   experiment["group"] = bool(split_config["group"])
+   experiment["label_min_freq"] = int(split_config["min_label_freq"])
+   experiment["train"] = float(split_config["train_percent"])
+   experiment["val"] = float(split_config["val_percent"])
+   experiment["test"] = float(split_config["test_percent"])
    experiment["train_idxs"] = []
    experiment["val_idxs"] = []
    experiment["test_idxs"] = []
@@ -134,22 +151,36 @@ def main(args):
    experiment["idx_to_token"] = {}
 
    random_split(dataDict,experiment)
-
-   with open(args.json_file, 'w') as f:
+ 
+   with open(str(split_config["split_info_path"]), 'w') as f:
       json.dump(experiment, f)
 
 
+def print_help():
+   print FAIL + "Requires a json file with config data: " + ENDC
+   print "{"
+   print "  \"data_json\": //THE DATABASE JSON FILE , "
+   print "  \"split_info_path\": //PATH OF THE OUTPUT SPLIT_INFO JSON FILE ,"
+   print "  \"train_percent\": //PERCENT SAMPLES FOR TRAIN SET ,"
+   print "  \"val_percent\": //PERCENT SAMPLES FOR VAL SET ,"
+   print "  \"test_percent\": //PERCENT SAMPLES FOR TEST SET ,"
+   print "  \"min_label_freq\": //THE GT LABELS HAVE TO APPEAR MORE THAN THIS VALUE TO BE CONSIDERED FOR TRAINING ,"
+   print "  \"group\": //True/False  GROUPS CLIPS FROM SAME SONG "
+   print "}"
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
   # OUTPUT settings
-  parser.add_argument('--json_file',
-      default='experiment.json',
-      help='Path to output HDF5 file')
+  parser.add_argument('--config_file',
+      default='',
+      help='Path to config file')
 
   # OPTIONS
   args = parser.parse_args()
-  
+
+  if not args.config_file: 
+     print_help()
+     exit(-1)  
 
   main(args)

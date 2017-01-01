@@ -33,6 +33,7 @@ def word_preprocess(phrase):
 
 def build_vocab(dataDict):
    vocab = {}
+   info_vocab = {}
    for k,v in dataDict.iteritems():
        if k == 'song_id_to_name':
           continue
@@ -48,15 +49,29 @@ def build_vocab(dataDict):
                else:
                  vocab[t] = vocab[t] + 1 
 
-   return vocab   
+             info_tokens = []
+             for v in v2["labels"]: ##TODO: info labels
+                info_tokens.append(word_preprocess(v))
+                v2["info_tokens"] = info_tokens
+             for t in info_tokens:
+               if not t in info_vocab:
+                 info_vocab[t] = 1
+               else:
+                 info_vocab[t] = info_vocab[t] + 1 
 
-def encodeGroundTruth(dataDict,vocab,minFreq):
+   return vocab,info_vocab   
+
+def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
 
    gt = {}
+   info_tags = {}
    song_clips = {}
    token_to_idx = {}
    idx_to_token = {}
    idd = 0
+   info_token_to_idx = {}
+   info_idx_to_token = {}
+   info_idd = 0
    num_clips = 0
    num_songs = 0
    for k,v in dataDict.iteritems():
@@ -78,20 +93,37 @@ def encodeGroundTruth(dataDict,vocab,minFreq):
                 gt[k2] = tags
                 clips.append(int(k2))
                 num_clips = num_clips + 1
+
+                info_tags_list = []
+                for t in v2["info_tokens"]:
+                  if info_vocab[t] >= info_vocab_minFreq:
+                    if not t in info_token_to_idx:
+                       info_token_to_idx[t] = info_idd
+                       info_idx_to_token[info_idd] = t
+                       info_idd = info_idd + 1
+                    info_tags_list.append(info_token_to_idx[t]) 
+                  info_tags[k2] = info_tags_list
+               
        if clips:
           song_clips[dataDict[k]['song_id']] = clips
           num_songs = num_songs + 1
 
-   return gt,num_clips,token_to_idx,idx_to_token,song_clips,num_songs
+   return gt,info_tags,num_clips,token_to_idx,idx_to_token,info_token_to_idx,info_idx_to_token,song_clips,num_songs
 
 def random_split(dataDict,exp):
    
-   vocab = build_vocab(dataDict)
-   exp["gt"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["song_clips"],num_songs = encodeGroundTruth(dataDict,vocab,exp["label_min_freq"])
+   vocab,info_vocab = build_vocab(dataDict)
+   exp["gt"],exp["info_tags"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["info_token_to_idx"],exp["info_idx_to_token"],exp["song_clips"],num_songs = encodeGroundTruth(dataDict,vocab,info_vocab,exp["label_min_freq"],exp["info_tag_min_freq"])
 
-   print("Vocab in use :")
+   exp["vocab_size"] = len(exp["idx_to_token"])
+   exp["info_vocab_size"] = len(exp["info_idx_to_token"])
+
+   print("Vocab in use : Total(%d)"%len(exp["idx_to_token"]))
    print(exp["idx_to_token"])
 
+   print("info Vocab in use : Total(%d)"%len(exp["info_idx_to_token"]))
+   print(exp["info_idx_to_token"])
+   
    num_samples = num_clips
    sample_idx = exp["gt"]
    if exp["group"]:
@@ -141,6 +173,7 @@ def main(args):
    experiment["song_clips"] = {}
    experiment["group"] = bool(split_config["group"])
    experiment["label_min_freq"] = int(split_config["min_label_freq"])
+   experiment["info_tag_min_freq"] = int(split_config["min_info_tag_freq"])
    experiment["train"] = float(split_config["train_percent"])
    experiment["val"] = float(split_config["val_percent"])
    experiment["test"] = float(split_config["test_percent"])
@@ -149,11 +182,15 @@ def main(args):
    experiment["test_idxs"] = []
    experiment["token_to_idx"] = {}
    experiment["idx_to_token"] = {}
+   experiment["vocab_size"] = 0
+   experiment["info_vocab_size"] = 0
 
    random_split(dataDict,experiment)
  
    with open(str(split_config["split_info_path"]), 'w') as f:
       json.dump(experiment, f)
+
+   print WARNING + "Wrote output : " + ENDC + split_config["split_info_path"]
 
 
 def print_help():
@@ -165,6 +202,7 @@ def print_help():
    print "  \"val_percent\": //PERCENT SAMPLES FOR VAL SET ,"
    print "  \"test_percent\": //PERCENT SAMPLES FOR TEST SET ,"
    print "  \"min_label_freq\": //THE GT LABELS HAVE TO APPEAR MORE THAN THIS VALUE TO BE CONSIDERED FOR TRAINING ,"
+   print "  \"min_info_tag_freq\": //THE INFO LABELS HAVE TO APPEAR MORE THAN THIS VALUE TO BE CONSIDERED FOR TRAINING ,"
    print "  \"group\": //True/False  GROUPS CLIPS FROM SAME SONG "
    print "}"
 

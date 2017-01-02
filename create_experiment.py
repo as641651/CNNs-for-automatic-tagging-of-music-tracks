@@ -210,7 +210,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
   # OUTPUT settings
-  parser.add_argument('--config_file',
+  parser.add_argument('-c','--config_file',
       default='',
       help='Path to config file')
 

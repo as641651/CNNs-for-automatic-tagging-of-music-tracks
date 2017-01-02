@@ -209,4 +209,11 @@ function net.backward(cnn_vectors,gradOutput,scale)
   return gradInput
 end
 
+function net.getParameters(dtype)
+   local fakenet = nn.Sequential():type(dtype)
+   fakenet:add(net.model:get(1):get(1))
+   fakenet:add(net.model:get(3))
+   return fakenet:getParameters()
+end
+
 return net

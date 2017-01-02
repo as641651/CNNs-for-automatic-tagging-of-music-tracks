@@ -57,7 +57,7 @@ end
 
 function utils.read_json(path)
   local file = io.open(path, 'r')
-  local text = file:read()
+  local text = file:read("*a")
   file:close()
   local info = cjson.decode(text)
   return info

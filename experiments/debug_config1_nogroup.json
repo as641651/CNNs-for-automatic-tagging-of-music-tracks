@@ -1,12 +1,12 @@
 { 
   "data_json": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/debug_choi_processed.json",  
-  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/debug_choi_processed_0.7_0.3_0._2_1.json",
+  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/debug_choi_processed_nogroup_0.7_0.3_0._2_1.json",
   "train_percent": 0.7,
   "val_percent": 0.3,
   "test_percent": 0,
   "min_label_freq": 2,
   "min_info_tag_freq": 3,
-  "group": true,
+  "group": false,
 
   "data_h5": "../databases/debug_choi.h5", 
   "debug_max_train_images" : -1, 
@@ -19,19 +19,9 @@
   "cnn_model": "cnns.models.choi_crnn.choi_cnn", 
   "rnn_model": "rnns.models.lstm_model1",
   "rnn_feature_input_dim": 1664,
-  "rnn_encoding_dim": 200,
+  "rnn_vocab_encoding_dim": 512,
   "rnn_hidden_dim": 200,
   "rnn_num_layers": 2,
   "rnn_dropout": 0,
-  "rnn_test_time_seq_length": 5, 
-
-  "fine_tune_cnn": true,
-  "weight_decay": 0,
-  "learning_rate": 1e-3,
-  "optim_alpha": 0.9,
-  "optim_beta": 0.99,
-  "optim_epsilon": 1e-8,
-
-  "max_iters": 100,
-  "save_checkpoint_every": 50
+  "rnn_test_time_seq_length": 5 
 }

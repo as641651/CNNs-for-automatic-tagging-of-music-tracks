@@ -15,6 +15,7 @@ end
 local opt = utils.read_json(platform.c)
 opt.platform = platform
 opt.optim_state = {}
+opt.cnn_optim_state = {}
 
 local classifier = require(opt.classifier)
 
@@ -58,7 +59,7 @@ classifier.type(dtype)
 loader:type(dtype)
 
 if opt.fine_tune_cnn then
-    cnn_params, cnn_grad_params = classifier.cnn.model:getParameters()
+    cnn_params, cnn_grad_params = classifier.cnn.model:get(2):getParameters()
 end
 local rnn_params, rnn_grad_params = classifier.rnn.getParameters(dtype)
 
@@ -98,7 +99,7 @@ while true do
     adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
     if opt.fine_tune_cnn then
-      adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
+      adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
     end
    
   classifier.clearState()

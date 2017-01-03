@@ -1,6 +1,6 @@
 { 
-  "data_json": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/debug_choi_processed.json",  
-  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/debug_choi_processed_nogroup_0.7_0.3_0._2_1.json",
+  "data_json": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/debug_choi_processed.json",  
+  "split_info_path": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/debug_choi_processed_nogroup_0.7_0.3_0._2_1.json",
   "train_percent": 0.7,
   "val_percent": 0.3,
   "test_percent": 0,

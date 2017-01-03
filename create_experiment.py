@@ -75,6 +75,7 @@ def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
    num_clips = 0
    num_songs = 0
    for k,v in dataDict.iteritems():
+       print(k)
        if k == 'song_id_to_name':
           continue
 
@@ -107,6 +108,8 @@ def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
        if clips:
           song_clips[dataDict[k]['song_id']] = clips
           num_songs = num_songs + 1
+          print(dataDict[k]['song_id'], num_songs)
+   print(dataDict["song_id_to_name"])
 
    return gt,info_tags,num_clips,token_to_idx,idx_to_token,info_token_to_idx,info_idx_to_token,song_clips,num_songs
 
@@ -158,6 +161,7 @@ def random_split(dataDict,exp):
          it = 1
       if j == train+val:
          it = 2
+
                        
 
 def main(args):

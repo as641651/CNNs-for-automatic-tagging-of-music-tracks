@@ -9,7 +9,7 @@ class parser_base(object):
       return self._name
 
 
-   def parse_input(self, input_path, args=""):
+   def parse_input(self, args):
        """
        should create the following dict
 

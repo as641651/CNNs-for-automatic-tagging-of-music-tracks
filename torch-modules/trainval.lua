@@ -75,8 +75,8 @@ local function lossFun()
    local data = {}
    loader:train()
    data.sample_id, data.input,data.gt,data.info_tags = loader:getSample()
-   print("Loaded sample :" .. tostring(data.sample_id))
-   local loss = classifier.forward_backward(data.input,data.info_tags,data.gt)
+--   print("Loaded sample :" .. tostring(data.sample_id))
+   local loss = classifier.forward_backward(data.input,nil,data.gt)
 
 
    if opt.weight_decay > 0 then
@@ -107,10 +107,10 @@ while true do
   --periodic validation
   if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) then
      loader:val()
-     local clip_id,input1,_,info_tags = loader:getSample()
-     local labels = classifier.forward(input1,info_tags)
+     local clip_id,input1,gt_tags,info_tags = loader:getSample()
+     local labels_prob = classifier.forward(input1,nil)
      print("val check for sample_id : " .. tostring(clip_id) )
-     print(labels)
+     print(labels_prob[1], labels_prob[2],gt_tags)
      classifier.clearState()
    end
 
@@ -127,27 +127,3 @@ while true do
 
 end
 
---[[
-local clip_id
-local input
-local labels
-
-loader:train()
-
-clip_id,input1,labels,info_tags = loader:getSample()
-
-print("Train Check ")
-local loss = classifier.forward_backward(input1,info_tags,labels)
-print("LOSS = ", loss)
-classifier.clearState()
-
-clip_id2,input2,_,info_tags = loader:getSample()
-print("Test Check ")
-local labels = classifier.forward(input2,info_tags)
-print(labels)
-classifier.clearState()
-
-local labels = classifier.forward(input2)
-print(labels)
-classifier.clearState()
---]]

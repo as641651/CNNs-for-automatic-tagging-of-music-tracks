@@ -102,6 +102,7 @@ function sample(cnn_vectors, add_sequence)
   end
 
   local seq = torch.Tensor(T+1):zero():type(cnn_vectors:type())
+  local prob = torch.Tensor(T+1):zero():type(cnn_vectors:type())
   local word = torch.Tensor(1):zero():type(cnn_vectors:type())
   local softmax = nn.SoftMax():type(cnn_vectors:type())
   
@@ -136,11 +137,13 @@ function sample(cnn_vectors, add_sequence)
       word[1] = seq[t-1]
     end
     local wordvec = net.vocab_encoder:forward(word)
-    local scores = net.rnn_model:forward(wordvec):view(-1)
+    local net_out = net.rnn_model:forward(wordvec):view(-1)
+    local scores = nn.SoftMax():type(net_out:type()):forward(net_out)
     local idx = nil
-    _, idx = torch.max(scores,1)
-     
+    local p = nil
+    p, idx = torch.max(scores,1)
     seq[{{t}}]:copy(idx)
+    prob[{{t}}]:copy(p)
   end
 
   -- After sampling stop remembering states
@@ -152,7 +155,7 @@ function sample(cnn_vectors, add_sequence)
     end
   end
 
-  return seq
+  return {seq,prob}
 
 end
 
@@ -165,25 +168,29 @@ function net.forward(cnn_vectors, add_sequence, gt_sequence)
     local T = gt_sequence:size(1)
     local L = 0
     local mask = nil
-    if add_sequence:numel() > 0 then
+    if add_sequence ~= nil then
        add_sequence = add_sequence[add_sequence:gt(0)]
        L = add_sequence:numel()
     end
     local C = cnn_vectors:size(1)
 
-    label_tokens = gt_sequence.new(L+T+1)
-    label_tokens[{{1,1}}]:fill(START_TOKEN)
-    if L>0 then label_tokens[{{2,L+1}}]:copy(add_sequence) end
+    label_tokens = gt_sequence.new(L+T+2)
+    if L>0 then label_tokens[{{1,L}}]:copy(add_sequence) end
+    label_tokens[{{L+1,L+1}}]:fill(START_TOKEN)
     label_tokens[{{L+2,L+T+1}}]:copy(gt_sequence)
-    mask = torch.eq(label_tokens, 0)
-    label_tokens[mask] = NULL_TOKEN
+    label_tokens[{{L+T+2,L+T+2}}]:fill(START_TOKEN)
+    --mask = torch.eq(label_tokens, 0)
+    --label_tokens[mask] = NULL_TOKEN
 
-    net.target_tokens = gt_sequence.new(C+L+T+1)
-    net.target_tokens[C+L+1] = START_TOKEN - net.opt.additional_vocab_size
+    net.target_tokens = gt_sequence.new(C+L+T+2)
+    net.target_tokens[C+L+1] = 0 -- START_TOKEN - net.opt.additional_vocab_size
+    net.target_tokens[C+L+T+2] = 0 --START_TOKEN - net.opt.additional_vocab_size
     net.target_tokens[{{C+L+2,C+L+T+1}}]:copy(gt_sequence)
-    mask = torch.eq(net.target_tokens,0)
-    net.target_tokens[mask] = START_TOKEN - net.opt.additional_vocab_size
+    --mask = torch.eq(net.target_tokens,0)
+    --net.target_tokens[mask] = START_TOKEN - net.opt.additional_vocab_size
     net.target_tokens[{{1,C+L}}]:fill(0)
+    --net.target_tokens = net.target_tokens[{{C+L+1,C+L+T+1}}]
+    --print(label_tokens,net.target_tokens,gt_sequence)
 
     --rnn_view_in:resetSize(L+T+C+1,-1)
     --rnn_view_out:resetSize(1,C+L+T+1,-1)

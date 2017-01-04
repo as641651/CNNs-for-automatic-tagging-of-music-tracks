@@ -31,28 +31,42 @@ def word_preprocess(phrase):
   return str(phrase).lower().translate(None, string.punctuation)
 
 
-def build_vocab(dataDict):
+def build_vocab(dataDict,bYear,bArtist,bOthers):
    vocab = {}
    info_vocab = {}
    for k,v in dataDict.iteritems():
        if k == 'song_id_to_name':
           continue
+       v["info_tokens"] = []
+        
+   for k,v in dataDict.iteritems():
+       if k == 'song_id_to_name':
+          continue
        for k2,v2 in v.iteritems():
-          if k2 != 'song_id':
+          if k2 != 'song_id' and k2 != 'info_tags' and k2 != 'info_tokens':
              tokens = []
-             for v in v2["labels"]:
-                tokens.append(word_preprocess(v))
+             for vo in v2["labels"]:
+                tokens.append(word_preprocess(vo))
              v2["tokens"] = tokens
              for t in tokens:
                if not t in vocab:
                  vocab[t] = 1
                else:
                  vocab[t] = vocab[t] + 1 
-
+       
+          elif k2 == 'info_tags':
              info_tokens = []
-             for v in v2["labels"]: ##TODO: info labels
-                info_tokens.append(word_preprocess(v))
-                v2["info_tokens"] = info_tokens
+             if bYear:
+               if v["info_tags"]["year"] != -1:
+                  info_tokens.append(word_preprocess(v["info_tags"]["year"]))
+             if bArtist:
+               for a in v["info_tags"]["artist"]:
+                  info_tokens.append(word_preprocess(a))
+             if bOthers:
+               for o in v["info_tags"]["additional_tags"]:
+                  info_tokens.append(word_preprocess(o))
+        
+             v["info_tokens"] = info_tokens
              for t in info_tokens:
                if not t in info_vocab:
                  info_vocab[t] = 1
@@ -66,6 +80,7 @@ def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
    gt = {}
    info_tags = {}
    song_clips = {}
+   clips_song = {}
    token_to_idx = {}
    idx_to_token = {}
    idd = 0
@@ -75,13 +90,12 @@ def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
    num_clips = 0
    num_songs = 0
    for k,v in dataDict.iteritems():
-       print(k)
        if k == 'song_id_to_name':
           continue
 
        clips = []
        for k2,v2 in v.iteritems():
-          if k2 != 'song_id':
+          if k2 != 'song_id' and k2 != 'info_tags' and k2 != 'info_tokens':
              tags = []
              for t in v2["tokens"]:
                 if vocab[t] >= minFreq:
@@ -95,28 +109,30 @@ def encodeGroundTruth(dataDict,vocab,info_vocab,minFreq,info_vocab_minFreq):
                 clips.append(int(k2))
                 num_clips = num_clips + 1
 
-                info_tags_list = []
-                for t in v2["info_tokens"]:
-                  if info_vocab[t] >= info_vocab_minFreq:
-                    if not t in info_token_to_idx:
-                       info_token_to_idx[t] = info_idd
-                       info_idx_to_token[info_idd] = t
-                       info_idd = info_idd + 1
-                    info_tags_list.append(info_token_to_idx[t]) 
-                  info_tags[k2] = info_tags_list
+          elif k2 == 'info_tags':
+             info_tags_list = []
+             for t in v["info_tokens"]:
+                if info_vocab[t] >= info_vocab_minFreq:
+                  if not t in info_token_to_idx:
+                     info_token_to_idx[t] = info_idd
+                     info_idx_to_token[info_idd] = t
+                     info_idd = info_idd + 1
+                  info_tags_list.append(info_token_to_idx[t]) 
                
        if clips:
-          song_clips[dataDict[k]['song_id']] = clips
+          song_clips[v['song_id']] = clips
+          info_tags[v['song_id']] = info_tags_list
           num_songs = num_songs + 1
-          print(dataDict[k]['song_id'], num_songs)
-   print(dataDict["song_id_to_name"])
+          for c in clips:
+             clips_song[c] = v['song_id']
 
-   return gt,info_tags,num_clips,token_to_idx,idx_to_token,info_token_to_idx,info_idx_to_token,song_clips,num_songs
+   assert(num_songs == len(song_clips)) #just a correctness assurance check :P
+   return gt,info_tags,num_clips,token_to_idx,idx_to_token,info_token_to_idx,info_idx_to_token,song_clips,num_songs,clips_song
 
 def random_split(dataDict,exp):
    
-   vocab,info_vocab = build_vocab(dataDict)
-   exp["gt"],exp["info_tags"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["info_token_to_idx"],exp["info_idx_to_token"],exp["song_clips"],num_songs = encodeGroundTruth(dataDict,vocab,info_vocab,exp["label_min_freq"],exp["info_tag_min_freq"])
+   vocab,info_vocab = build_vocab(dataDict,exp["use_year"],exp["use_artist"],exp["use_other_tags"])
+   exp["gt"],exp["info_tags"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["info_token_to_idx"],exp["info_idx_to_token"],exp["song_clips"],num_songs,exp["clips_song"] = encodeGroundTruth(dataDict,vocab,info_vocab,exp["label_min_freq"],exp["info_tag_min_freq"])
 
    exp["vocab_size"] = len(exp["idx_to_token"])
    exp["info_vocab_size"] = len(exp["info_idx_to_token"])
@@ -175,7 +191,11 @@ def main(args):
    experiment = {}
    experiment["gt"] = {}
    experiment["song_clips"] = {}
+   experiment["clips_song"] = {}
    experiment["group"] = bool(split_config["group"])
+   experiment["use_year"] = bool(split_config["use_year"])
+   experiment["use_artist"] = bool(split_config["use_artist"])
+   experiment["use_other_tags"] = bool(split_config["use_other_tags"])
    experiment["label_min_freq"] = int(split_config["min_label_freq"])
    experiment["info_tag_min_freq"] = int(split_config["min_info_tag_freq"])
    experiment["train"] = float(split_config["train_percent"])
@@ -194,6 +214,7 @@ def main(args):
    with open(str(split_config["split_info_path"]), 'w') as f:
       json.dump(experiment, f)
 
+  # print json.dumps(blob,sort_keys=True,indent=4)
    print WARNING + "Wrote output : " + ENDC + split_config["split_info_path"]
 
 
@@ -208,6 +229,9 @@ def print_help():
    print "  \"min_label_freq\": //THE GT LABELS HAVE TO APPEAR MORE THAN THIS VALUE TO BE CONSIDERED FOR TRAINING ,"
    print "  \"min_info_tag_freq\": //THE INFO LABELS HAVE TO APPEAR MORE THAN THIS VALUE TO BE CONSIDERED FOR TRAINING ,"
    print "  \"group\": //True/False  GROUPS CLIPS FROM SAME SONG "
+   print "  \"use_year\": //True/False  INFO_TAGS  "
+   print "  \"use_artist\": //True/False  INFO_TAGS  "
+   print "  \"use_other_tags\": //True/False  INFO_TAGS like album or something else  "
    print "}"
 
 if __name__ == '__main__':

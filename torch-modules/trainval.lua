@@ -3,6 +3,7 @@ require 'modules.DataLoader'
 require 'modules.optim_updates'
 local utils = require 'modules.utils'
 local platform_opts = require 'platform_opts'
+local eval_utils = require 'modules.eval_utils'
 
 --SETTINGS
 local platform = platform_opts.parse(arg)
@@ -106,12 +107,21 @@ while true do
 
   --periodic validation
   if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) then
-     loader:val()
+    --[[ loader:val()
      local clip_id,input1,gt_tags,info_tags = loader:getSample()
      local labels_prob = classifier.forward(input1,nil)
      print("val check for sample_id : " .. tostring(clip_id) )
-     print(labels_prob[1], labels_prob[2],gt_tags)
-     classifier.clearState()
+     print(labels_prob[1]:view(1,labels_prob[1]:size(1)), labels_prob[2]:view(1,labels_prob[2]:size(1)),gt_tags:view(1,gt_tags:size(1))) --]]
+
+     
+    local eval_kwargs = {
+      model=classifier,
+      loader=loader,
+      split='val',
+      max_samples=100,
+      dtype=dtype,
+    }
+    local results = eval_utils.eval_split(eval_kwargs)
    end
 
   -- stopping criterions

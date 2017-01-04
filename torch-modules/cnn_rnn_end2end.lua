@@ -25,7 +25,6 @@ function classifier.forward_backward(input,additional_seq, gt_seq)
 --FORWARD
    local cnn_output = classifier.cnn.forward(input)
    local rnn_output = classifier.rnn.forward(cnn_output:view(cnn_output:size(1),-1), additional_seq,gt_seq)
-
    local loss = classifier.crit:forward(rnn_output:view(1,rnn_output:size(1),rnn_output:size(2)),classifier.rnn.target_tokens:view(1,classifier.rnn.target_tokens:size(1))) 
 
 --BACKWARD

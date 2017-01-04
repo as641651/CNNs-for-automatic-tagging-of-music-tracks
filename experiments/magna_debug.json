@@ -1,14 +1,17 @@
 { 
-  "data_json": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/debug_choi_processed.json",  
-  "split_info_path": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/debug_choi_processed_0.7_0.3_0._2_1.json",
+  "data_json": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/magna01_partial_processed.json",  
+  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/magna01_partial_processed_0.7_0.3_0._2_1.json",
   "train_percent": 0.7,
   "val_percent": 0.3,
   "test_percent": 0,
   "min_label_freq": 2,
   "min_info_tag_freq": 3,
   "group": true,
+  "use_year": false,
+  "use_artist": false,
+  "use_other_tags": false,
 
-  "data_h5": "../databases/debug_choi.h5", 
+  "data_h5": "../databases/magna01_partial.h5", 
   "debug_max_train_images" : -1, 
   "seed": 123,
   "max_clips_per_song":5,
@@ -32,6 +35,6 @@
   "optim_beta": 0.99,
   "optim_epsilon": 1e-8,
 
-  "max_iters": 100,
-  "save_checkpoint_every": 50
+  "max_iters": 1000,
+  "save_checkpoint_every": 100
 }

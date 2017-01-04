@@ -11,6 +11,7 @@ function DataLoader:__init(opt)
   self.group = opt.group
   self.feature_xdim = opt.feature_xdim
   self.feature_ydim = opt.feature_ydim
+  self.max_clips_per_song = opt.max_clips_per_song
   self.debug_max_train_samples = utils.getopt(opt, 'debug_max_train_samples', -1)
 
   print('DataLoader loading json file: ', self.json_file)
@@ -35,7 +36,6 @@ function DataLoader:__init(opt)
 
   self.iterators = {[0]=1,[1]=1,[2]=1} -- iterators (indices to split lists) for train/val/test
   print(string.format('assigned %d/%d/%d images to train/val/test.', #self.info.train_idxs, #self.info.val_idxs, #self.info.test_idxs))
-  
   -- open the hdf5 file
   print('DataLoader loading h5 file: ', self.h5_file)
   self.h5_file = hdf5.open(self.h5_file, 'r')
@@ -53,42 +53,6 @@ end
 
 function DataLoader:get_info_vocab_size()
    return self.info_vocab_size
-end
-
-function DataLoader:getBatch(opt)
-  local split = utils.getopt(opt, 'split', 0)
-  local iterate = utils.getopt(opt, 'iterate', true)
-
-  assert(split == 0 or split == 1 or split == 2, 'split must be integer, either 0 (train), 1 (val) or 2 (test)')
-  local split_ix
-  if split == 0 then split_ix = self.info.train_idxs end
-  if split == 1 then split_ix = self.info.val_idxs end
-  if split == 2 then split_ix = self.info.test_idxs end
-  assert(#split_ix > 0, 'split is empty?')
-  
-  -- pick an index of the datapoint to load next
-  local ri -- ri is iterator position in local coordinate system of split_ix for this split
-  local max_index = #split_ix
-  if self.debug_max_train_samples > 0 then max_index = self.debug_max_train_samples end
-  if iterate then
-    ri = self.iterators[split] -- get next index from iterator
-    local ri_next = ri + 1 -- increment iterator
-    if ri_next > max_index then ri_next = 1 end -- wrap back around
-    self.iterators[split] = ri_next
-  else
-    -- pick an index randomly
-    ri = torch.random(max_index)
-  end
-  ix = split_ix[ri]
-  assert(ix ~= nil, 'bug: split ' .. split .. ' was accessed out of bounds with ' .. ri)
-
-  local clip_id = ix
-
-  local input = self.h5_file:read("/" .. tostring(clip_id)):all()
-  
-  local labels = self.info.gt[tostring(clip_id)]
-
-  return clip_id,input:view(1,input:size(1),input:size(2),input:size(3)),labels
 end
 
 function DataLoader:train()   
@@ -138,19 +102,22 @@ function DataLoader:getSample(iterate)
   assert(ix ~= nil, 'bug: split ' .. self.split .. ' was accessed out of bounds with ' .. ri)
 
   if not self.group then
-     local input, labels, info_tags = self:getClip(ix)
+     local input, labels = self:getClip(ix)
+     local song_id = self.info.clips_song[tostring(ix)]
+     local info_tags = self.info.info_tags[tostring(song_id)]
      return ix,input:view(1,input:size(1),input:size(2),input:size(3)):type(self.dtype),self:tableToTensor(labels):type(self.dtype),self:tableToTensor(info_tags):type(self.dtype)
   else
      local clips = self.info.song_clips[tostring(ix)]
-     local num_clips = utils.count_keys(clips)
+     local num_clips = math.min(utils.count_keys(clips),self.max_clips_per_song)
+     
      local input = torch.zeros(num_clips,1,self.feature_ydim,self.feature_xdim)
      local labels_table = {}
-     local info_tags_table = {}
+
      for i = 1,num_clips do 
-        input[{i}],labels_table[i],info_tags_table[i] = self:getClip(clips[i])
+        input[{i}],labels_table[i] = self:getClip(clips[i])
      end
      local labels = self:tableToTensor(self:unionOfLabels(labels_table))
-     local info_tags = self:tableToTensor(self:unionOfLabels(info_tags_table))
+     local info_tags = self:tableToTensor(self.info.info_tags[tostring(ix)])
      return ix,input:type(self.dtype),labels:add(1):type(self.dtype),info_tags:add(1+self.vocab_size):type(self.dtype)
   end           
 end
@@ -166,9 +133,8 @@ end
 function DataLoader:getClip(clip_id)
   local input = self.h5_file:read("/" .. tostring(clip_id)):all()
   local labels = self.info.gt[tostring(clip_id)]
-  local info_tags = self.info.info_tags[tostring(clip_id)]
 
-  return input,labels,info_tags
+  return input,labels
 end
 
 function DataLoader:tableToTensor(label_table)

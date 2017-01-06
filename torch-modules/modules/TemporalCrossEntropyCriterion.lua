@@ -64,7 +64,7 @@ function crit:updateOutput(input, target)
   assert(target:dim() == 2 and target:size(1) == N and target:size(2) == T)
   self.lsm:get(1):resetSize(N * T, -1)
   self.lsm:get(3):resetSize(N, T, -1)
-  
+--  print(input:size(),target) 
   -- For CPU tensors, target should be a LongTensor but for GPU tensors
   -- it should be the same type as input ... gross.
   if input:type() == 'torch.FloatTensor' or input:type() == 'torch.DoubleTensor' then

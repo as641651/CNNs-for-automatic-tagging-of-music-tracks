@@ -1,5 +1,6 @@
 require 'nn'
 
+
 local net = {}
 net.opt = {}
 net.opt.cnn_out_dim = 1664
@@ -58,7 +59,10 @@ function net.init_rnn()
 
   local rnn_model = require(net.opt.rnn_model)
 
-  net.rnn_model = rnn_model.get_rnn(net.opt)
+  net.rnn_model = nn.Sequential()
+  net.rnn_model:add(nn.Sequencer(rnn_model.get_rnn(net.opt)))
+  net.rnn_model:add(nn.Linear(net.opt.rnn_hidden_size, net.opt.classifier_vocab_size+1))
+  
   net.model:add(net.rnn_model)
   
   print("RNN MODEL : ")
@@ -105,26 +109,28 @@ function sample(cnn_vectors, add_sequence)
   local prob = torch.Tensor(T+1):zero():type(cnn_vectors:type())
   local word = torch.Tensor(1):zero():type(cnn_vectors:type())
   local softmax = nn.SoftMax():type(cnn_vectors:type())
-  
+  local step_scores = nil
   -- During sampling we want our LSTM modules to remember states
-  for i = 1, #net.rnn_model do
+--[[  for i = 1, #net.rnn_model do
     local layer = net.rnn_model:get(i)
     if torch.isTypeOf(layer, nn.LSTM) then
       layer:resetStates()
       layer.remember_states = true
     end
-  end
+  end--]]
+
+  net.rnn_model:get(1):remember('both')
 
 
   -- First C+L timesteps: ignore output
   for ci = 1,C do
      local cnn_vecs_encoded = net.cnn_encoder:forward(cnn_vectors[ci])
-     net.rnn_model:forward(cnn_vecs_encoded)
+     net.rnn_model:get(1):get(1):forward(cnn_vecs_encoded)
   end
   for li = 1,L do
      word[1] = add_sequence[li]
      local vocab_encoded = net.vocab_encoder:forward(word)
-     net.rnn_model:forward(vocab_encoded)
+     net.rnn_model:get(1):get(1):forward(vocab_encoded)
   end
 
   -- Now feed words through RNN
@@ -137,8 +143,14 @@ function sample(cnn_vectors, add_sequence)
       word[1] = seq[t-1]
     end
     local wordvec = net.vocab_encoder:forward(word)
-    local net_out = net.rnn_model:forward(wordvec):view(-1)
+    local net_out = net.rnn_model:get(2):forward(net.rnn_model:get(1):get(1):forward(wordvec)):view(-1)
     local scores = nn.SoftMax():type(net_out:type()):forward(net_out)
+    if t > 1 then 
+       step_scores = torch.cat(step_scores,scores,2)
+    else
+       step_scores = scores:clone()
+    end
+
     local idx = nil
     local p = nil
     p, idx = torch.max(scores,1)
@@ -146,7 +158,8 @@ function sample(cnn_vectors, add_sequence)
     prob[{{t}}]:copy(p)
   end
 
-  -- After sampling stop remembering states
+  net.rnn_model:get(1):forget()
+--[[  -- After sampling stop remembering states
   for i = 1, #net.rnn_model do
     local layer = net.rnn_model:get(i)
     if torch.isTypeOf(layer, nn.LSTM) then
@@ -154,8 +167,9 @@ function sample(cnn_vectors, add_sequence)
       layer.remember_states = false
     end
   end
-
-  return {seq,prob}
+--]]
+  --return {seq,prob}
+  return step_scores:t()
 
 end
 

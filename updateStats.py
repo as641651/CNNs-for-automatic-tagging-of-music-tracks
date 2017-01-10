@@ -56,7 +56,7 @@ def CreateDict(datafile):
     return wordDict,years
 
 optionParser = OptionParser()
-optionParser.add_option("-f",dest="datafile", default="classify-Sep16.org", help="Default: classify-Sep16.org")
+optionParser.add_option("-f",dest="datafile", default="classify-Dec16.org", help="Default: classify-Dec16.org")
 (options,args) = optionParser.parse_args()
 
 print "Data File: ", options.datafile

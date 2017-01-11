@@ -5,9 +5,9 @@
 | ADJ     | bouncy  | energy  | hi-energy | loopy   | hypnotic | loud    | aggressive | :cattivo | moody   |         |         |       |
 |         | empty   | minimal | dull    | filler  | background | calm    | :gentle | :mild   | :soft   | mellow  |         |       |
 |         | soul    | happy   | drama   | :moving | epic    | scary   | uplifting | trip    | space   | volo    |         |       |
-|         | chic    | elegant | cocktail | getdown | jazzy   | ethereal | gay     | hi-pitch |         |         |         |       |
-| INSTRUMENTS | bells   | blip    | chirps  | flute   | guitar  | funkyG  | horns   | keys    | organ   | ducks   |         |       |
-|         | strings | :pads   | xylo    | sax     | piano   | trumpet | instruments | whistle |         |         |         |       |
+|         | chic    | elegant | cocktail | getdown | jazzy   | ethereal | gay     | hi-pitch | bitch   | :sexy   | silky   |       |
+| INSTRUMENTS | bells   | blip    | chirps  | flute   | guitar  | funkyG  | horns   | keys    | organ   | ducks   | triangle |       |
+|         | strings | :pads   | xylo    | sax     | piano   | trumpet | tubes   | instruments | whistle |         |         |       |
 | SONG TYPE | anthem  | cheesy  | silly   | mainstream | circus  |         |         |         |         |         |         |       |
 | GENRE   | 1/2     | breaks  | dnb     | hiphop  | electro | ambient | rock    | progressive | trancey |         |         |       |
 |         | 70s     | 80s     | disco   | lounge  | paradise |         |         |         |         |         |         |       |
@@ -196,86 +196,86 @@
 | H  | 1991/v_Urban Soul - Alright (Extended).wav                   | D, bass, kick, male, Song, drama, strings, chic          |
 | D  | 1991/v_Urban Soul - Alright (Super Dub Mix).wav              | deep, bass, dark, kick, steady, volo                     |
 | D  | 1992/Azucar - Feel The Love (Joey Negro Club Mix).wav        |                                                          |
-|    | 1992/Code 718 - Equinox (Heavenly Club Mix).wav              | piano, paradise, soft, gay, bass-lead                    |
-|    | 1992/Code 718 - Equinox (The Original Concept).wav           | paradise, bass-lead, soft                                |
-|    | 1992/Djaimin - Give You (Djaimin Zanz Mix).wav               | bass-lead, female, upbeat, drama, song                   |
-|    | 1992/Djaimin - Give You (Hype Groove Mix).wav                | 1/2, kick, trip, strings, blip                           |
-|    | 1992/Dreamer G - I Got That Feeling (Original Mix).wav       | male, kick, tight, strings, aggressive                   |
-|    | 1992/Johnnydangerous - Beat That Bitch (Problem #13).wav     | male, loopy, aggressive, tztz, fart beats, scary         |
-| D  | 1992/Joint Venture - Master Blaster (Turn It Up) (Tha Wild Pitch mix).wav | bass, moody, trip, female, [BJaxx]                       |
-|    | 1992/Karen Pollack - You Cant Touch Me (Fire Island Sultry Dub).wav | kick, female, steady, loopy, bass-lead, energy           |
-|    | 1992/Karen Pollack - You Cant Touch Me You Cant Hurt Me (Murk Remix).wav | kick, female, open, deep, [Murk]                         |
-| S  | 1992/Keith Nunnally - Greed (When Will The World Be Free) (Club Edit).wav | male, song, soul, melody                                 |
-|    | 1992/Martha Wash - Leave a Light On.wav                      | bass-lead, female, song, zanzara, happy, piano           |
-|    | 1992/Ron Trent - Altered States.wav                          |                                                          |
-|    | 1992/Simone - Hey Fellas (Morel's Gospel Mix).wav            | kick, female, vocalizzi, drama, train, progressive, [Murk] |
-| S  | 1992/Sole Fusion - We Can Make It (Underground Network Mix).wav | male, song, soul, kick, piano, getdown                   |
-|    | 1992/The Daou - Surrender Yourself (DT's Ballroom Mix).wav   | dark, female, deep, aggressive                           |
-|    | 1992/v_Age Of Love - The Age Of Love (Boeing Mix).wav        | progressive, space, female, upbeat                       |
-|    | 1992/v_Age Of Love - The Age Of Love (OPM Mix).wav           | progressive, female, electro                             |
-| T  | 1992/v_Age Of Love - The Age Of Love (Sign Of The Time Mix).wav | 1/2, rough, electro, trancey, ethereal                   |
-|    | 1992/v_Age Of Love - The Age Of Love (Watch Out For The Stella Club Mix).wav | anthem, trancey, space, train, female                    |
-|    | 1992/v_Aural - Desire (Fabrice 4am Mix).wav                  | paradise, bass-lead, space, pads, train, kick            |
+| S  | 1992/Code 718 - Equinox (Heavenly Club Mix).wav              | piano, paradise, soft, gay, bass-lead, [sueno]           |
+| S  | 1992/Code 718 - Equinox (The Original Concept).wav           | paradise, bass-lead, open, melody               |
+| H  | 1992/Djaimin - Give You (Djaimin Zanz Mix).wav               | bass-lead, female, energy, drama, Song             |
+| H  | 1992/Djaimin - Give You (Hype Groove Mix).wav                | 1/2, kick, volo, strings, blip, sax                  |
+| H  | 1992/Dreamer G - I Got That Feeling (Original Mix).wav       | male, song, kick, tztz, tight, strings, silky, getdown |
+| H  | 1992/Johnnydangerous - Beat That Bitch (Problem #13).wav     | male, loopy, unzunz, steady, scary                       |
+| D  | 1992/Joint Venture - Master Blaster (Turn It Up) (Tha Wild Pitch mix).wav | bass-lead, rough, moody, aggressive, female, [BJaxx]     |
+| H  | 1992/Karen Pollack - You Cant Touch Me (Fire Island Sultry Dub).wav | kick, female, train, tight, bass-lead, deep              |
+| D  | 1992/Karen Pollack - You Cant Touch Me You Cant Hurt Me (Murk Remix).wav | H, kick, female, song, open, deep, upbeat, tight, [Murk] |
+| S  | 1992/Keith Nunnally - Greed (When Will The World Be Free) (Club Edit).wav | male, Song, melody, drama, energy                        |
+| S  | 1992/Martha Wash - Leave a Light On.wav                      | unzunz, female, Song, zanzara, happy, piano              |
+| T  | 1992/Ron Trent - Altered States.wav                          | bass-lead, trip, strings, loopy                          |
+| H  | 1992/Simone - Hey Fellas (Morel's Gospel Mix).wav            | kick, female, vocalizzi, drama, energy, progressive, [Murk] |
+| S  | 1992/Sole Fusion - We Can Make It (Underground Network Mix).wav | H, male, vocalizzi, unzunz, piano, upbeat, getdown       |
+| H  | 1992/The Daou - Surrender Yourself (DT's Ballroom Mix).wav   | dark, female, deep, aggressive, scary                    |
+| T  | 1992/v_Age Of Love - The Age Of Love (Boeing Mix).wav        | progressive, space, female, tubes, dark                  |
+| T  | 1992/v_Age Of Love - The Age Of Love (OPM Mix).wav           | progressive, female, electro, voices                     |
+| T  | 1992/v_Age Of Love - The Age Of Love (Sign Of The Time Mix).wav | 1/2, rough, electro, trancey, female                     |
+| Tr | 1992/v_Age Of Love - The Age Of Love (Watch Out For The Stella Club Mix).wav | anthem, space, train, female, ethereal                   |
+| D  | 1992/v_Aural - Desire (Fabrice 4am Mix).wav                  | paradise, bass-lead, volo, strings, kick                 |
 |    | 1992/v_Aural - Desire (Fabrice Africa Pain).wav              | beats, tribal, bass-lead                                 |
-|    | 1992/v_Aural - Desire (Martini Club Mix).wav                 | female, paradise, bass-lead, space, upbeat, kick, pads   |
-| D  | 1992/v_Bas Noir - Shoebdoo (Kerri's Classic Bonus Beats).wav | kick, deep, bass, empty, organ                           |
-| D  | 1992/v_Capricorn - Love In London (2001 Mix).wav             | kick, tztz, space, strings, paradise, gentle             |
-| D  | 1992/v_Capricorn - Love In London (Piano Mix).wav            | bass, kick, space, warm, paradise, piano, flute          |
-| D  | 1992/v_Capricorn - Taste.wav                                 | fast, kick, piano, aggressive                            |
-| H  | 1992/v_Chez Damier - Can You Feel It (A 2 1:2 Step).wav      | bass-lead, dark, cocktail, piano                         |
-| H  | 1992/v_Chez Damier - Can You Feel It (Dub Mix).wav           | bass-lead, male, mild, dark                              |
-| H  | 1992/v_Chez Damier - Can You Feel It (M.K. Dub).wav          | bass-lead, tztz, kick, train                             |
-| S  | 1992/v_Chez Damier - Can You Feel It (Vocal Club Mix).wav    | H, fast, bass, male, gay, cocktail, piano                |
-|    | 1992/v_Confession - I Found My Love (Club Mix A).wav         | rough, zanzara, female, trancey, kick, hi-energy         |
-|    | 1992/v_Confession - I Found My Love (Club Mix B).wav         | acappella, female, spoken, trancey                       |
-|    | 1992/v_Confession - I Found My Love (Instrumental).wav       | rough, zanzara, trancey, kick, hi-energy                 |
-|    | 1992/v_Crystal Waters - Gypsy Woman (Basement Boys 'Strip To The Bone' Mix).wav | mainstream, female, anthem, piano                        |
-|    | 1992/v_Discorosso - Discorosso (Illiria Mix).wav             | train, hypnotic, male, dark, kick, steady                |
-|    | 1992/v_Discorosso - Discorosso (Kama Kama Vrs.No.1).wav      | slow, bass-lead, bouncy, male, dirty                     |
-|    | 1992/v_Discorosso - Discorosso (Kama Rave Vrs.No.2).wav      | slow, bass-lead, bouncy, male, dirty                     |
-|    | 1992/v_Discorosso - Discorosso (Piano Vrs.).wav              | piano, paradise, slow, loopy                             |
-|    | 1992/v_Funky Green Dogs - Reach For Me.wav                   | female, song, bass-lead, getdown                         |
-|    | 1992/v_Gat Decor - Passion (D.Emerson Edit).wav              | drums, warm, bass-lead, pads, open                       |
-|    | 1992/v_Gat Decor - Passion (D.Emerson Mix).wav               | drums, warm, bass-lead, pads, open, piano                |
-|    | 1992/v_Gat Decor - Passion (Naked Mix).wav                   | pads, warm, bass-lead, bouncy, piano, dark, open         |
-|    | 1992/v_Gat Decor - Passion (Passion Of Your Passion).wav     | female, piano, warm, bass-lead, open, drums              |
-|    | 1992/v_Gypsymen - Bounce (Wild Warped Mix).wav               | arab, loopy, empty, bass-lead                            |
-|    | 1992/v_Gypsymen - Hear The Music (Def Club Mix).wav          | bass-lead, male, slow, bouncy, empty                     |
-|    | 1992/v_Gypsymen - Hear The Music (Def Dub Mix).wav           | bass-lead, male, slow, bouncy, empty                     |
-|    | 1992/v_House Of Gypsies - Kool Life (Classic Dub).wav        | kick, tztz, dirty, empty                                 |
-|    | 1992/v_House Of Gypsies - Samba (Extended Mix).wav           | tztz, train, kick, male, tribal, samba                   |
-|    | 1992/v_House Of Gypsies - Samba (Tee's Freeze Mix).wav       | tztz, train, kick, male, tribal, samba                   |
-| S  | 1992/v_James Howard - We Can Do It (Wake Up)(Neal's Smooth Mix).wav | male, song, piano, soft, tztz                            |
-|    | 1992/v_James Howard - We Can Do It (Wake Up)(Original Club Mix).wav | piano, upbeat, tztz, bass, bells, male                   |
-|    | 1992/v_James Howard - We Can Do It (Wake Up)(Original Dub).wav | piano, upbeat, tztz, bass, bells, male                   |
-|    | 1992/v_James Howard - We Can Do It (Wake Up)(The Wake Up Mix).wav | piano, bass-lead, male, song, soul                       |
-|    | 1992/v_Jazzy - Lonely (Club Mix).wav                         |                                                          |
-|    | 1992/v_Jazzy - Lonely (Hot Mix).wav                          |                                                          |
-|    | 1992/v_Jazzy - Lonely (Instrumental Club Mix).wav            |                                                          |
-|    | 1992/v_Jazzy - Lonely (Underground Goodie Mix).wav           |                                                          |
-|    | 1992/v_Lil Louis - Y U Fall.wav                              |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (Bellbottoms & Platforms Mix).wav |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (DJ Pierre's Afro Club Mix).wav |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (I'm On The Guest List Mix).wav |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (Latin Groove Mix).wav |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (Not On The List Instrumental Mix).wav |                                                          |
-|    | 1992/v_Lil' Louis & The World - Club Lonely (Real Instrumental Mix).wav |                                                          |
-|    | 1992/v_Masters At Work - Gonna Get Back To You (Ken Lou 12").wav |                                                          |
-|    | 1992/v_Masters At Work - Gonna Get Back To You (Ken Lou Dub).wav |                                                          |
-|    | 1992/v_Masters At Work - Gonna Get Back To You (Mood II Swing "Big Thick" Dub).wav |                                                          |
-|    | 1992/v_Meli'sa Morgan - Still In Love With You (Drum Thang Mix).wav |                                                          |
-|    | 1992/v_Meli'sa Morgan - Still In Love With You (Hard Love Dub).wav |                                                          |
-|    | 1992/v_Meli'sa Morgan - Still In Love With You (Heart Beat Mix).wav |                                                          |
-|    | 1992/v_Meli'sa Morgan - Still In Love With You (Meli'sa's In The House).wav |                                                          |
-|    | 1992/v_Meli'sa Morgan - Still In Love With You (Still In Love Mix).wav |                                                          |
-|    | 1992/v_Nightcommunication EP - Lose Control (In Dub We Trust Mix).wav |                                                          |
-|    | 1992/v_Nightcommunication EP - Night Clerk.wav               |                                                          |
-|    | 1992/v_Nightcommunication EP - Nocturne Seduction.wav        |                                                          |
-|    | 1992/v_Reese Project - Color Of Love (Deep Reese Mix).wav    |                                                          |
-|    | 1992/v_Robin S - Show Me Love.wav                            |                                                          |
-|    | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Instrumental).wav |                                                          |
-|    | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Sexy Bitch Mix).wav |                                                          |
-|    | 1992/v_The Principle Theory ft Coco Cocktail - Voyeur (Bonus Track).wav |                                                          |
+| D  | 1992/v_Aural - Desire (Martini Club Mix).wav                 | female, paradise, bass-lead, space, upbeat, kick, strings |
+| D  | 1992/v_Bas Noir - Shoebdoo (Kerri's Classic Bonus Beats).wav | kick, tztz, empty, organ, bass, background               |
+| D  | 1992/v_Capricorn - Love In London (2001 Mix).wav             | kick, tztz, space, strings, paradise, flute, ethereal    |
+| D  | 1992/v_Capricorn - Love In London (Piano Mix).wav            | bass, kick, volo, paradise, piano, flute                 |
+| H  | 1992/v_Capricorn - Taste.wav                                 | fast, kick, piano, aggressive, rough                     |
+| H  | 1992/v_Chez Damier - Can You Feel It (A 2 1:2 Step).wav      | S, bass, cocktail, piano, xylo, paradise                 |
+| S  | 1992/v_Chez Damier - Can You Feel It (Dub Mix).wav           | H, fast, bass, male, dark, gay, xylo                     |
+| H  | 1992/v_Chez Damier - Can You Feel It (M.K. Dub).wav          | bass-lead, tztz, kick, train, deep                       |
+| S  | 1992/v_Chez Damier - Can You Feel It (Vocal Club Mix).wav    | H, fast, bass, male, song, gay, cocktail, piano          |
+| T  | 1992/v_Confession - I Found My Love (Club Mix A).wav         | rough, zanzara, female, trancey, kick, ethereal          |
+| T  | 1992/v_Confession - I Found My Love (Club Mix B).wav         | acappella, female, spoken, ambient                       |
+| T  | 1992/v_Confession - I Found My Love (Instrumental).wav       | rough, zanzara, trancey, kick, breaks                    |
+| H  | 1992/v_Crystal Waters - Gypsy Woman (Basement Boys 'Strip To The Bone' Mix).wav | mainstream, female, anthem, Song, piano, happy           |
+| T  | 1992/v_Discorosso - Discorosso (Illiria Mix).wav             | train, hypnotic, male, dark, kick, blip                  |
+| H  | 1992/v_Discorosso - Discorosso (Kama Kama Vrs.No.1).wav      | T, slow, bass-lead, male, dirty, tubes, progressive      |
+| H  | 1992/v_Discorosso - Discorosso (Kama Rave Vrs.No.2).wav      | T, slow, bass-lead, male, dirty, progressive             |
+| H  | 1992/v_Discorosso - Discorosso (Piano Vrs.).wav              | piano, paradise, slow, loopy, trip                       |
+| H  | 1992/v_Funky Green Dogs - Reach For Me.wav                   | female, Song, bass-lead, getdown                         |
+| H  | 1992/v_Gat Decor - Passion (D.Emerson Edit).wav              | drums, bass-lead, strings, open                          |
+| H  | 1992/v_Gat Decor - Passion (D.Emerson Mix).wav               | drums, bass-lead, strings, open, piano                   |
+| H  | 1992/v_Gat Decor - Passion (Naked Mix).wav                   | D, warm, bass-lead, bouncy, piano, dark, open            |
+| H  | 1992/v_Gat Decor - Passion (Passion Of Your Passion).wav     | D, female, piano, warm, bass-lead, open, drums           |
+| D  | 1992/v_Gypsymen - Bounce (Wild Warped Mix).wav               | arab, loopy, empty, bass-lead, opaque                    |
+| H  | 1992/v_Gypsymen - Hear The Music (Def Club Mix).wav          | D, bass-lead, male, slow, bouncy, silly, deep            |
+| H  | 1992/v_Gypsymen - Hear The Music (Def Dub Mix).wav           | D, bass-lead, male, slow, bouncy, empty, deep            |
+| H  | 1992/v_House Of Gypsies - Kool Life (Classic Dub).wav        | kick, tztz, steady, dirty, empty                         |
+| H  | 1992/v_House Of Gypsies - Samba (Extended Mix).wav           | tztz, steady, kick, male, tribal, samba                  |
+| H  | 1992/v_House Of Gypsies - Samba (Tee's Freeze Mix).wav       | tztz, steady, kick, male, tribal, samba                  |
+| S  | 1992/v_James Howard - We Can Do It (Wake Up)(Neal's Smooth Mix).wav | H, male, Song, piano, soft, unzunz, cocktail             |
+| H  | 1992/v_James Howard - We Can Do It (Wake Up)(Original Club Mix).wav | piano, upbeat, bass, unzunz, bells, male, Song, elegant  |
+| H  | 1992/v_James Howard - We Can Do It (Wake Up)(Original Dub).wav | piano, upbeat, bass, unzunz, bells, male, elegant        |
+| S  | 1992/v_James Howard - We Can Do It (Wake Up)(The Wake Up Mix).wav | piano, bass, male, Song, cocktail                        |
+| H  | 1992/v_Jazzy - Lonely (Club Mix).wav                         | silly, female, song, slow, unzunz                        |
+| H  | 1992/v_Jazzy - Lonely (Hot Mix).wav                          | silly, female, song, slow, unzunz                        |
+| D  | 1992/v_Jazzy - Lonely (Instrumental Club Mix).wav            | H, opaque, female, spoken, unzunz                        |
+| D  | 1992/v_Jazzy - Lonely (Underground Goodie Mix).wav           | S, tztz, deep, bass-lead, female, spoken, tubes          |
+| D  | 1992/v_Lil Louis - Y U Fall.wav                              | effects, bass-lead, trip, sax                            |
+| S  | 1992/v_Lil' Louis & The World - Club Lonely (Bellbottoms & Platforms Mix).wav | H, female, Song, happy, jazzy                            |
+| H  | 1992/v_Lil' Louis & The World - Club Lonely (DJ Pierre's Afro Club Mix).wav | S, female, song, happy, silly, choir, funkyG             |
+| H  | 1992/v_Lil' Louis & The World - Club Lonely (I'm On The Guest List Mix).wav | female, Song, jazzy, happy, bass                         |
+| D  | 1992/v_Lil' Louis & The World - Club Lonely (Latin Groove Mix).wav | bass, tribal, tztz, jazzy                                |
+| D  | 1992/v_Lil' Louis & The World - Club Lonely (Not On The List Instrumental Mix).wav | bass-lead, opaque, brass, tztz, jazzy                    |
+| H  | 1992/v_Lil' Louis & The World - Club Lonely (Real Instrumental Mix).wav | silly, jazzy, soft, bass, happy                          |
+| S  | 1992/v_Masters At Work - Gonna Get Back To You (Ken Lou 12").wav | H, female, song, unzunz, choir, elegant                  |
+| S  | 1992/v_Masters At Work - Gonna Get Back To You (Ken Lou Dub).wav | H, female, blip, deep, elegant, unzunz                   |
+| H  | 1992/v_Masters At Work - Gonna Get Back To You (Mood II Swing "Big Thick" Dub).wav | female, bouncy, sax, unzunz, tubes                       |
+| B  | 1992/v_Meli'sa Morgan - Still In Love With You (Drum Thang Mix).wav | female, Song                                             |
+| H  | 1992/v_Meli'sa Morgan - Still In Love With You (Hard Love Dub).wav | female, tiro, tztz, keys                                 |
+| B  | 1992/v_Meli'sa Morgan - Still In Love With You (Heart Beat Mix).wav | piano, choir                                             |
+| H  | 1992/v_Meli'sa Morgan - Still In Love With You (Meli'sa's In The House).wav | female, Song, elegant, tztz, happy, tight                |
+| B  | 1992/v_Meli'sa Morgan - Still In Love With You (Still In Love Mix).wav | female, Song                                             |
+| D  | 1992/v_Nightcommunication EP - Lose Control (In Dub We Trust Mix).wav | train, bass-lead, dark, tztz, voices, jazzy              |
+| T  | 1992/v_Nightcommunication EP - Night Clerk.wav               | D, bass, space, open, effects, strings, gentle           |
+| T  | 1992/v_Nightcommunication EP - Nocturne Seduction.wav        | ambient, hi-pitch, hypnotic, space, kick, strings        |
+| H  | 1992/v_Reese Project - Color Of Love (Deep Reese Mix).wav    | silly, female, dark, unzunz, tubes                       |
+| H  | 1992/v_Robin S - Show Me Love.wav                            | mainstream, fart, female, song, keys, tubes              |
+| D  | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Instrumental).wav | bass-lead, triangle, soft                                |
+| D  | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Sexy Bitch Mix).wav | female, spoken, bitch, bass-lead, triangle               |
+| H  | 1992/v_The Principle Theory ft Coco Cocktail - Voyeur (Bonus Track).wav | progressive, bass, silly, blip                           |
 |    | 1993/4Th Measure Men - 4 You.wav                             |                                                          |
 |    | 1993/Black Rascals - Blaze Theme Track.wav                   |                                                          |
 |    | 1993/Blackman - Beat That Bitch With A Bat.wav               |                                                          |

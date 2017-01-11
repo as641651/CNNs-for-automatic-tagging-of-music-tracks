@@ -1,8 +1,8 @@
 import csv
 import json
-from parser_base import parser_base
+from parsers.parser_base import parser_base
 import os
-from utils import addData
+from parsers.utils import addData
 
 
 
@@ -61,15 +61,18 @@ class paolo_parser(parser_base):
              path = str(year) + "/" + lines[l].split("/")[1].split("|")[0].rstrip()
              path = os.path.join(args["input_dir"],path)
              title = lines[l].split("/")[1].split("|")[0].rstrip()[:-4]
-             if True: # os.path.exists(path):
+             if os.path.exists(path):
                song_id = song_id + 1
                additional_tags = title.split("-")[0].split()
                addData(blob,title,song_id,song_id,path,labels,year,"",additional_tags)
+             else:
+               print "Ignoring unexisting path : " + path
 
        blob["Total_Songs"] = song_id
-       #print(wordDict)
-       #print(num_words)
-       #print(song_id)
+       blob["Total_tracks"] = song_id
+#       print(wordDict)
+#       print(num_words)
+#       print(song_id)
        return blob
 
 
@@ -81,10 +84,10 @@ if __name__ == '__main__':
    datafile = "../../classify-Dec16.org"
    args = {}
    args["data"] = datafile
-   args["input_dir"] = "../../../music_data/waves/"
+   args["input_dir"] = "/home/sankaran/Thesis/music_data/Waves/"
 
    blob = parser.parse_input(args)
-   print json.dumps(blob,sort_keys=True,indent=4)
+ #  print json.dumps(blob,sort_keys=True,indent=4)
 
 
 

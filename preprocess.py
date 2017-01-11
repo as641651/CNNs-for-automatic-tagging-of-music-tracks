@@ -57,7 +57,7 @@ def main(settings):
                continue
 
             L = input_data.shape[2]
-            fh5.create_dataset(k2,data=input_data)
+            fh5.create_dataset(str(k2),data=input_data)
             j = j+1
             clips_processed = clips_processed + 1 
             ## we reconstruct the dict created by parser to exclude the samples that fail audio processing

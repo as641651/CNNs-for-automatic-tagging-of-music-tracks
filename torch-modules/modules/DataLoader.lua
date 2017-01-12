@@ -105,7 +105,7 @@ function DataLoader:getSample(iterate)
      local input, labels = self:getClip(ix)
      local song_id = self.info.clips_song[tostring(ix)]
      local info_tags = self.info.info_tags[tostring(song_id)]
-     return ix,input:view(1,input:size(1),input:size(2),input:size(3)):type(self.dtype),self:tableToTensor(labels):type(self.dtype),self:tableToTensor(info_tags):type(self.dtype)
+     return ix,input:view(1,input:size(1),input:size(2),input:size(3)):type(self.dtype),self:tableToTensor(labels):add(1):type(self.dtype),self:tableToTensor(info_tags):add(1+self.vocab_size):type(self.dtype)
   else
      local clips = self.info.song_clips[tostring(ix)]
      local num_clips = math.min(utils.count_keys(clips),self.max_clips_per_song)
@@ -133,7 +133,6 @@ end
 function DataLoader:getClip(clip_id)
   local input = self.h5_file:read("/" .. tostring(clip_id)):all()
   local labels = self.info.gt[tostring(clip_id)]
-
   return input,labels
 end
 
@@ -141,7 +140,7 @@ function DataLoader:tableToTensor(label_table)
   local labels = torch.zeros(utils.count_keys(label_table))
   local idx = 1
   for k,v in pairs(label_table) do 
-     labels[idx] = k
+     labels[idx] = v
      idx = idx + 1
   end
   return labels

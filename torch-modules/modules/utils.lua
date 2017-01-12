@@ -112,6 +112,20 @@ function utils.count_keys(t)
   return n
 end
 
+
+function utils.n_of_k(gt_seq,k)
+    local target = nil
+    if gt_seq:size():size() == 2 then
+      target = torch.zeros(gt_seq:size(1),k):type(gt_seq:type())
+      for j = 1,gt_seq:size(1) do
+        for i = 1,gt_seq:size(2) do target[j][gt_seq[j][i]] = 1 end
+      end
+    else
+      target = torch.zeros(k):type(gt_seq:type())
+      for i = 1,gt_seq:size(1) do target[gt_seq[i]] = 1 end
+    end
+    return target
+end
 -- Stash global statistics here.
 -- Since loading files with require caches and does not reload the same file,
 -- all places that require 'utils' will have access to this table.

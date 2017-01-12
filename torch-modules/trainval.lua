@@ -62,7 +62,7 @@ loader:type(dtype)
 if opt.fine_tune_cnn then
     cnn_params, cnn_grad_params = classifier.cnn.model:get(2):getParameters()
 end
-local rnn_params, rnn_grad_params = classifier.rnn.getParameters(dtype)
+local rnn_params, rnn_grad_params = classifier.rnn.model:getParameters(dtype)
 
 print('total number of parameters in RNN: ', rnn_grad_params:nElement())
 if opt.fine_tune_cnn then
@@ -77,6 +77,7 @@ local function lossFun()
    loader:train()
    data.sample_id, data.input,data.gt,data.info_tags = loader:getSample()
 --   print("Loaded sample :" .. tostring(data.sample_id))
+--   print(data.input:size())
    local loss = classifier.forward_backward(data.input,nil,data.gt)
 
 
@@ -97,8 +98,8 @@ while true do
     local loss = lossFun()
     print("iter " .. tostring(iter) .. " Loss : " .. tostring(loss))
 
-    if iter == 200 then opt.learning_rate = 1e-4 end
-    if iter == 500 then opt.learning_rate = 1e-5 end
+--    if iter == 200 then opt.learning_rate = 1e-4 end
+--    if iter == 500 then opt.learning_rate = 1e-5 end
     
     adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 

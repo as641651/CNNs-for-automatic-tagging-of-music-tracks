@@ -126,6 +126,20 @@ function utils.n_of_k(gt_seq,k)
     end
     return target
 end
+
+
+function utils.apply_thresh(scores,thresh)
+   local idx = scores:view(-1):gt(thresh)
+  
+   local ii = torch.LongTensor(idx:size(1)):zero()
+   local count = 0
+   for i=1,idx:size(1) do 
+     count = count + 1
+     if idx[i] ==1 then ii[i] = count end
+   end
+   ii = ii[ii:gt(0)]
+   return ii
+end
 -- Stash global statistics here.
 -- Since loading files with require caches and does not reload the same file,
 -- all places that require 'utils' will have access to this table.

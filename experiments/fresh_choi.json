@@ -1,17 +1,17 @@
 { 
-  "data_json": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/magna01_partial_processed.json",  
-  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/magna01_partial_processed_0.7_0.3_0._20_1.json",
+  "data_json": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/magna01_full_processed.json",  
+  "split_info_path": "/home/as641651/user/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/magna01_full_processed_0.7_0.3_0._50_1.json",
   "train_percent": 0.7,
   "val_percent": 0.3,
   "test_percent": 0,
-  "min_label_freq": 50,
+  "min_label_freq": 350,
   "min_info_tag_freq": 3,
   "group": false,
   "use_year": false,
   "use_artist": false,
   "use_other_tags": false,
 
-  "data_h5": "../databases/magna01_partial.h5", 
+  "data_h5": "../databases/magna01_full.h5", 
   "debug_max_train_images" : -1, 
   "seed": 123,
   "max_clips_per_song":5,
@@ -28,13 +28,13 @@
   "rnn_dropout": -1,
   "rnn_test_time_seq_length": -1, 
 
-  "fine_tune_cnn": false,
+  "fine_tune_cnn": true,
   "weight_decay": 1e-5,
   "learning_rate": 1e-3,
   "optim_alpha": 0.9,
   "optim_beta": 0.99,
   "optim_epsilon": 1e-8,
 
-  "max_iters": 50000,
-  "save_checkpoint_every": 5000
+  "max_iters": 300000,
+  "save_checkpoint_every": 10000
 }

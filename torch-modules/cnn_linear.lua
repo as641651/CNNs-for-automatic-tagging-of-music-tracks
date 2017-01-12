@@ -54,6 +54,27 @@ function classifier.forward_backward(input,add,gt_seq)
    return loss
 end
 
+function classifier.forward_test(input,add)
+
+   assert(input:size(1) == 1, "one sample for forward test")
+
+   local output = {}
+   local cnn_output = classifier.cnn.forward(input)
+   local linear_output = classifier.rnn.model:forward(cnn_output)
+   local sigmoid_out = classifier.sigmoid:forward(linear_output)
+--   for i = 1,sigmoid_out:size(1) do output[i] = 0 end
+
+   --sort the results and choose the top  10 results greater than certain thresh
+   sigmoid_out = sigmoid_out:view(-1)
+   local Y, cls_label= torch.sort(sigmoid_out,1,true)
+   if cls_label:numel() > 10 then cls_label = cls_label[{{1,10}}] end
+   sigmoid_out = sigmoid_out:index(1,cls_label)   
+   for i = 1,sigmoid_out:size(1) do
+     if sigmoid_out[i] > 0.5 then output[cls_label[i]] = sigmoid_out[i] end
+   end
+        
+   return output
+end
 
 function classifier.clearState()
    classifier.cnn.model:clearState()

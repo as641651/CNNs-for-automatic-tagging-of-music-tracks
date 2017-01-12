@@ -126,6 +126,16 @@ function net.forward(input)
      local nDim = input:size():size()
      assert(nDim == 4, "Suports only batch mode" )
      assert(input:size(2) == 1, "Suports only mono" )
+     assert(input:size(3) == 96, "Suports only 96 feat len" )
+     if input:size(4) < 1366 then
+       local tmp = input:clone()
+       input = torch.zeros(tmp:size(1),1,tmp:size(3),1366):type(tmp:type())
+       input[{{},{},{},{1,tmp:size(4)}}] = tmp
+     end
+     if input:size(4) > 1366 then
+        input = input[{{},{},{},{1,1366}}]:contiguous()
+     end
+
      assert(input:size(4) == 1366, "Suports only 1366 xdim" )
   
      net.cache.num_samples = input:size(1)
@@ -152,6 +162,14 @@ end
 function net.backward(input, gradOutput)
 
   assert(net.called_forward, "forward not called")
+  if input:size(4) < 1366 then
+   local tmp = input:clone()
+   input = torch.zeros(tmp:size(1),1,tmp:size(3),1366):type(tmp:type())
+   input[{{},{},{},{1,tmp:size(4)}}] = tmp 
+  end
+  if input:size(4) > 1366 then
+   input = input[{{},{},{},{1,1366}}]:contiguous()
+  end
 
   gradOutput = gradOutput:view(net.cache.cnn_5:size())
   net.cache.grad_cnn_4 = net.model:get(2):get(5):backward(net.cache.cnn_4,gradOutput)

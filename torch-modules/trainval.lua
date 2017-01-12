@@ -98,8 +98,8 @@ while true do
     local loss = lossFun()
     print("iter " .. tostring(iter) .. " Loss : " .. tostring(loss))
 
---    if iter == 200 then opt.learning_rate = 1e-4 end
---    if iter == 500 then opt.learning_rate = 1e-5 end
+    if iter == 10000 then opt.learning_rate = 1e-4 end
+    if iter == 20000 then opt.learning_rate = 1e-5 end
     
     adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
@@ -122,8 +122,9 @@ while true do
       model=classifier,
       loader=loader,
       split='val',
-      max_samples=210,
+      max_samples=4000,
       dtype=dtype,
+      vocab_size = classifier.rnn.opt.classifier_vocab_size
     }
     local results = eval_utils.eval_split(eval_kwargs)
    end

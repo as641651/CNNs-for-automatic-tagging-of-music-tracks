@@ -140,6 +140,22 @@ function utils.apply_thresh(scores,thresh)
    ii = ii[ii:gt(0)]
    return ii
 end
+
+function utils.tensor_to_table(input)
+  t = {}
+  for i = 1,input:size(1) do table.insert(t,input:select(1,i)) end
+  return t
+end
+
+function utils.table_to_tensor(t)
+  local tensor = torch.zeros(utils.count_keys(t),t[1]:size(1)):type(t[1]:type())
+  local idx = 1
+  for k,v in pairs(t) do 
+     tensor[idx] = v
+     idx = idx + 1
+  end
+  return tensor
+end
 -- Stash global statistics here.
 -- Since loading files with require caches and does not reload the same file,
 -- all places that require 'utils' will have access to this table.

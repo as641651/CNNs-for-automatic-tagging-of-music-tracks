@@ -16,6 +16,7 @@ end
 local opt = utils.read_json(platform.c)
 opt.platform = platform
 opt.optim_state = {}
+opt.mlp_optim_state = {}
 opt.cnn_optim_state = {}
 
 local classifier = require(opt.classifier)
@@ -62,15 +63,18 @@ loader:type(dtype)
 if opt.fine_tune_cnn then
     cnn_params, cnn_grad_params = classifier.cnn.model:get(2):getParameters()
 end
-local rnn_params, rnn_grad_params = classifier.rnn.model:getParameters(dtype)
+local rnn_params, rnn_grad_params = classifier.rnn.model:getParameters()
+local mlp_params, mlp_grad_params = classifier.mlp:getParameters()
 
 print('total number of parameters in RNN: ', rnn_grad_params:nElement())
+print('total number of parameters in MLP: ', mlp_grad_params:nElement())
 if opt.fine_tune_cnn then
    print('total number of parameters in CNN: ', cnn_grad_params:nElement())
 end
 
 local function lossFun()
    rnn_grad_params:zero()
+   mlp_grad_params:zero()
    if opt.fine_tune_cnn then cnn_grad_params:zero() end
    
    local data = {}
@@ -83,6 +87,7 @@ local function lossFun()
 
    if opt.weight_decay > 0 then
      rnn_grad_params:add(opt.weight_decay, rnn_params)
+     mlp_grad_params:add(opt.weight_decay, mlp_params)
      if opt.fine_tune_cnn then
         if cnn_grad_params then cnn_grad_params:add(opt.weight_decay, cnn_params) end
      end
@@ -98,12 +103,14 @@ while true do
     local loss = lossFun()
     print("iter " .. tostring(iter) .. " Loss : " .. tostring(loss))
 
-    if iter == 10000 then opt.learning_rate = 1e-4 end
-    if iter == 20000 then opt.learning_rate = 1e-5 end
+    if iter == 100000 then opt.learning_rate = 1e-3 end
+    if iter == 200000 then opt.learning_rate = 1e-4 end
     
+   if mlp_params:numel() > 0 then adam(mlp_params,mlp_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.mlp_optim_state) end
     adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
     if opt.fine_tune_cnn then
+      os.exit()
       adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
     end
    
@@ -127,8 +134,9 @@ while true do
       vocab_size = classifier.rnn.opt.classifier_vocab_size
     }
     local results = eval_utils.eval_split(eval_kwargs)
-   end
-
+    torch.save("classifier.t7", classifier)
+    print('wrote classifier.t7')
+  end
   -- stopping criterions
   iter = iter + 1
   -- Collect garbage every so often

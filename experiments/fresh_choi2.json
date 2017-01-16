@@ -18,7 +18,7 @@
   "feature_xdim":1366,
   "feature_ydim":96,
 
-  "classifier": "cnn_linear",
+  "classifier": "cnn_linear2",
   "cnn_model": "cnns.models.choi_cnn.choi_cnn", 
   "rnn_model": "",
   "rnn_feature_input_dim": -1,
@@ -28,13 +28,13 @@
   "rnn_dropout": -1,
   "rnn_test_time_seq_length": -1, 
 
-  "fine_tune_cnn": true,
+  "fine_tune_cnn": false,
   "weight_decay": 1e-5,
   "learning_rate": 1e-3,
   "optim_alpha": 0.9,
   "optim_beta": 0.99,
   "optim_epsilon": 1e-8,
 
-  "max_iters": 1000000,
-  "save_checkpoint_every": 50000
+  "max_iters": 400000,
+  "save_checkpoint_every": 30000
 }

@@ -72,7 +72,8 @@ function classifier.forward_test(input,add)
    for i = 1,sigmoid_out:size(1) do
      if sigmoid_out[i] > 0.5 then output[cls_label[i]] = sigmoid_out[i] end
    end
-        
+
+   print(output)
    return output
 end
 

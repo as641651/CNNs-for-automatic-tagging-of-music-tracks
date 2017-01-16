@@ -38,12 +38,12 @@ function eval_utils.eval_split(kwargs)
     -- Call forward_test to make predictions, and pass them to evaluator
     local label_prob = model.forward_test(data.input,data.info_tags)
 
- --   for cls = 1,num_cls do
- --      if label_prob[cls] ~= nil then evaluator[cls]:addResult(data.clip_id,label_prob[cls],cls,data.gt_tags) end
- --   end
-    for cls = 1,data.gt_tags:size(1) do
-       evaluator[data.gt_tags[cls]]:addResult(data.clip_id,1.0,data.gt_tags[cls],data.gt_tags)
+    for cls = 1,num_cls do
+       if label_prob[cls] ~= nil then evaluator[cls]:addResult(data.clip_id,label_prob[cls],cls,data.gt_tags) end
     end
+ --   for cls = 1,data.gt_tags:size(1) do
+ --      evaluator[data.gt_tags[cls]]:addResult(data.clip_id,1.0,data.gt_tags[cls],data.gt_tags)
+ --   end
 
     model.clearState()
     

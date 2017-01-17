@@ -114,9 +114,18 @@ function DataLoader:getSample(iterate)
      local labels_table = {}
 
      for i = 1,num_clips do 
-        input[{i}],labels_table[i] = self:getClip(clips[i])
+       input1 ,labels_table[i]= self:getClip(clips[i])
+       if input1:size(3) < self.feature_xdim then
+          local tmp = input1:clone()
+          input1 = torch.zeros(1,tmp:size(2),self.feature_xdim):type(tmp:type())
+          input1[{{},{},{1,tmp:size(3)}}] = tmp 
+       end
+       if input1:size(3) > self.feature_xdim then
+          input1 = input1[{{},{},{1,self.feature_xdim}}]:contiguous()
+       end--]]
+       input[{i}] = input1
      end
-     local labels = self:tableToTensor(self:unionOfLabels(labels_table))
+     local labels = self:tableKeyToTensor(self:unionOfLabels(labels_table))
      local info_tags = self:tableToTensor(self.info.info_tags[tostring(ix)])
      return ix,input:type(self.dtype),labels:add(1):type(self.dtype),info_tags:add(1+self.vocab_size):type(self.dtype)
   end           
@@ -141,6 +150,16 @@ function DataLoader:tableToTensor(label_table)
   local idx = 1
   for k,v in pairs(label_table) do 
      labels[idx] = v
+     idx = idx + 1
+  end
+  return labels
+end
+
+function DataLoader:tableKeyToTensor(label_table)
+  local labels = torch.zeros(utils.count_keys(label_table))
+  local idx = 1
+  for k,v in pairs(label_table) do 
+     labels[idx] = k
      idx = idx + 1
   end
   return labels

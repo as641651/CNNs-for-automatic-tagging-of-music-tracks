@@ -1,4 +1,5 @@
 require 'torch'
+require 'rnn'
 require 'modules.DataLoader'
 require 'modules.optim_updates'
 local utils = require 'modules.utils'
@@ -81,7 +82,7 @@ local function lossFun()
    loader:train()
    data.sample_id, data.input,data.gt,data.info_tags = loader:getSample()
 --   print("Loaded sample :" .. tostring(data.sample_id))
---   print(data.input:size())
+   --print(data.input:size())
    local loss = classifier.forward_backward(data.input,nil,data.gt)
 
 
@@ -98,19 +99,27 @@ end
 
 local loss0
 local iter = 1
+local avgLoss = 0
 while true do
     
     local loss = lossFun()
-    print("iter " .. tostring(iter) .. " Loss : " .. tostring(loss))
 
-    if iter == 100000 then opt.learning_rate = 1e-3 end
-    if iter == 200000 then opt.learning_rate = 1e-4 end
+    if iter%20 == 0 then
+       avgLoss = avgLoss/20.0
+       print("iter " .. tostring(iter) .. " Loss : " .. tostring(avgLoss))
+       avgLoss = 0
+    else
+       avgLoss = avgLoss + loss
+    end
+
+    if iter == 40000 then opt.learning_rate = 1e-4 end
+--    if iter == 200000 then opt.learning_rate = 1e-4 end
     
    if mlp_params:numel() > 0 then adam(mlp_params,mlp_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.mlp_optim_state) end
     adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
     if opt.fine_tune_cnn then
-      os.exit()
+    --  os.exit()
       adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
     end
    
@@ -129,12 +138,16 @@ while true do
       model=classifier,
       loader=loader,
       split='val',
-      max_samples=4000,
+      max_samples=1300,
       dtype=dtype,
       vocab_size = classifier.rnn.opt.classifier_vocab_size
     }
     local results = eval_utils.eval_split(eval_kwargs)
-    torch.save("classifier.t7", classifier)
+    local model = {}
+    model.cnn = classifier.cnn.model
+    model.rnn = classifier.rnn.model
+    model.mlp = classifier.mlp
+    torch.save("classifier.t7", model)
     print('wrote classifier.t7')
   end
   -- stopping criterions

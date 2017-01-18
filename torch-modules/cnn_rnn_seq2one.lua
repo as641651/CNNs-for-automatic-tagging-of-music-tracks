@@ -88,5 +88,12 @@ function classifier.clearState()
    classifier.sigmoid:clearState()
 end
 
+function classifier.loadCheckpoint(checkpoint)
+  print("Loading checkpoint .. ")
+  classifier.cnn.setModel(checkpoint.cnn)
+  classifier.rnn.setModel(checkpoint.rnn)
+  classifier.mlp = checkpoint.mlp
+end
+
 
 return classifier

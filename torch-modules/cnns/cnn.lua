@@ -10,7 +10,6 @@ function net.init_cnn()
    print(net.opt)
 
    cnn_model = require(net.opt.model)
-   net.model = cnn_model.model
 
    print("CNN MODEL :")
    print(net.model)
@@ -18,7 +17,7 @@ function net.init_cnn()
 end
 
 function net.type(dtype)
-   cnn_model.type(dtype)
+   net.model:type(dtype)
 end
   
 function net.forward(input)
@@ -29,6 +28,15 @@ end
 function net.backward(input, gradOutput)
    local gradInput = cnn_model.backward(input,gradOutput)
    return gradInput
+end
+
+function net.setModel(model)
+   cnn_model.model = model
+   net.model = model
+end
+
+function net.getModel()
+  return cnn_model.model
 end
 
 return net

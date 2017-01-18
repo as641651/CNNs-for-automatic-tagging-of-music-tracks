@@ -1,5 +1,4 @@
 require 'torch'
-require 'rnn'
 require 'modules.DataLoader'
 require 'modules.optim_updates'
 local utils = require 'modules.utils'
@@ -12,6 +11,16 @@ local platform = platform_opts.parse(arg)
 if platform.c == '' then 
    print("Please specify a config file")
    os.exit()
+end
+
+local checkpoint_start = nil
+if platform.m ~= '' then 
+   require 'nn'
+   require 'rnn'
+   require 'cunn'
+   require 'cudnn'
+   print("starting from check point " .. platform.m)
+   checkpoint_start = torch.load(platform.m)
 end
 
 local opt = utils.read_json(platform.c)
@@ -58,13 +67,14 @@ if opt.platform.gpu >= 0 then
     cudnn.convert(classifier.rnn.model, cudnn)
   end
 end
+if checkpoint_start ~= nil then classifier.loadCheckpoint(checkpoint_start) end
 classifier.type(dtype)
 loader:type(dtype)
 
 if opt.fine_tune_cnn then
-    cnn_params, cnn_grad_params = classifier.cnn.model:get(2):getParameters()
+    cnn_params, cnn_grad_params = classifier.cnn.getModel():get(2):getParameters()
 end
-local rnn_params, rnn_grad_params = classifier.rnn.model:getParameters()
+local rnn_params, rnn_grad_params = classifier.rnn.getModel():getParameters()
 local mlp_params, mlp_grad_params = classifier.mlp:getParameters()
 
 print('total number of parameters in RNN: ', rnn_grad_params:nElement())
@@ -98,35 +108,39 @@ local function lossFun()
 end
 
 local loss0
+local loss = 0
 local iter = 1
 local avgLoss = 0
 while true do
-    
-    local loss = lossFun()
+   
+  if opt.max_iters > 0 then 
+      loss = lossFun()
 
-    if iter%20 == 0 then
-       avgLoss = avgLoss/20.0
-       print("iter " .. tostring(iter) .. " Loss : " .. tostring(avgLoss))
-       avgLoss = 0
-    else
-       avgLoss = avgLoss + loss
-    end
+      if iter%20 == 0 then
+        avgLoss = avgLoss/20.0
+         print("iter " .. tostring(iter) .. " Loss : " .. tostring(avgLoss))
+         avgLoss = 0
+      else
+         avgLoss = avgLoss + loss
+      end
 
-    if iter == 40000 then opt.learning_rate = 1e-4 end
+      if iter == 40000 then opt.learning_rate = 1e-5 end
 --    if iter == 200000 then opt.learning_rate = 1e-4 end
     
-   if mlp_params:numel() > 0 then adam(mlp_params,mlp_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.mlp_optim_state) end
-    adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
+      if mlp_params:numel() > 0 then adam(mlp_params,mlp_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.mlp_optim_state) end
+      adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
-    if opt.fine_tune_cnn then
-    --  os.exit()
-      adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
-    end
+      if opt.fine_tune_cnn then
+        adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
+      end
+  else
+    print("Running evaluation ... ")
+  end
    
   classifier.clearState()
 
   --periodic validation
-  if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) then
+  if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) or (opt.max_iters == 0) then
     --[[ loader:val()
      local clip_id,input1,gt_tags,info_tags = loader:getSample()
      local labels_prob = classifier.forward(input1,nil)
@@ -144,8 +158,8 @@ while true do
     }
     local results = eval_utils.eval_split(eval_kwargs)
     local model = {}
-    model.cnn = classifier.cnn.model
-    model.rnn = classifier.rnn.model
+    model.cnn = classifier.cnn.getModel()
+    model.rnn = classifier.rnn.getModel()
     model.mlp = classifier.mlp
     torch.save("classifier.t7", model)
     print('wrote classifier.t7')
@@ -160,6 +174,6 @@ while true do
     break
   end
   if opt.max_iters > 0 and iter >= opt.max_iters then break end
-
+  if opt.max_iters == 0 then break end
 end
 

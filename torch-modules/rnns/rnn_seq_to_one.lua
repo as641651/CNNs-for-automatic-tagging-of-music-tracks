@@ -55,5 +55,13 @@ function net.backward(cnn_vectors,gradOutput,scale)
   return utils.table_to_tensor(gradInput)
 end
 
+function net.setModel(model)
+   net.model = model
+end
+
+function net.getModel()
+  return net.model
+end
+
 
 return net

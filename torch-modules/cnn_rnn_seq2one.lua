@@ -82,8 +82,8 @@ function classifier.forward_test(input,add)
 end
 
 function classifier.clearState()
-   classifier.cnn.model:clearState()
-   classifier.rnn.model:clearState()
+   classifier.cnn.getModel():clearState()
+   classifier.rnn.getModel():clearState()
    classifier.mlp:clearState()
    classifier.sigmoid:clearState()
 end
@@ -92,7 +92,8 @@ function classifier.loadCheckpoint(checkpoint)
   print("Loading checkpoint .. ")
   classifier.cnn.setModel(checkpoint.cnn)
   classifier.rnn.setModel(checkpoint.rnn)
-  classifier.mlp = checkpoint.mlp
+  classifier.mlp:get(1).weight:copy(checkpoint.mlp:get(1).weight)
+  classifier.mlp:get(1).bias:copy(checkpoint.mlp:get(1).bias)
 end
 
 

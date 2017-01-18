@@ -12,12 +12,12 @@ function net.init_cnn()
    cnn_model = require(net.opt.model)
 
    print("CNN MODEL :")
-   print(net.model)
+   print(cnn_model.model)
 
 end
 
 function net.type(dtype)
-   net.model:type(dtype)
+   cnn_model.model:type(dtype)
 end
   
 function net.forward(input)
@@ -32,7 +32,7 @@ end
 
 function net.setModel(model)
    cnn_model.model = model
-   net.model = model
+--   net.model = model
 end
 
 function net.getModel()

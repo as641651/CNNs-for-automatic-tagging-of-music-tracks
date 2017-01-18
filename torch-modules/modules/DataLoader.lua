@@ -103,9 +103,10 @@ function DataLoader:getSample(iterate)
 
   if not self.group then
      local input, labels = self:getClip(ix)
+     input = self:splitInput(input,1366)
      local song_id = self.info.clips_song[tostring(ix)]
      local info_tags = self.info.info_tags[tostring(song_id)]
-     return ix,input:view(1,input:size(1),input:size(2),input:size(3)):type(self.dtype),self:tableToTensor(labels):add(1):type(self.dtype),self:tableToTensor(info_tags):add(1+self.vocab_size):type(self.dtype)
+     return ix,input:type(self.dtype),self:tableToTensor(labels):add(1):type(self.dtype),self:tableToTensor(info_tags):add(1+self.vocab_size):type(self.dtype)
   else
      local clips = self.info.song_clips[tostring(ix)]
      local num_clips = math.min(utils.count_keys(clips),self.max_clips_per_song)
@@ -164,3 +165,20 @@ function DataLoader:tableKeyToTensor(label_table)
   end
   return labels
 end
+
+function DataLoader:splitInput(input,offset)
+   if input:size(3) > (self.feature_xdim + offset) then 
+        local tmp = {}
+        local count = 1
+        while offset + self.feature_xdim < input:size(3) do
+           tmp[count] = input:narrow(3,offset,self.feature_xdim)
+           offset = offset + self.feature_xdim
+           count = count + 1
+           if count > self.max_clips_per_song then break end
+        end
+        return utils.table_to_4Dtensor(tmp)
+   else
+        return input:view(1,input:size(1),input:size(2),input:size(3))
+   end
+end 
+

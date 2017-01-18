@@ -1,0 +1,40 @@
+{ 
+  "data_json": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/databases/waves01_full_processed.json",  
+  "split_info_path": "/home/sankaran/Thesis/CNNs-for-automatic-tagging-of-music-tracks/experiments/splits/waves01_full_processed_0.7_0.3_0._50_1.json",
+  "train_percent": 0.7,
+  "val_percent": 0.3,
+  "test_percent": 0,
+  "min_label_freq": 15,
+  "min_info_tag_freq": 3,
+  "group": false,
+  "use_year": false,
+  "use_artist": false,
+  "use_other_tags": false,
+
+  "data_h5": "../databases/waves01_full.h5", 
+  "debug_max_train_images" : -1, 
+  "seed": 123,
+  "max_clips_per_song":5,
+  "feature_xdim":1366,
+  "feature_ydim":96,
+
+  "classifier": "cnn_rnn_seq2one",
+  "cnn_model": "cnns.models.choi_cnn.choi_cnn", 
+  "rnn_model": "rnns.models.lstm_model1",
+  "rnn_feature_input_dim": 1024,
+  "rnn_encoding_dim": 1024,
+  "rnn_hidden_dim": 1024,
+  "rnn_num_layers": 2,
+  "rnn_dropout": 0.3,
+  "rnn_test_time_seq_length": -1, 
+
+  "fine_tune_cnn": false,
+  "weight_decay": 1e-6,
+  "learning_rate": 1e-4,
+  "optim_alpha": 0.9,
+  "optim_beta": 0.99,
+  "optim_epsilon": 1e-8,
+
+  "max_iters": 40000,
+  "save_checkpoint_every": 5000
+}

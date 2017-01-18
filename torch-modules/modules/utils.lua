@@ -156,6 +156,16 @@ function utils.table_to_tensor(t)
   end
   return tensor
 end
+
+function utils.table_to_4Dtensor(t)
+  local tensor = torch.zeros(utils.count_keys(t),t[1]:size(1),t[1]:size(2),t[1]:size(3)):type(t[1]:type())
+  local idx = 1
+  for k,v in pairs(t) do 
+     tensor[idx] = v
+     idx = idx + 1
+  end
+  return tensor
+end
 -- Stash global statistics here.
 -- Since loading files with require caches and does not reload the same file,
 -- all places that require 'utils' will have access to this table.

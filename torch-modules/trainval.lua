@@ -125,14 +125,14 @@ while true do
          avgLoss = avgLoss + loss
       end
 
-      if iter == 20000 then opt.learning_rate = 1e-5 end
---    if iter == 200000 then opt.learning_rate = 1e-4 end
+      if iter == 10000 then opt.learning_rate = 1e-4 end
+--      if iter == 10000 then opt.learning_rate = 1e-6 end
     
       if mlp_params:numel() > 0 then adam(mlp_params,mlp_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.mlp_optim_state) end
-      adam(rnn_params,rnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
+      adam(rnn_params,rnn_grad_params,opt.learning_rate/10.,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.optim_state)
 
       if opt.fine_tune_cnn then
-        adam(cnn_params,cnn_grad_params,opt.learning_rate,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
+        adam(cnn_params,cnn_grad_params,opt.learning_rate/10.,opt.optim_alpha,opt.optim_beta,opt.optim_epsilon,opt.cnn_optim_state)
       end
   else
     print("Running evaluation ... ")
@@ -153,7 +153,7 @@ while true do
       model=classifier,
       loader=loader,
       split='val',
-      max_samples=171,
+      max_samples=113,
       dtype=dtype,
       vocab_size = classifier.rnn.opt.classifier_vocab_size
     }

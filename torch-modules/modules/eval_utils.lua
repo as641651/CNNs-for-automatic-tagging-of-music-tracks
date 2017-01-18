@@ -1,4 +1,5 @@
-utils = require 'modules.utils'
+local utils = require 'modules.utils'
+local roc = require 'modules.roc'
 
 local eval_utils = {}
 
@@ -57,7 +58,7 @@ function eval_utils.eval_split(kwargs)
     -- Break out if we have processed enough images
     if max_samples > 0 and counter >= max_samples then break end
   end
-
+  print(labels_in_test)
   local results = {}
   results.ap_results = {}
   results.auc_results = {}
@@ -115,6 +116,16 @@ function Evaluator:evaluate(verbose)
   local prc = {}
   local tpr = {}
   -- lets now do the evaluation
+  local scores = torch.Tensor(self.n)
+  local labels = torch.Tensor(self.n)
+  for i = 1,self.n do 
+     local r = self.records[i]
+     if  r.targets[r.targets:eq(r.cls)]:numel() > 0 then labels[i] = 1 else labels[i] = 0 end
+     scores[i] = r.confidence
+  end
+  local roc_pts, roc_th = roc.points(scores,labels,1,0)
+  local auc1 = roc.area(roc_pts)
+     
   for foo, th in pairs(min_threshs) do
      local fpr_t = 0
      local prc_t = 0
@@ -144,6 +155,9 @@ function Evaluator:evaluate(verbose)
      prc[th] = prc_t
      fpr[th] = fpr_t   
   end
+
+--  print("tpr" , tpr)
+--  print("fpr" , fpr)
   
   local ap = 0
   local auc = 0
@@ -153,14 +167,13 @@ function Evaluator:evaluate(verbose)
     if th ~= 10 then prv_fpr = fpr[(th-10)] end
     local nxt_tpr = 0
     if th == 90 then nxt_tpr = tpr[th] else nxt_tpr = tpr[(th+10)] end
-    auc = auc + ((prv_fpr - fpr[th])*(tpr[th] + nxt_tpr))/2.0
+    auc = auc + ((prv_fpr - fpr[th])*(tpr[th] + nxt_tpr)/2.0)
   end
    
-
-  --print(ap)
+ ---print(ap)
   --print(auc)    
   
-  return {ap,auc}
+  return {ap,auc1}
 end
 
 function Evaluator:numAdded()

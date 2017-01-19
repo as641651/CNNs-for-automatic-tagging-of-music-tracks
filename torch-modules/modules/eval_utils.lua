@@ -1,6 +1,25 @@
 local utils = require 'modules.utils'
 local roc = require 'modules.roc'
 
+function addResult(sample_id,confidence,cls,targets,records)
+     local record = {}
+     if confidence ~= nil then 
+       record.confidence = confidence
+     else
+       record.confidence = 0
+     end
+
+     if targets[targets:eq(cls)]:numel() > 0 then
+        record.target = 1
+     else
+        record.target = 0
+     end
+
+     record.id = sample_id
+     record.cls = cls
+     table.insert(records, record)
+end
+
 local eval_utils = {}
 
 function eval_utils.eval_split(kwargs)
@@ -23,7 +42,7 @@ function eval_utils.eval_split(kwargs)
   local evaluator = {}
   local labels_in_test = {} -- to exclude eval of lables not in test set
   for cls = 1,num_cls do
-     evaluator[cls] = Evaluator{id=id}
+     evaluator[cls] = {}
   end
 
   local counter = 0
@@ -40,7 +59,7 @@ function eval_utils.eval_split(kwargs)
     local label_prob = model.forward_test(data.input,data.info_tags)
 
     for cls = 1,num_cls do
-       if label_prob[cls] ~= nil then evaluator[cls]:addResult(data.clip_id,label_prob[cls],cls,data.gt_tags) end
+       addResult(data.clip_id,label_prob[cls],cls,data.gt_tags,evaluator[cls])
     end
     print("gt ", data.gt_tags)
  --   for cls = 1,data.gt_tags:size(1) do
@@ -59,10 +78,13 @@ function eval_utils.eval_split(kwargs)
     if max_samples > 0 and counter >= max_samples then break end
   end
   print(labels_in_test)
+  evaluator["labels_in_test"] = labels_in_test
+  utils.write_json("tmp.json",evaluator)
+  os.execute('python eval.py')
   local results = {}
   results.ap_results = {}
   results.auc_results = {}
-  for cls,v in pairs(labels_in_test) do 
+--[[  for cls,v in pairs(labels_in_test) do 
      results.ap_results[cls], results.auc_results[cls] = unpack(evaluator[cls]:evaluate())
   end
    
@@ -71,113 +93,9 @@ function eval_utils.eval_split(kwargs)
   results.MAUC = utils.average_values(results.auc_results)
   print(string.format('MAP: %f', 100 * results.MAP))
   print(string.format('Mean AUC: %f', 100 * results.MAUC))
-  
+  --]]
   return results
 end
 
-
-local Evaluator = torch.class('Evaluator')
-function Evaluator:__init(opt)
-  self.records = {}
-  self.labels_in_test = {} -- we want to exclude the labels that not have not occured in gt in the test set
-  self.id = utils.getopt(opt, 'id', '')
-  self.n = 0
-  self.num_labels = nil
-  self.dtype = 'torch.FloatTensor'
-end
-
-function Evaluator:addResult(sample_id,confidence,cls,targets)
-
-    local record = {}
-    record.confidence = confidence
-    record.targets = targets:type(self.dtype)
-    record.id = sample_id
-    record.evalid = self.n
-    record.cls = cls
-    table.insert(self.records, record)
- -- if self.num_labels == nil then self.num_labels = confidence:size(1) end
-  
---    for i = 1,targets:size(1) do self.labels_in_test[targets[i]] = 1 end
-    self.n = self.n + 1
-end
-
-function Evaluator:evaluate(verbose)
-  if verbose == nil then verbose = true end
-
-  if self.n == 0 then return {0,0} end
-        
-  local min_threshs = {10,20,30,40,50,60,70,80,90}
-  collectgarbage()
-  --self.num_labels = utils.count_keys(self.labels_in_test)
-  --print("Total lables under test :", utils.count_keys(self.labels_in_test))
-  --print("Evaluating :")
-
-  local fpr = {}
-  local prc = {}
-  local tpr = {}
-  -- lets now do the evaluation
-  local scores = torch.Tensor(self.n)
-  local labels = torch.Tensor(self.n)
-  for i = 1,self.n do 
-     local r = self.records[i]
-     if  r.targets[r.targets:eq(r.cls)]:numel() > 0 then labels[i] = 1 else labels[i] = 0 end
-     scores[i] = r.confidence
-  end
-  local roc_pts, roc_th = roc.points(scores,labels,1,0)
-  local auc1 = roc.area(roc_pts)
-     
-  for foo, th in pairs(min_threshs) do
-     local fpr_t = 0
-     local prc_t = 0
-     local tpr_t = 0
-     local gt = false   
-     local tp = 0    
-     local fp = 0    
-     local fn = 0 
-     local tn = 0
-     for i=1,self.n do
-      -- pull up the relevant record
-       local r = self.records[i]
-       if  r.targets[r.targets:eq(r.cls)]:numel() > 0 then gt = true else gt = false end
-       if r.confidence >= (th*0.01) then
-         if gt then  tp = tp + 1 else fp = fp+1 end
-       else
-         if gt then fn = fn+1 else tn = tn+1 end
-       end
-     end
-  	   
-     if (tp+fn) ~= 0 then tpr_t = tp/(tp+fn) end 
-     if (tp+fp) ~= 0 then prc_t = tp/(fp+tp) end
-     if (fp+tn) ~= 0 then fpr_t = fp/(fp+tn) end
-       -- if fp > 0 then  print(tp,fp,tn,fn) end
-     
-     tpr[th] = tpr_t
-     prc[th] = prc_t
-     fpr[th] = fpr_t   
-  end
-
---  print("tpr" , tpr)
---  print("fpr" , fpr)
-  
-  local ap = 0
-  local auc = 0
-  for foo, th in pairs(min_threshs) do
-    ap = ap + prc[th]*0.11112
-    local prv_fpr = 1.0
-    if th ~= 10 then prv_fpr = fpr[(th-10)] end
-    local nxt_tpr = 0
-    if th == 90 then nxt_tpr = tpr[th] else nxt_tpr = tpr[(th+10)] end
-    auc = auc + ((prv_fpr - fpr[th])*(tpr[th] + nxt_tpr)/2.0)
-  end
-   
- ---print(ap)
-  --print(auc)    
-  
-  return {ap,auc1}
-end
-
-function Evaluator:numAdded()
-  return self.n - 1
-end
 
 return eval_utils

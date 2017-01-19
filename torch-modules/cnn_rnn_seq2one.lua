@@ -71,10 +71,10 @@ function classifier.forward_test(input,add)
    --sort the results and choose the top  10 results greater than certain thresh
    sigmoid_out = sigmoid_out:view(-1)
    local Y, cls_label= torch.sort(sigmoid_out,1,true)
-   if cls_label:numel() > 110 then cls_label = cls_label[{{1,110}}] end
+   if cls_label:numel() > 10 then cls_label = cls_label[{{1,10}}] end
    sigmoid_out = sigmoid_out:index(1,cls_label)   
    for i = 1,sigmoid_out:size(1) do
-     if sigmoid_out[i] > 0.0 then output[cls_label[i]] = sigmoid_out[i] end
+     if sigmoid_out[i] > 0.05 then output[cls_label[i]] = sigmoid_out[i] end
    end
 
    print(output)

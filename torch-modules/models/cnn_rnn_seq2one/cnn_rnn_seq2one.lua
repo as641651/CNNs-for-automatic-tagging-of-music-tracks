@@ -109,5 +109,19 @@ function classifier.loadCheckpoint(checkpoint)
   classifier.mlp = checkpoint.mlp
 end
 
+function classifier.loadCNN(cnn)
+  print("Loading checkpoint ..CNN ")
+  classifier.cnn.setModel(cnn)
+end
+
+function classifier.loadRNN(rnn)
+  print("Loading checkpoint ..RNN ")
+  classifier.rnn.setModel(rnn)
+end
+
+function classifier.loadMLP(mlp)
+  print("Loading checkpoint ..MLP ")
+  classifier.mlp = mlp
+end
 
 return classifier

@@ -43,6 +43,9 @@ if platform.m ~= '' then
    if platform.c == '' then 
      opt = checkpoint_start.opt 
      opt.max_iters = 0
+     opt.load_cnn_chpt = true
+     opt.load_rnn_chpt = true
+     opt.load_mlp_chpt = true
    else
      opt = utils.read_json(platform.c)
      opt.platform = platform
@@ -107,7 +110,13 @@ if opt.platform.gpu >= 0 then
     cudnn.convert(classifier.rnn.getModel(), cudnn)
   end
 end
-if checkpoint_start ~= nil then classifier.loadCheckpoint(checkpoint_start) end
+
+if checkpoint_start ~= nil then
+  if opt.load_cnn_chpt then classifier.loadCNN(checkpoint_start.cnn) end
+  if opt.load_rnn_chpt then classifier.loadRNN(checkpoint_start.rnn) end
+  if opt.load_mlp_chpt then classifier.loadMLP(checkpoint_start.mlp) end
+end
+
 classifier.type(dtype)
 loader:type(dtype)
 

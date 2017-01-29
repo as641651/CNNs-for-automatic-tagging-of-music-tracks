@@ -52,5 +52,9 @@
   "mlp_optim": "adam",
 
   "max_iters": 2,
-  "save_checkpoint_every": 10000
+  "save_checkpoint_every": 10000,
+
+  "load_cnn_chpt":true,
+  "load_rnn_chpt":true,
+  "load_mlp_chpt":true
 }

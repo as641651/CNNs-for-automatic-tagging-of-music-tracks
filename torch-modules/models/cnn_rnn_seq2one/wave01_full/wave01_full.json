@@ -14,7 +14,7 @@
 
   "val_images_use" : -1, 
   "seed": 123,
-  "max_clips_per_song":5,
+  "max_clips_per_song":10,
   "feature_xdim":1366,
   "feature_ydim":96,
 
@@ -32,25 +32,29 @@
   "optim_beta": 0.99,
   "optim_epsilon": 1e-8,
   "avg_loss_every": 20,
-  "fresh_optm": false,
+  "fresh_optim": true,
 
   "fine_tune_cnn": true,
-  "cnn_learning_rate": 1e-3,
+  "cnn_learning_rate": 1e-5,
   "cnn_step": 10000,
   "cnn_gamma": 0.1,
-  "cnn_optim": "adam",
+  "cnn_optim": "sgdm",
 
   "fine_tune_rnn": true,
-  "rnn_learning_rate": 1e-3,
+  "rnn_learning_rate": 1e-4,
   "rnn_step": 10000,
   "rnn_gamma": 0.1,
-  "rnn_optim": "adam",
+  "rnn_optim": "sgdm",
 
   "mlp_learning_rate": 1e-3,
-  "mlp_step": 10000,
+  "mlp_step": 30000,
   "mlp_gamma": 0.1,
   "mlp_optim": "adam",
 
-  "max_iters": 0,
-  "save_checkpoint_every": 5000
+  "max_iters": 100000,
+  "save_checkpoint_every": 10000,
+
+  "load_cnn_chpt":true,
+  "load_rnn_chpt":true,
+  "load_mlp_chpt":false
 }

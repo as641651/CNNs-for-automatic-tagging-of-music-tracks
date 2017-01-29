@@ -153,7 +153,7 @@ while true do
       model=classifier,
       loader=loader,
       split='val',
-      max_samples=910,
+      max_samples=113,
       dtype=dtype,
       vocab_size = classifier.rnn.opt.classifier_vocab_size
     }

@@ -17,7 +17,14 @@ function addResult(sample_id,confidence,cls,targets,records)
 
      record.id = sample_id
      record.cls = cls
+     record.gt = utils.tensor_to_table(targets:float())
      table.insert(records, record)
+end
+
+function toJsonTable(t)
+  local l = {}
+  for i,v in pairs(t) do table.insert(l,v) end
+  return l
 end
 
 local eval_utils = {}
@@ -53,7 +60,7 @@ function eval_utils.eval_split(kwargs)
     local data = {}
 
     data.clip_id,data.input,data.gt_tags,data.info_tags = loader:getSample()
-    for i = 1,data.gt_tags:size(1) do labels_in_test[data.gt_tags[i]] = 1 end
+    for i = 1,data.gt_tags:size(1) do labels_in_test[data.gt_tags[i]] = data.gt_tags[i]  end
 
     -- Call forward_test to make predictions, and pass them to evaluator
     local label_prob = model.forward_test(data.input,data.info_tags)
@@ -77,8 +84,9 @@ function eval_utils.eval_split(kwargs)
     -- Break out if we have processed enough images
     if max_samples > 0 and counter >= max_samples then break end
   end
-  print(labels_in_test)
+  labels_in_test = toJsonTable(labels_in_test)
   evaluator["labels_in_test"] = labels_in_test
+  evaluator["info_json"] = loader.json_file
   utils.write_json("tmp.json",evaluator)
   os.execute('python eval.py')
   local results = {}

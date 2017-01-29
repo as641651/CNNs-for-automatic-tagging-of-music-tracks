@@ -1,4 +1,4 @@
-local cjson = require 'cjson'
+local json = require 'json'
 
 local utils = {}
 
@@ -59,13 +59,13 @@ function utils.read_json(path)
   local file = io.open(path, 'r')
   local text = file:read("*a")
   file:close()
-  local info = cjson.decode(text)
+  local info = json.decode(text)
   return info
 end
 
 function utils.write_json(path, j)
-  cjson.encode_sparse_array(true, 2, 10)
-  local text = cjson.encode(j)
+--  cjson.encode_sparse_array(true, 2, 10)
+  local text = json.encode(j)
   local file = io.open(path, 'w')
   file:write(text)
   file:close()

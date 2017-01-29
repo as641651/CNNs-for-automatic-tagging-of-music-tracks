@@ -6,15 +6,23 @@ local DataLoader = torch.class('DataLoader')
 
 
 function DataLoader:__init(opt)
-  self.h5_file = opt.data_h5 -- required h5file with images and other (made with prepro script)
-  self.json_file = opt.split_info_path -- required json file with vocab etc. (made with prepro script)
+  --self.h5_file = opt.data_h5 -- required h5file with images and other (made with prepro script)
+  --self.json_file = opt.split_info_path -- required json file with vocab etc. (made with prepro script)
   self.group = opt.group
   self.feature_xdim = opt.feature_xdim
   self.feature_ydim = opt.feature_ydim
   self.max_clips_per_song = opt.max_clips_per_song
   self.debug_max_train_samples = utils.getopt(opt, 'debug_max_train_samples', -1)
+ 
+  cmd = 'python ../lib/create_experiment.py -c ' .. opt.platform.c
+  os.execute(cmd)
+
+  comm = utils.read_json('../cache/tmp.json')
+  self.json_file = tostring(comm.split_info_path)
+  self.h5_file = tostring(comm.h5_file)
 
   print('DataLoader loading json file: ', self.json_file)
+  
   self.info = utils.read_json(self.json_file)
   self.vocab_size = utils.count_keys(self.info.idx_to_token)
   self.info_vocab_size = utils.count_keys(self.info.info_idx_to_token)
@@ -24,13 +32,13 @@ function DataLoader:__init(opt)
   -- Convert keys in idx_to_token from string to integer
   local idx_to_token = {}
   for k, v in pairs(self.info.idx_to_token) do
-    idx_to_token[tonumber(k)] = v
+    idx_to_token[tonumber(k)+1] = v
   end
   self.info.idx_to_token = idx_to_token
   
   local info_idx_to_token = {}
   for k, v in pairs(self.info.info_idx_to_token) do
-    info_idx_to_token[tonumber(k)] = v
+    info_idx_to_token[tonumber(k)+1] = v
   end
   self.info.info_idx_to_token = info_idx_to_token
 

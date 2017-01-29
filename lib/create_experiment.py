@@ -1,6 +1,6 @@
 # coding=utf8
 
-import _init_paths
+#import _init_paths
 import argparse, os, json
 import numpy as np
 import math
@@ -179,13 +179,48 @@ def random_split(dataDict,exp):
          it = 2
 
                        
+def write_comm(split_path,db_path):
+   comm = {}
+   comm["split_info_path"] = os.path.abspath(split_path)
+   comm["h5_file"] = os.path.abspath(db_path)
+   with open('../cache/tmp.json', 'w') as f:
+      json.dump(comm, f)
 
 def main(args):
 
    with open(args.config_file, "r") as f:
       split_config = json.load(f)
+   
+   json_path = os.path.join(split_config["db_dir"],split_config["data_json"])
+   if not os.path.exists(json_path):
+      print FAIL + "Path does not exist :" + ENDC + json_path
+      exit(-1)
+
+   h5_path = os.path.join(split_config["db_dir"],split_config["data_h5"])
+   if not os.path.exists(h5_path):
+      print FAIL + "Path does not exist :" + ENDC + h5_path
+      exit(-1)
+
+   split_info_file = split_config["data_h5"]+str(split_config["train_percent"])+str(split_config["val_percent"])+str(split_config["test_percent"])+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
+
+   split_info_file = split_info_file + ".json"
+   split_info_path = os.path.join("../cache",split_info_file)
+
+   if(os.path.exists(split_info_path)):
+      print "Loading " + split_info_path + " from cache..."
+      with open(split_info_path, "r") as f:
+         split_info = json.load(f)
+         print "DB Name: " + split_config["data_h5"]
+         print "Vocab in use .."
+         print split_info["idx_to_token"]
+         print "TOTAL : " + str(len(split_info["idx_to_token"]))
+         print "info_vocab in use .. "
+         print split_info["info_idx_to_token"]
+         write_comm(split_info_path, h5_path)
+      return
+
  
-   with open(split_config["data_json"], "r") as f:
+   with open(json_path, "r") as f:
       dataDict = json.load(f)
 
    experiment = {}
@@ -210,19 +245,21 @@ def main(args):
    experiment["info_vocab_size"] = 0
 
    random_split(dataDict,experiment)
- 
-   with open(str(split_config["split_info_path"]), 'w') as f:
+   
+   with open(split_info_path, 'w') as f:
       json.dump(experiment, f)
 
+   write_comm(split_info_path, h5_path)
   # print json.dumps(blob,sort_keys=True,indent=4)
-   print WARNING + "Wrote output : " + ENDC + split_config["split_info_path"]
+   print WARNING + "Wrote output : " + ENDC + split_info_path
 
 
 def print_help():
    print FAIL + "Requires a json file with config data: " + ENDC
    print "{"
    print "  \"data_json\": //THE DATABASE JSON FILE , "
-   print "  \"split_info_path\": //PATH OF THE OUTPUT SPLIT_INFO JSON FILE ,"
+   print "  \"data_h5\": //NAME OF HDF5 FILE ,"
+   print "  \"db_dir\": //NAME OF Dir ,"
    print "  \"train_percent\": //PERCENT SAMPLES FOR TRAIN SET ,"
    print "  \"val_percent\": //PERCENT SAMPLES FOR VAL SET ,"
    print "  \"test_percent\": //PERCENT SAMPLES FOR TEST SET ,"

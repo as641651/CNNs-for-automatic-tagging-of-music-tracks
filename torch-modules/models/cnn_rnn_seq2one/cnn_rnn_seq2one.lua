@@ -8,6 +8,17 @@ classifier.cache = {}
 classifier.cnn = cnn
 classifier.rnn = rnn
 
+function classifier.setOpts(opt)
+   classifier.cnn.opt.model = opt.cnn_model
+   classifier.rnn.opt.rnn_model = opt.rnn_model
+   classifier.rnn.opt.cnn_out_dim = opt.rnn_feature_input_dim
+   classifier.rnn.opt.input_encoding_size = opt.rnn_encoding_dim
+   classifier.rnn.opt.rnn_hidden_size = opt.rnn_hidden_dim
+   classifier.rnn.opt.rnn_layers = opt.rnn_num_layers
+   classifier.rnn.opt.dropout = opt.rnn_dropout
+   classifier.vocab_size = opt.classifier_vocab_size
+end
+
 function classifier.init()
    classifier.cnn.init_cnn()
    classifier.rnn.init_rnn()
@@ -15,7 +26,7 @@ function classifier.init()
    mlp:add(nn.Linear(1024,1024))
    mlp:add(nn.Dropout(0.2))
    mlp:add(nn.Sigmoid())
-   mlp:add(nn.Linear(1024,classifier.rnn.opt.classifier_vocab_size))
+   mlp:add(nn.Linear(1024,classifier.vocab_size))
    classifier.mlp = mlp
    classifier.mlp:get(4).weight:normal(0,1e-3)
    classifier.mlp:get(4).bias:fill(0)

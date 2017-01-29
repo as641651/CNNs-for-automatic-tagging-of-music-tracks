@@ -76,8 +76,8 @@ def getPatternMatrix(records,th,idx_to_token):
        for k,v in gt.iteritems():
          # p.append(v)
          # l.append(idx_to_token[str(k)])
-         p[str(idx_to_token[str(k)])] = v
-       pm[str(idx_to_token[str(cls)])] = p #{}
+         p[str(idx_to_token[str(k-1)])] = v
+       pm[str(idx_to_token[str(cls-1)])] = p #{}
        #pm[str(idx_to_token[str(cls)])]["p"] = p
        #pm[str(idx_to_token[str(cls)])]["l"] = l
 
@@ -117,7 +117,7 @@ for cls in records["labels_in_test"]:
    prec = res["prec"][0.2]
    rec = res["rec"][0.2]
    f1 = res["f1"][0.2]
-   print str(idx_to_token[str(cls)]) + " :\n AUC: %.2f, AP: %.2f, PREC@0.2: %.2f, RECALL@0.2: %.2f, F1@0.2: %.2f, COUNT: %d "%(auc,ap,prec,rec,f1,count)
+   print str(idx_to_token[str(cls-1)]) + " :\n AUC: %.2f, AP: %.2f, PREC@0.2: %.2f, RECALL@0.2: %.2f, F1@0.2: %.2f, COUNT: %d "%(auc,ap,prec,rec,f1,count)
    cls_auc.append(auc)
    cls_ap.append(ap)
    cls_f1.append(f1)

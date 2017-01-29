@@ -42,7 +42,7 @@ function eval_utils.eval_split(kwargs)
   assert(thresh <= 1 and thresh >= 0, "Threshold must be between 0 and 1")
 
   print('using split ', split)
-  
+  if max_samples <= 0 then max_samples = #loader.info.val_idxs end  
   if split == 'val' then loader:val() else loader:test() end
   local split_to_int = {val=1, test=2}
   --loader:resetIterator()

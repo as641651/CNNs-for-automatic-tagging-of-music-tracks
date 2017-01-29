@@ -32,7 +32,7 @@
   "optim_beta": 0.99,
   "optim_epsilon": 1e-8,
   "avg_loss_every": 20,
-  "fresh_optm": false
+  "fresh_optm": false,
 
   "fine_tune_cnn": true,
   "cnn_learning_rate": 1e-3,

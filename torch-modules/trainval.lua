@@ -70,6 +70,7 @@ if opt.platform.m ~= '' and not opt.fresh_optim and opt.max_iters > 0 then
    cnn_optim_state = checkpoint_start.cnn_optim_state
    opt.cnn_optim = checkpoint_start.cnn_optim
    iter = checkpoint_start.iter
+   print("Continuing Optimization ... ")
 end
 
 local classifier = require(opt.classifier)

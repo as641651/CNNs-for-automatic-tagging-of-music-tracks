@@ -59,7 +59,7 @@ function classifier.forward_backward(input,add,gt_seq)
 --FORWARD
    classifier.cache.sigmoid_out = classifier.forward(input)
 
-   local target = utils.n_of_k(gt_seq,classifier.rnn.opt.classifier_vocab_size)
+   local target = utils.n_of_k(gt_seq,classifier.vocab_size)
    local loss = classifier.crit:forward(classifier.cache.sigmoid_out,target) 
 
 --BACKWARD

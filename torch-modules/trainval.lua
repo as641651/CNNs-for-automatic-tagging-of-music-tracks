@@ -219,7 +219,7 @@ while true do
   classifier.clearState()
 
   --periodic validation
-  if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) or (opt.max_iters == 0) then
+  if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) or (opt.max_iters == 0) or (iter == 1) then
      
      local eval_kwargs = {
       model=classifier,

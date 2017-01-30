@@ -1,6 +1,6 @@
 require 'hdf5'
 local utils = require 'modules.utils'
-
+local ngrams = require 'modules.ngrams'
 
 local DataLoader = torch.class('DataLoader')
 
@@ -27,6 +27,12 @@ function DataLoader:__init(opt)
   self.vocab_size = utils.count_keys(self.info.idx_to_token)
   self.info_vocab_size = utils.count_keys(self.info.info_idx_to_token)
 
+  self.info.unigrams = nil
+  self.info.bigrams = nil
+  self.info.trigrams = nil
+  self.info.num_instances = nil
+  print("Computing ngrams ...")
+  self.info.unigrams, self.info.bigrams, self.info.trigrams,self.info.num_instances = unpack(ngrams.compute_ngrams(self.info.gt,self.vocab_size))
   self.train_size = utils.count_keys(self.info.train_idxs)
 
   -- Convert keys in idx_to_token from string to integer

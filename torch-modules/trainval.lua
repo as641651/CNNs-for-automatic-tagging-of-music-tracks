@@ -89,6 +89,7 @@ print(opt)
 local loader = DataLoader(opt)
 opt.classifier_vocab_size = loader:get_vocab_size()
 opt.additional_vocab_size = loader:get_info_vocab_size()
+opt.loader_info = loader.info
 
 classifier.setOpts(opt)
 classifier.init()
@@ -248,7 +249,7 @@ while true do
      model.loss = loss
 --     model.results = results --TODO
 
-     if opt.max_iters > 0 then
+     if opt.max_iters > 0 and iter > 2 then
        torch.save(opt.checkpoint_save_path, model)
        print('wrote checkpoint ' .. opt.checkpoint_save_path)
      end

@@ -6,6 +6,7 @@ import numpy as np
 import math
 from parsers.factory import get_parser
 import string
+from ngrams import ngrams
 
 OKGREEN = '\033[92m'
 FAIL = '\033[91m'
@@ -245,6 +246,10 @@ def main(args):
    experiment["info_vocab_size"] = 0
 
    random_split(dataDict,experiment)
+   #u,b,t = ngrams(experiment["gt"], experiment["vocab_size"])
+   #experiment["unigrams"] = u
+   #experiment["bigrams"] = b
+   #experiment["trigrams"] = t
    
    with open(split_info_path, 'w') as f:
       json.dump(experiment, f)

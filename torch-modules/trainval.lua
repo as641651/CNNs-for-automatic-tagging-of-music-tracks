@@ -84,6 +84,7 @@ end
 
 print("GENERAL OPTIONS : ")
 print("Seed : " .. tostring(opt.seed))
+opt.loader_info = nil
 print(opt)
 
 local loader = DataLoader(opt)

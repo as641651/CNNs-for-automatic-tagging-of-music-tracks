@@ -142,7 +142,7 @@ if __name__ == '__main__':
   print WARNING + "input_dir : " + ENDC + settings["input_dir"]
   print WARNING + "audio_processor: " + ENDC + settings["audio_processor"]
   print WARNING + "parser :" + ENDC + settings["parser"]
-  print WARNING + "h5_output :" + ENDC + settings["h5_output"] + " , " + settings["h5_output"].split(".")[0] + "_additional.json"
+  print WARNING + "h5_output :" + ENDC + settings["h5_output"] + " , " + settings["h5_output"].split(".")[0] + "_processed.json"
 
   main(settings)
 

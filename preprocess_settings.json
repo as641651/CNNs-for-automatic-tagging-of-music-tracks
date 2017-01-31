@@ -3,7 +3,7 @@
   "input_dir": "/home/sankaran/Thesis/music_data/Waves/",
   "parser": "paolo_parser",
   "audio_processor": "melgram",
-  "h5_output": "databases/waves01_debug.h5",
+  "h5_output": "databases/waves_11Jan.h5",
   "max_samples": -1
 }
 

@@ -38,9 +38,9 @@ def evaluate(pred,scores):
    
    
    ap = ap + prec[0.2]*(rec[0.2])           
-   ap = ap + prec[0.4]*(abs(rec[0.4] - rec[0.2]))           
-   ap = ap + prec[0.6]*(abs(rec[0.6] - rec[0.4]))           
-   ap = ap + prec[0.8]*(abs(rec[0.8] - rec[0.6]))
+   ap = ap + prec[0.4]*(rec[0.2] - rec[0.4])           
+   ap = ap + prec[0.6]*(rec[0.4] - rec[0.6])           
+   ap = ap + prec[0.8]*(rec[0.6] - rec[0.8])
 
    results = {}
    results["acc"] = acc           

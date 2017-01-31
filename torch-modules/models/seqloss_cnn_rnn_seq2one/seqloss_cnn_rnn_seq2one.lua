@@ -18,8 +18,8 @@ function classifier.setOpts(opt)
    classifier.rnn.opt.dropout = opt.rnn_dropout --
    classifier.vocab_size = opt.classifier_vocab_size
    classifier.loader_info = opt.loader_info
-   classifier.sigmoid_wt = 1.0-- opt.sigmoid_wt --
-   classifier.seq_wt = 0.0 --opt.seq_wt --
+   classifier.sigmoid_wt =  opt.sigmoid_wt --
+   classifier.seq_wt = opt.seq_wt --
 end
 
 function classifier.init()

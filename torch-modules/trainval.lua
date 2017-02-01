@@ -23,6 +23,7 @@ if platform.s ~= '' then
    print("MLP :")
    print(checkpoint_start.mlp)
    print("opts :")
+   checkpoint_start.opt.loader_info = nil
    print(checkpoint_start.opt)
    print("Iters trained :")
    print(checkpoint_start.iter)
@@ -237,20 +238,19 @@ while true do
      model.rnn = classifier.rnn.getModel()
      model.mlp = classifier.mlp
 
-     model.cnn_optim_state = cnn_optim_state
-     model.cnn_optim = opt.cnn_optim
-     model.rnn_optim_state = rnn_optim_state
-     model.rnn_optim = opt.rnn_optim
-     model.mlp_optim_state = mlp_optim_state
-     model.mlp_optim = opt.mlp_optim
-
-     model.opt = opt
-
-     model.iter = iter
-     model.loss = loss
 --     model.results = results --TODO
 
      if opt.max_iters > 0 and iter > 2 then
+       model.cnn_optim_state = cnn_optim_state
+       model.cnn_optim = opt.cnn_optim
+       model.rnn_optim_state = rnn_optim_state
+       model.rnn_optim = opt.rnn_optim
+       model.mlp_optim_state = mlp_optim_state
+       model.mlp_optim = opt.mlp_optim
+
+       model.opt = opt
+       model.iter = iter
+       model.loss = loss
        torch.save(opt.checkpoint_save_path, model)
        print('wrote checkpoint ' .. opt.checkpoint_save_path)
      end

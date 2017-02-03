@@ -5,15 +5,9 @@ net.opt.model = 'cnns.models.choi_crnn.choi_cnn'
 local cnn_model = nil
 
 function net.init_cnn()
-
    print("CNN OPTS: ")
    print(net.opt)
-
    cnn_model = require(net.opt.model)
-
-   print("CNN MODEL :")
-   print(cnn_model.model)
-
 end
 
 function net.type(dtype)

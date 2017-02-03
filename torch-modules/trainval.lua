@@ -123,6 +123,11 @@ end
 classifier.type(dtype)
 loader:type(dtype)
 
+print("MODEL :")
+print(classifier.cnn.getModel())
+print(classifier.rnn.getModel())
+print(classifier.mlp)
+
 if opt.fine_tune_cnn then
     cnn_params, cnn_grad_params = classifier.cnn.getModel():get(2):getParameters()
 end

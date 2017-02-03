@@ -27,16 +27,14 @@ function classifier.init()
    classifier.rnn.init_rnn()
    local mlp = nn.Sequential()
    mlp:add(nn.Linear(1024,1024))
-   mlp:add(nn.Dropout(0.05))
---   mlp:add(nn.Sigmoid())
+   mlp:add(nn.Dropout(0.1))
+   mlp:add(nn.Sigmoid())
    mlp:add(nn.Linear(1024,classifier.vocab_size))
    classifier.mlp = mlp
-   classifier.mlp:get(3).weight:normal(0,1e-3)
-   classifier.mlp:get(3).bias:fill(0)
+   classifier.mlp:get(4).weight:normal(0,1e-3)
+   classifier.mlp:get(4).bias:fill(0)
    classifier.sigmoid = nn.Sigmoid()
    classifier.crit = nn.BCECriterion()   
-   print(classifier.mlp)
-   print(classifier.sigmoid)
 end
 
 function classifier.type(dtype)
@@ -64,14 +62,6 @@ function get_seq_prob(seq_l)
      end
              
      seq_prob[i] = pw*u + pw*b + pw*t
-                       
-     if seq_prob[i] > 1 then
-        print (u,b,t)
-        print(classifier.loader_info.trigrams[i][seq_l[1]][seq_l[2]],classifier.loader_info.bigrams[seq_l[1]][seq_l[2]])
-        print(seq_prob[i], "gt than 1")
-        os.exit() 
-     end
-
    end
 
    return seq_prob
@@ -154,15 +144,6 @@ function classifier.evaluate()
    classifier.mlp:evaluate()
 end
 
-function classifier.loadCheckpoint(checkpoint)
-  print("Loading checkpoint .. ")
-  classifier.cnn.setModel(checkpoint.cnn)
-  classifier.rnn.setModel(checkpoint.rnn)
---  classifier.mlp:get(1).weight:copy(checkpoint.mlp:get(1).weight)
---  classifier.mlp:get(1).bias:copy(checkpoint.mlp:get(1).bias)
-  classifier.mlp = checkpoint.mlp
-end
-
 function classifier.loadCNN(cnn)
   print("Loading checkpoint ..CNN ")
   classifier.cnn.setModel(cnn)
@@ -175,7 +156,22 @@ end
 
 function classifier.loadMLP(mlp)
   print("Loading checkpoint ..MLP ")
-  classifier.mlp = mlp
+  local l1 =  mlp:get(mlp:size()):parameters()[2]:size(1)
+  local l2 =  mlp:get(mlp:size()):parameters()[1]:size(2)
+  if classifier.vocab_size ~= l1 then
+    print("WARNING :  size of last layer in MLP does not match with vocab size. Weights in last layer not transfered")
+    local newMlp = nn.Sequential():type(mlp:type())
+    for i = 1, (mlp:size()-1) do 
+      newMlp:add(mlp:get(i))
+    end
+    local lastL = nn.Linear(l2,classifier.vocab_size):type(mlp:type())
+    lastL.weight:normal(0,1e-3)
+    lastL.bias:fill(0)
+    newMlp:add(lastL)
+    classifier.mlp = newMlp
+  else
+    classifier.mlp = mlp
+  end
 end
 
 return classifier

@@ -23,6 +23,7 @@ if platform.s ~= '' then
    print("MLP :")
    print(checkpoint_start.mlp)
    print("opts :")
+   checkpoint_start.opt.loader_info = nil
    print(checkpoint_start.opt)
    print("Iters trained :")
    print(checkpoint_start.iter)
@@ -87,7 +88,7 @@ print("Seed : " .. tostring(opt.seed))
 opt.loader_info = nil
 print(opt)
 
-local loader = DataLoader(opt)
+local loader = DataLoader(opt,platform.debug)
 opt.classifier_vocab_size = loader:get_vocab_size()
 opt.additional_vocab_size = loader:get_info_vocab_size()
 opt.loader_info = loader.info

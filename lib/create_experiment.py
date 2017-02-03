@@ -180,10 +180,11 @@ def random_split(dataDict,exp):
          it = 2
 
                        
-def write_comm(split_path,db_path):
+def write_comm(split_path,db_path,json_path):
    comm = {}
    comm["split_info_path"] = os.path.abspath(split_path)
    comm["h5_file"] = os.path.abspath(db_path)
+   comm["additional_info_file"] = os.path.abspath(json_path)
    with open('../cache/tmp.json', 'w') as f:
       json.dump(comm, f)
 
@@ -217,7 +218,7 @@ def main(args):
          print "TOTAL : " + str(len(split_info["idx_to_token"]))
          print "info_vocab in use .. "
          print split_info["info_idx_to_token"]
-         write_comm(split_info_path, h5_path)
+         write_comm(split_info_path, h5_path,json_path)
       return
 
  
@@ -254,7 +255,7 @@ def main(args):
    with open(split_info_path, 'w') as f:
       json.dump(experiment, f)
 
-   write_comm(split_info_path, h5_path)
+   write_comm(split_info_path, h5_path,json_path)
   # print json.dumps(blob,sort_keys=True,indent=4)
    print WARNING + "Wrote output : " + ENDC + split_info_path
 

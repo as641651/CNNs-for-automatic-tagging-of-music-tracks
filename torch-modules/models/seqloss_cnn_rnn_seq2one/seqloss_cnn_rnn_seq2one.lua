@@ -27,12 +27,12 @@ function classifier.init()
    classifier.rnn.init_rnn()
    local mlp = nn.Sequential()
    mlp:add(nn.Linear(1024,1024))
-   mlp:add(nn.Dropout(0.2))
-   mlp:add(nn.Sigmoid())
+   mlp:add(nn.Dropout(0.05))
+--   mlp:add(nn.Sigmoid())
    mlp:add(nn.Linear(1024,classifier.vocab_size))
    classifier.mlp = mlp
-   classifier.mlp:get(4).weight:normal(0,1e-3)
-   classifier.mlp:get(4).bias:fill(0)
+   classifier.mlp:get(3).weight:normal(0,1e-3)
+   classifier.mlp:get(3).bias:fill(0)
    classifier.sigmoid = nn.Sigmoid()
    classifier.crit = nn.BCECriterion()   
    print(classifier.mlp)
@@ -126,12 +126,10 @@ function classifier.forward_test(input,add)
    --sort the results and choose the top  10 results greater than certain thresh
    local Y, cls_label= torch.sort(smooth_out,1,true)
    if cls_label:numel() > 10 then cls_label = cls_label[{{1,10}}] end
-   smooth_out = smooth_out:index(1,cls_label)   
+   smooth_out = smooth_out:index(1,cls_label)
    for i = 1,smooth_out:size(1) do
      if smooth_out[i] > 0.2 then output[cls_label[i]] = smooth_out[i] end
    end
-
-   print(output)
    return output
 end
 

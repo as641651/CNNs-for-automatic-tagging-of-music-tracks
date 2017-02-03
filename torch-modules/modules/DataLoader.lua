@@ -5,7 +5,7 @@ local ngrams = require 'modules.ngrams'
 local DataLoader = torch.class('DataLoader')
 
 
-function DataLoader:__init(opt)
+function DataLoader:__init(opt,debug)
   --self.h5_file = opt.data_h5 -- required h5file with images and other (made with prepro script)
   --self.json_file = opt.split_info_path -- required json file with vocab etc. (made with prepro script)
   self.group = opt.group
@@ -20,10 +20,14 @@ function DataLoader:__init(opt)
   comm = utils.read_json('../cache/tmp.json')
   self.json_file = tostring(comm.split_info_path)
   self.h5_file = tostring(comm.h5_file)
+  self.additional_info_file = tostring(comm.additional_info_file)
 
   print('DataLoader loading json file: ', self.json_file)
-  
+
   self.info = utils.read_json(self.json_file)
+  self.debug_info = nil
+  if debug then self.debug_info = utils.read_json(self.additional_info_file) end
+
   self.vocab_size = utils.count_keys(self.info.idx_to_token)
   self.info_vocab_size = utils.count_keys(self.info.info_idx_to_token)
 
@@ -196,3 +200,11 @@ function DataLoader:splitInput(input,offset)
    end
 end 
 
+function DataLoader:printSongInfo(id)
+   if self.debug_info then
+      print(id)
+      local song_name = self.debug_info.song_id_to_name[tostring(id)]
+      print(self.debug_info[song_name])
+   end
+end
+      

@@ -122,7 +122,6 @@ function net.type(dtype)
 end
 
 function net.forward(input)
- 
      local nDim = input:size():size()
      assert(nDim == 4, "Suports only batch mode" )
      assert(input:size(2) == 1, "Suports only mono" )
@@ -155,6 +154,8 @@ function net.forward(input)
 --     print("cnn_5 size ", net.cache.cnn_5:size())
 
      local cnn_output = net.cache.cnn_5:view(net.cache.cnn_5:size(1),-1)
+--     print(cnn_output)
+--     os.exit()
      net.called_forward = true
      return cnn_output
 end

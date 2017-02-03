@@ -88,7 +88,7 @@ print("Seed : " .. tostring(opt.seed))
 opt.loader_info = nil
 print(opt)
 
-local loader = DataLoader(opt)
+local loader = DataLoader(opt,platform.debug)
 opt.classifier_vocab_size = loader:get_vocab_size()
 opt.additional_vocab_size = loader:get_info_vocab_size()
 opt.loader_info = loader.info

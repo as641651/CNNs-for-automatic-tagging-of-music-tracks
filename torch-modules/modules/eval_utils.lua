@@ -63,12 +63,20 @@ function eval_utils.eval_split(kwargs)
     for i = 1,data.gt_tags:size(1) do labels_in_test[data.gt_tags[i]] = data.gt_tags[i]  end
 
     -- Call forward_test to make predictions, and pass them to evaluator
+    loader:printSongInfo(data.clip_id)
+    print("Predictions :")
+--    model.rnn.getModel():get(1):evaluate()
     local label_prob = model.forward_test(data.input,data.info_tags)
-
+    for k,v in utils.spairs(label_prob,function(t,a,b) return t[b] < t[a] end) do
+       print(loader.info.idx_to_token[k],v)
+    end
+    
     for cls = 1,num_cls do
        addResult(data.clip_id,label_prob[cls],cls,data.gt_tags,evaluator[cls])
     end
-    print("gt ", data.gt_tags)
+   -- print("gt ", data.gt_tags)
+--    print("GT")
+--    for i = 1,data.gt_tags:size(1) do print(loader.info.idx_to_token[data.gt_tags[i]]) end
  --   for cls = 1,data.gt_tags:size(1) do
  --      evaluator[data.gt_tags[cls]]:addResult(data.clip_id,1.0,data.gt_tags[cls],data.gt_tags)
  --   end

@@ -16,6 +16,7 @@ function M.parse(arg)
   cmd:option('-gpu', 0, 'which gpu to use. -1 = use CPU')
   cmd:option('-timing', false, 'whether to time parts of the net')
   cmd:option('-save', '', 'checkpoint save path')
+  cmd:option('-debug', false, 'true to print song info while evaluation')
 
   cmd:text()
   local opt = cmd:parse(arg or {})

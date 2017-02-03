@@ -54,7 +54,9 @@ function get_seq_prob(seq_l)
      local u = classifier.loader_info.unigrams[i]/classifier.loader_info.num_instances
      local b = 0
      if classifier.loader_info.unigrams[seq_l[1]] ~= 0 then 
-        b = classifier.loader_info.bigrams[i][seq_l[1]]/classifier.loader_info.unigrams[seq_l[1]]
+        local b1 = classifier.loader_info.bigrams[i][seq_l[1]]/classifier.loader_info.unigrams[seq_l[1]]
+        local b2 = classifier.loader_info.bigrams[i][seq_l[2]]/classifier.loader_info.unigrams[seq_l[2]]
+        b = 0.5*b1 + 0.5*b2
      end
      local t = 0
      if classifier.loader_info.bigrams[seq_l[1]][seq_l[2]] ~= 0 then
@@ -138,6 +140,18 @@ function classifier.clearState()
    classifier.rnn.getModel():clearState()
    classifier.mlp:clearState()
    classifier.sigmoid:clearState()
+end
+
+function classifier.training()
+   classifier.cnn.getModel():training()
+   classifier.rnn.getModel():training()
+   classifier.mlp:training()
+end
+
+function classifier.evaluate()
+   classifier.cnn.getModel():evaluate()
+   classifier.rnn.getModel():evaluate()
+   classifier.mlp:evaluate()
 end
 
 function classifier.loadCheckpoint(checkpoint)

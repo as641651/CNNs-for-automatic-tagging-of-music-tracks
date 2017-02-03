@@ -23,7 +23,7 @@ function net.init_rnn()
   net.rnn_model = nn.Sequential()
   net.rnn_model:add(nn.Sequencer(rnn_model.get_rnn(net.opt)))
   net.rnn_model:add(nn.SelectTable(-1)) -- selects the last time step
-  net.rnn_model:get(1):training()
+--  net.rnn_model:get(1):training()
   net.model:add(net.rnn_model)
   
   print("RNN MODEL : ")

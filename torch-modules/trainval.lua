@@ -164,6 +164,7 @@ end
 local loss0
 local loss = 0
 local avgLoss = 0
+classifier.training()
 while true do
    
   if opt.max_iters > 0 then 
@@ -223,7 +224,7 @@ while true do
 
   --periodic validation
   if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) or (opt.max_iters == 0) or (iter == 1) then
-     
+     classifier.evaluate()
      local eval_kwargs = {
       model=classifier,
       loader=loader,
@@ -254,6 +255,7 @@ while true do
        torch.save(opt.checkpoint_save_path, model)
        print('wrote checkpoint ' .. opt.checkpoint_save_path)
      end
+     classifier.training()
   end
   -- stopping criterions
   iter = iter + 1

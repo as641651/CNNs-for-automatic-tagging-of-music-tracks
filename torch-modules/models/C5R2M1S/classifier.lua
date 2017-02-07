@@ -26,7 +26,7 @@ function classifier.init()
    classifier.cnn.init_cnn()
    classifier.rnn.init_rnn()
    local mlp = nn.Sequential()
-   mlp:add(nn.Linear(1024,classifier.vocab_size))
+   mlp:add(nn.Linear(classifier.rnn.opt.rnn_hidden_size,classifier.vocab_size))
    classifier.mlp = mlp
    classifier.mlp:get(1).weight:normal(0,1e-3)
    classifier.mlp:get(1).bias:fill(0)

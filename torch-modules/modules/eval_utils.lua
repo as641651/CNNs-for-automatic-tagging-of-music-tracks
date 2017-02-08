@@ -65,7 +65,7 @@ function eval_utils.eval_split(kwargs)
     -- Call forward_test to make predictions, and pass them to evaluator
     loader:printSongInfo(data.clip_id)
     print("Predictions :")
---    model.rnn.getModel():get(1):evaluate()
+    -- model.rnn.getModel():get(1):evaluate()
     local label_prob = model.forward_test(data.input,data.info_tags)
     for k,v in utils.spairs(label_prob,function(t,a,b) return t[b] < t[a] end) do
        print(loader.info.idx_to_token[k],v)

@@ -188,6 +188,9 @@ function DataLoader:splitInput(input,offset)
    if input:size(3) > (self.feature_xdim + offset) then 
         local tmp = {}
         local count = 1
+        local st = 1
+        if input:size(3) > self.feature_xdim*8 and self.split == 0 then st = math.random(1,6) end
+        offset = st*offset
         while offset + self.feature_xdim < input:size(3) do
            tmp[count] = input:narrow(3,offset,self.feature_xdim)
            offset = offset + self.feature_xdim

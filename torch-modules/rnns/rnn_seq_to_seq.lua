@@ -25,24 +25,42 @@ function net.init_rnn()
 
   local rnn_model = require(net.opt.rnn_model)
  
-  net.rnn_model = nn.Sequential()
-  net.rnn_model:add(nn.Sequencer(rnn_model.get_rnn(net.opt)))
-  net.rnn_model:add(nn.SelectTable(-1)) -- selects the last time step
-  net.model:add(net.rnn_model)
+  net.model:add(nn.Sequencer(rnn_model.get_rnn(net.opt)))
+  net.model:get(1):remember('both')
   
 end
 
-
 function net.type(dtype)
    net.model:type(dtype)
+   lookup_tabel:type(dtype)
 end
 
+function net.forward_test_cnn_vecs(cnn_vectors)
+    net.model:get(1):forget()
+    local nvec = nil
+    for ci = 1,cnn_vectors:size(1) do
+       nvec = net.model:get(1):get(1):forward(cnn_vectors[ci])
+    end
+    return nvec
+end
+
+function net.forward_test_vocab(vocab)
+   local word = torch.Tensor(1):zero():type(net.model:type())
+   word[1] = vocab
+   local invec = lookup_tabel:forward(word)
+   local outvec = net.model:get(1):get(1):forward(invec[1])
+   return outvec
+end
 
 function net.forward(cnn_vectors,vocab_seq)
+    net.model:get(1):forget()
     local input_tensor = cnn_vectors
+      
     if vocab_seq ~= nil then
-      local vocab_vectors = lookup_tabel:forward(vocab_seq)
-      input_tensor = torch.cat(cnn_vectors,vocab_vectors,1)
+      if vocab_seq:size(1) > 1 then 
+        local vocab_vectors = lookup_tabel:forward(vocab_seq[{{1,vocab_seq:size(1)-1}}])
+        input_tensor = torch.cat(cnn_vectors,vocab_vectors,1)
+      end
     end
     local net_input = utils.tensor_to_table(input_tensor)
     output = net.model:forward(net_input)
@@ -51,7 +69,7 @@ function net.forward(cnn_vectors,vocab_seq)
     return output
 end
 
-function net.backward(cnn_vectors,gradOutput,scale)
+function net.backward(gradOutput,scale)
   assert(net.called_forward == true, "forward not called")
   assert(scale == nil or scale == 1.0)
 
@@ -68,6 +86,5 @@ end
 function net.getModel()
   return net.model
 end
-
 
 return net

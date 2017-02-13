@@ -174,6 +174,17 @@ while true do
    
   if opt.max_iters > 0 then 
       loss = lossFun()
+      
+      if opt.tune_cnn_after and opt.fine_tune_cnn == false then
+        if opt.tune_cnn_after > 0 then
+           if iter > opt.tune_cnn_after then
+              print("Finetuning CNN")
+              opt.fine_tune_cnn = true
+              cnn_params, cnn_grad_params = classifier.cnn.getModel():get(2):getParameters()
+              print('total number of parameters in CNN: ', cnn_grad_params:nElement())
+           end
+        end
+      end
 
       if iter%opt.avg_loss_every == 0 then
          avgLoss = avgLoss/opt.avg_loss_every

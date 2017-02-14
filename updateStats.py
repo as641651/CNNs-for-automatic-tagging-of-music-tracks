@@ -30,10 +30,12 @@ def CreateDict(datafile):
        slc = 0
        found_year = False
        labeled = False
+       found_genre = False
        for w in words:
           if w[:6] == "|----+" and not start:
              print w
              start = True
+             break
           if not start:
              continue
           if w[:4] == "====" and start:
@@ -42,6 +44,15 @@ def CreateDict(datafile):
              break
           if w[-1] == ",": ##remove the comma that sticks at the end of the word
              w = w[:-1]
+
+          if words[1] != '|' and not found_genre:
+            if words[1] in wordDict:
+               wordDict[words[1]] = wordDict[words[1]]+1
+            else:
+               wordDict[words[1]] = 1
+               num_words = num_words + 1
+            found_genre = True
+
           if slc > 1 and not found_year:       
             y = w.split("/")[0]
             if y in years:

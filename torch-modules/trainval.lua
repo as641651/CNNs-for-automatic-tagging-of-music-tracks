@@ -278,9 +278,11 @@ while true do
   -- Collect garbage every so often
   if iter % 33 == 0 then collectgarbage() end
   if loss0 == nil then loss0 = loss end
-  if loss > loss0 * 100 then
-    print('loss seems to be exploding, quitting.')
-    break
+  if loss >= 1e-3 and loss0 >= 1e-2 then
+    if loss > loss0 * 1000 then
+      print('loss seems to be exploding, quitting.')
+  --    break
+    end
   end
   if opt.max_iters > 0 and iter >= opt.max_iters then break end
   if opt.max_iters == 0 then break end

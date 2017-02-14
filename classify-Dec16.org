@@ -1,21 +1,26 @@
 | VOICE   | male    | female  | song    | Song    | acappella | spoken  | voices  | choir   | vocalizzi | shout   | gospel? |       |
-| RYTHMIC | bass    | beats   | kick    | drums   | no-rhythm | tztz    | unzunz  | fart    |         |         |         |       |
+| RYTHMIC | bass    | beats   | kick    | drums   | tztz    | unzunz  | fart    | complicated |         |         |         |       |
 | PACE    | slow    | moderate | steady  | upbeat  | fast    | train   | tiro    |         |         |         |         |       |
 | SOUND TYPE | brass   | dirty   | rough   | deep    | dark    | opaque  | open    | tight   | warm    | melody  | zanzara | noise |
-| ADJ     | bouncy  | energy  | hi-energy | loopy   | hypnotic | loud    | aggressive | :cattivo | moody   |         |         |       |
+| ADJ     | bouncy  | energy  | hi-energy | loopy   | hypnotic | loud    | aggressive |         | moody   |         |         |       |
 |         | empty   | minimal | dull    | filler  | background | calm    | :gentle | :mild   | :soft   | mellow  |         |       |
 |         | soul    | happy   | drama   | :moving | epic    | scary   | uplifting | trip    | space   | volo    |         |       |
-|         | chic    | elegant | cocktail | getdown | jazzy   | ethereal | gay     | hi-pitch | bitch   | :sexy   | silky   |       |
-| INSTRUMENTS | bells   | blip    | chirps  | flute   | guitar  | funkyG  | horns   | keys    | organ   | ducks   | triangle |       |
-|         | strings | :pads   | xylo    | sax     | piano   | trumpet | tubes   | instruments | whistle |         |         |       |
+|         | elegant | :chic   | cocktail | getdown | jazzy   | ethereal | gay     | hi-pitch | bitch   | :sexy   | silky   |       |
+| INSTRUMENTS | bells   | blip    | chirps  | flute   | guitar  | funkyG  | horns   | keys    | organ   | triangle |         |       |
+|         | strings | xylo    | sax     | piano   | trumpet | tubes   | instruments | whistle | violin  | pa-pa   |         |       |
 | SONG TYPE | anthem  | cheesy  | silly   | mainstream | circus  |         |         |         |         |         |         |       |
 | GENRE   | 1/2     | breaks  | dnb     | hiphop  | electro | ambient | rock    | progressive | trancey |         |         |       |
-|         | 70s     | 80s     | disco   | lounge  | paradise |         |         |         |         |         |         |       |
-|         | afro    | arab    | latin   | samba   | tribal  | french =ethnic | ethnic  | spanish | british |         |         |       |
-| DETAILS | city    | elicopter | robot   | nature  | effects | metal   |         |         |         |         |         |       |
+|         | 70s     | :disco  | 80s     | lounge  | paradise |         |         |         |         |         |         |       |
+|         | afro    | :tribal | samba   | spanish | :latin  | arab    | ethnic  | french =ethnic | british |         |         |       |
+| DETAILS | city    | elicopter | robot   | nature  | effects | industrial | :metal  |         |         |         |         |       |
 | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     | <7>     |       |
 
-
+drama :moving :struggente :passion
+afro :tribal :samba :spanish :latin :ethnic
+aggressive :cattiva
+strings :pads
+cheesy :silly
+sax :jazzy
 
 | B:  downbeat  | D:  deep       | E:  electro | F:  disco/funky |
 | H:  house     | hH: hard house | S:  soulful | T:  techno      |
@@ -119,7 +124,7 @@
 |    | 1989/v_The Beloved - Sun Rising (Danny's "Love is..." remix).wav |                                                          |
 |    | 1989/v_The Beloved - Sun Rising (Intensita').wav             |                                                          |
 | D  | 1990/Earth People - Dance (Beats Mix).wav                    | minimal, beats, space                                    |
-| D  | 1990/Earth People - Dance (Club Mix).wav                     | empty, unzunz, cocktail, sax                             |
+| D  | 1990/Earth People - Dance (Club Mix).wav                     | empty, unzunz, cocktail, sax, [Black Magic]              |
 | T  | 1990/LFO - LFO.wav                                           | electro, blip, minimal, slow                             |
 | T  | 1990/v_808 State - Cubik (Original 12" Mix).wav              | rough, slow                                              |
 | S  | 1990/v_Alison Limerick - Where Love Lives (Classic Mix).wav  | piano, paradise, female, Song, elegant                   |
@@ -133,13 +138,13 @@
 | E  | 1990/v_Interfront - Bases Mix R-5.wav                        | electro                                                  |
 | E  | 1990/v_Interfront - Bonus Beats Strange.wav                  | beats                                                    |
 | E  | 1990/v_Interfront - Mathausen.wav                            | electro, robot, spoken, 80s                              |
-| E  | 1990/v_Interfront - Strange Instru.wav                       | hi-pitch, keys, trancey, no-rythm                        |
+| E  | 1990/v_Interfront - Strange Instru.wav                       | hi-pitch, keys, trancey                                  |
 | T  | 1990/v_Interfront - Strange.wav                              | progressive, trancey, soft, hi-pitch, keys, uplifting    |
 | H  | 1991/Don Carlos - Alone (Saxambient).wav                     | strings, bass, kick, paradise, piano, mellow, fart       |
 | H  | 1991/LUPO - Hell Or Heaven (Extended Mix).wav                | D, anthem, female, flute, bass, loopy, volo, chic        |
 | S  | 1991/Masters At Work - Our Mute Horn (Ken Lou Mix).wav       | D, bass, deep, brass, lounge, background                 |
 | H  | 1991/MK - Burning (Original Vibe Mix).wav                    | tztz, female, deep, song, loopy, bass-lead, bells        |
-| H  | 1991/Photon Inc. & Paula Brion - Generate Power (Wild Pitch Mix - DJ Edit).wav | bass-lead, deep, dark, tztz, zanzara, aggressivo, female, shout |
+| H  | 1991/Photon Inc. & Paula Brion - Generate Power (Wild Pitch Mix - DJ Edit).wav | bass-lead, deep, dark, tztz, zanzara, aggressive, female, shout |
 | H  | 1991/v_Clivilles & Cole - A Deeper Love (A Deeper Feeling Mix).wav | anthem, female, energy, drama, shout, mainstream         |
 | T  | 1991/v_Coco Steel & Lovebomb - Feel It (Beatnik Mix).wav     | progressive, metal, empty, kick                          |
 | T  | 1991/v_Coco Steel & Lovebomb - Feel It (Bouncy Trip).wav     | progressive, ethereal, kick                              |
@@ -195,12 +200,12 @@
 | H  | 1991/v_Urban Soul - Alright (Club Mix).wav                   | D, bass, kick, male, Song, drama, strings, chic          |
 | H  | 1991/v_Urban Soul - Alright (Extended).wav                   | D, bass, kick, male, Song, drama, strings, chic          |
 | D  | 1991/v_Urban Soul - Alright (Super Dub Mix).wav              | deep, bass, dark, kick, steady, volo                     |
-| D  | 1992/Azucar - Feel The Love (Joey Negro Club Mix).wav        |                                                          |
+| D  | 1992/Azucar - Feel The Love (Joey Negro Club Mix).wav        | soft, gay, bass, pa-pa, voices, silky                    |
 | S  | 1992/Code 718 - Equinox (Heavenly Club Mix).wav              | piano, paradise, soft, gay, bass-lead, [sueno]           |
-| S  | 1992/Code 718 - Equinox (The Original Concept).wav           | paradise, bass-lead, open, melody               |
-| H  | 1992/Djaimin - Give You (Djaimin Zanz Mix).wav               | bass-lead, female, energy, drama, Song             |
-| H  | 1992/Djaimin - Give You (Hype Groove Mix).wav                | 1/2, kick, volo, strings, blip, sax                  |
-| H  | 1992/Dreamer G - I Got That Feeling (Original Mix).wav       | male, song, kick, tztz, tight, strings, silky, getdown |
+| S  | 1992/Code 718 - Equinox (The Original Concept).wav           | paradise, bass-lead, open, melody                        |
+| H  | 1992/Djaimin - Give You (Djaimin Zanz Mix).wav               | bass-lead, female, energy, drama, Song                   |
+| H  | 1992/Djaimin - Give You (Hype Groove Mix).wav                | 1/2, kick, volo, strings, blip, sax                      |
+| H  | 1992/Dreamer G - I Got That Feeling (Original Mix).wav       | male, song, kick, tztz, tight, strings, silky, getdown   |
 | H  | 1992/Johnnydangerous - Beat That Bitch (Problem #13).wav     | male, loopy, unzunz, steady, scary                       |
 | D  | 1992/Joint Venture - Master Blaster (Turn It Up) (Tha Wild Pitch mix).wav | bass-lead, rough, moody, aggressive, female, [BJaxx]     |
 | H  | 1992/Karen Pollack - You Cant Touch Me (Fire Island Sultry Dub).wav | kick, female, train, tight, bass-lead, deep              |
@@ -219,7 +224,7 @@
 |    | 1992/v_Aural - Desire (Fabrice Africa Pain).wav              | beats, tribal, bass-lead                                 |
 | D  | 1992/v_Aural - Desire (Martini Club Mix).wav                 | female, paradise, bass-lead, space, upbeat, kick, strings |
 | D  | 1992/v_Bas Noir - Shoebdoo (Kerri's Classic Bonus Beats).wav | kick, tztz, empty, organ, bass, background               |
-| D  | 1992/v_Capricorn - Love In London (2001 Mix).wav             | kick, tztz, space, strings, paradise, flute, ethereal    |
+| D  | 1992/v_Capricorn - Love In London (2001 Mix).wav             | kick, tztz,  space, strings, paradise, flute, ethereal   |
 | D  | 1992/v_Capricorn - Love In London (Piano Mix).wav            | bass, kick, volo, paradise, piano, flute                 |
 | H  | 1992/v_Capricorn - Taste.wav                                 | fast, kick, piano, aggressive, rough                     |
 | H  | 1992/v_Chez Damier - Can You Feel It (A 2 1:2 Step).wav      | S, bass, cocktail, piano, xylo, paradise                 |
@@ -276,20 +281,20 @@
 | D  | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Instrumental).wav | bass-lead, triangle, soft                                |
 | D  | 1992/v_The Principle Theory ft Coco Cocktail - Bitch (Sexy Bitch Mix).wav | female, spoken, bitch, bass-lead, triangle               |
 | H  | 1992/v_The Principle Theory ft Coco Cocktail - Voyeur (Bonus Track).wav | progressive, bass, silly, blip                           |
-|    | 1993/4Th Measure Men - 4 You.wav                             |                                                          |
-|    | 1993/Black Rascals - Blaze Theme Track.wav                   |                                                          |
-|    | 1993/Blackman - Beat That Bitch With A Bat.wav               |                                                          |
-|    | 1993/Daphne - When You Love Someone (Groove mix).wav         |                                                          |
-|    | 1993/Ed The Red Goltsman ft Nelson Paradise Roman - Nuclear Sun.wav |                                                          |
-|    | 1993/Fluke - Slid (Modwheel Remix).wav                       |                                                          |
-|    | 1993/Gerideau - Take A Stand For Love (Blaze Shelter Mix).wav |                                                          |
-|    | 1993/Hardrive - Deep Inside.wav                              |                                                          |
-|    | 1993/Hardrive - Just Believe (Original Mix).wav              |                                                          |
-|    | 1993/Kiwi Dreams - Eye 2 Eye (Vocal Mix).wav                 |                                                          |
-|    | 1993/Liberty City - Some Lovin (Original Mix).wav            |                                                          |
-|    | 1993/Slam - Positive Education (Original Mix).wav            |                                                          |
-|    | 1993/The Daou - Give Myself To You (Grand Ballroom Mix).wav  |                                                          |
-|    | 1993/The Project ft Gerideau - Bring It Back 2 Luv (Radio Edit).wav |                                                          |
+| H  | 1993/4Th Measure Men - 4 You.wav                             | D, dark, trumpet, bass-lead, dirty, female               |
+| H  | 1993/Black Rascals - Blaze Theme Track.wav                   | kick, bass, deep, dark, steady                           |
+| H  | 1993/Blackman - Beat That Bitch With A Bat.wav               | scary, tztz, male, spoken, loopy, empty                  |
+| D  | 1993/Daphne - When You Love Someone (Groove mix).wav         | S, triangle, soft, bells, gay, melody, drums             |
+| D  | 1993/Ed The Red Goltsman ft Nelson Paradise Roman - Nuclear Sun.wav | kick, open, warm, trip, horns, brass, drama              |
+| H  | 1993/Fluke - Slid (Modwheel Remix).wav                       | trip, male, female, ethereal, kick, moderate             |
+| S  | 1993/Gerideau - Take A Stand For Love (Blaze Shelter Mix).wav | male, Song, kick, drama, bass, piano, melody             |
+| H  | 1993/Hardrive - Deep Inside.wav                              | female, kick, steady, hypnotic, tight, tztz, keys, bass  |
+| H  | 1993/Hardrive - Just Believe (Original Mix).wav              | bass-lead, slow, brass, female, dull                     |
+| H  | 1993/Kiwi Dreams - Eye 2 Eye (Vocal Mix).wav                 | rock, guitar, male, song, bass, upbeat                   |
+| H  | 1993/Liberty City - Some Lovin (Original Mix).wav            | kick, dark, tubes, tight, tztz, female, loopy, song, bass |
+| T  | 1993/Slam - Positive Education (Original Mix).wav            | kick, trip, space, pa-pa, tztz, male, tubes, dark        |
+| hH | 1993/The Daou - Give Myself To You (Grand Ballroom Mix).wav  | 1/2, female, tztz, deep, dark, ethereal, trancey, bass   |
+| S  | 1993/The Project ft Gerideau - Bring It Back 2 Luv (Radio Edit).wav | H, happy, male, Song, bass, piano                        |
 |    | 1993/v_Caucasian Boy - Honeydip (Double Dipped Dub Mix).wav  |                                                          |
 |    | 1993/v_Caucasian Boy - Honeydip (Downtown Lix Mix).wav       |                                                          |
 |    | 1993/v_Caucasian Boy - Northern Lights (Old Skool Re-edit).wav |                                                          |
@@ -620,16 +625,16 @@
 |    | 1996/v_The Beloved - Satellite (Transmission Dub).wav        |                                                          |
 |    | 1996/v_The Heartists - Belo Horizonti (Brix Edit).wav        |                                                          |
 |    | 1996/v_The Heartists - Belo Horizonti (Dub-Duo Samba Vibe).wav |                                                          |
-| D  | 1997/A Lil' Louis Painting - Stormy Black (Do Be Do Mix).wav | dark, city, kick, empty, male, steady                    |
-| H  | 1997/Black Magic - Dance (Do That Thing) (MAW Mix).wav       | female, song, 1/2, empty, slow, queen                    |
+| D  | 1997/A Lil' Louis Painting - Stormy Black (Do Be Do Mix).wav | dark, city, kick, tztz, empty, male, steady              |
+| H  | 1997/Black Magic - Dance (Do That Thing) (MAW Mix).wav       | female, song, unzunz, empty, upbeat, [Earth People]      |
 | H  | 1997/Daft Punk - Around The World.wav                        | anthem, kick, bass-lead, loopy, blip, french             |
-|    | 1997/Danny Tenaglia - Elements (Original Mix).wav            |                                                          |
-|    | 1997/Danny Tenaglia - Elements (The Dtour).wav               | steady, dark, bass, male, spoken                         |
+| H  | 1997/Danny Tenaglia - Elements (Original Mix).wav            | T, dark, drums, kick, male, spoken, complicated, bass    |
+| H  | 1997/Danny Tenaglia - Elements (The Dtour).wav               | T, kick, drums, dark, bass, male, spoken, complicated    |
 | H  | 1997/Malena Perez - Cool Lil Thing (Alix Alvarez dub).wav    | bass, slow, lounge, gay, female, zanzara                 |
 | S  | 1997/Masters at Work - To Be in Love (MAW Club Edit).wav     | female, song, bass, melody, unzunz                       |
 | Tr | 1997/Nalin & Kane - Beachball (Extended Version).wav         | female                                                   |
-|    | 1997/Paul Jacobs - Happy Days (95 North Dub).wav             |                                                          |
-|    | 1997/Rick Wilhite - Drum Patterns Memories (Moodymann Unreleased Remix).wav |                                                          |
+| H  | 1997/Paul Jacobs - Happy Days (95 North Dub).wav             | kick, uplifting, loopy, female, tight, [M?}              |
+| F  | 1997/Rick Wilhite - Drum Patterns Memories (Moodymann Unreleased Remix).wav | tribal, drums, funkyG, silly, piano, drama, moody        |
 | S  | 1997/Roy Davis Jr ft Peven Everett - Gabriel (Live Garage).wav | male, song, 1/2, trumpet, jazzy                          |
 | H  | 1997/Ultra Nate - Free (Mood II Swing Extended Vocal Mix).wav | anthem, female, song, uplifting                          |
 | H  | 1997/Urban Soul - Show Me (Def Club Mix).wav                 | energy, tztz, kick, male, song                           |
@@ -648,44 +653,44 @@
 | H  | 1997/v_Cesaria Evoria - Sangue De Beirona (Remix de Francois K).wav | tztz, female, song, latin, bass-lead                     |
 | hH | 1997/v_Chiapet - Tick Tock (Apocalypse Now Mix).wav          | elicopter, kick, steady, empty, tribal                   |
 | hH | 1997/v_Chiapet - Tick Tock (War of the Worlds Mix).wav       | tribal, kick, empty, elicopter, steady                   |
-|    | 1997/v_D.Funk Era - ‎Spring.wav                               |                                                          |
-|    | 1997/v_D.Funk Era - ‎The Goddess.wav                          |                                                          |
+| H  | 1997/v_D.Funk Era - ‎Spring.wav                               | F, pa-pa, kick, tztz, bass, silly, loopy, moderate       |
+| F  | 1997/v_D.Funk Era - ‎The Goddess.wav                          | bass, organ, melody, piano, upbeat                       |
 | H  | 1997/v_India - La India Con Lavoe (Remixed by MAW).wav       | latin, tztz, drums, energy, bass, voices                 |
 | S  | 1997/v_India - To Be In Love (Remixed by MAW).wav            | song, female, bass-lead, kick, gentle, xylo              |
 | D  | 1997/v_Jaydee - Plastic Dreams (Angel's Dream Mix).wav       | 1/2, empty, keys, drums                                  |
 | D  | 1997/v_Jaydee - Plastic Dreams (Morales Club Mix).wav        | kick, energy, train, horns, tztz                         |
 | D  | 1997/v_Jaydee - Plastic Dreams (Murk Funky Green Dub).wav    | 1/2, kick, trip, electro, deep                           |
 | D  | 1997/v_Jaydee - Plastic Dreams (Original 12" Mix).wav        | 1/2, trip, deep, space, horns                            |
-| H  | 1997/v_Jestofunk - Stellar Funk (Cosmo Latino rmx).wav       | bass, female, song, upbeat                               |
-|    | 1997/v_Jestofunk - Stellar Funk (Funk'n'Space Vocal mix).wav |                                                          |
-|    | 1997/v_Jestofunk - Stellar Funk (Lazzaro Shoes rmx).wav      |                                                          |
-|    | 1997/v_Jestofunk - Stellar Funk (Original Album).wav         |                                                          |
-|    | 1997/v_Jestofunk - Stellar Funk (Perquotilamir rmx).wav      |                                                          |
-|    | 1997/v_Jestofunk - Stellar Funk (T.World Zapp rmx).wav       |                                                          |
-|    | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Accappella).wav |                                                          |
-|    | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Philly World Mix).wav |                                                          |
-|    | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Sessomatto Dub).wav |                                                          |
-|    | 1997/v_Joey Negro ft Taka Boom - New York City Woman.wav     |                                                          |
-|    | 1997/v_Kings Of Tomorrow - Czar.wav                          |                                                          |
-|    | 1997/v_Kings Of Tomorrow - Set My Spirit Free.wav            |                                                          |
-|    | 1997/v_Lovebeads - This Is The Only Way (Mount Rushmore's Superfly Mix).wav |                                                          |
-|    | 1997/v_MAW - To Be In Love (MAW Dub).wav                     |                                                          |
-|    | 1997/v_MAW - To Be In Love (The Black Science Swingtime Mastadub).wav |                                                          |
-|    | 1997/v_MAW - To Be In Love (The Tribal Science Xtra Kut).wav |                                                          |
-|    | 1997/v_Sex-o-Sonique - I Thought It Was You (12 Inch Mix).wav |                                                          |
-|    | 1997/v_Soul Grabber Pt.3 - 1978.wav                          |                                                          |
-|    | 1997/v_Soul Grabber Pt.3 - Disco 12.wav                      |                                                          |
-|    | 1997/v_The Brand New Heavies - Shelter (Dan's Groove Part 1).wav |                                                          |
-|    | 1997/v_The Brand New Heavies - Shelter (Harvey's Disco Stomp).wav |                                                          |
-|    | 1997/v_The Brand New Heavies - Shelter (Jan's Big Funk ft Rodney P.).wav |                                                          |
-|    | 1997/v_The Brand New Heavies - Shelter (Spike's Remix).wav   |                                                          |
-|    | 1997/v_The Deep - Dom Dom Jump (Original Mix).wav            |                                                          |
-|    | 1997/v_The Deep - Dom Dom Jump (Sax Mix).wav                 |                                                          |
-|    | 1997/v_The Ladbroke Groovers - Seasons Of Time (Red Zone Mix).wav |                                                          |
-|    | 1997/v_The Ladbroke Groovers - Seasons Of Time (Spaced Out Beats).wav |                                                          |
-|    | 1997/v_Urban Soul - Show Me, Part II (Def Dubapella).wav     |                                                          |
-|    | 1997/v_Urban Soul - Show Me, Part II (Him & Her Mix).wav     |                                                          |
-|    | 1997/v_Urban Soul - Show Me, Part II (Phillip and Danny's Twilo Edit).wav |                                                          |
+| F  | 1997/v_Jestofunk - Stellar Funk (Cosmo Latino rmx).wav       | H, bass, female, Song, upbeat, drama, loud               |
+| F  | 1997/v_Jestofunk - Stellar Funk (Funk'n'Space Vocal mix).wav | dark, bass-lead, female, male, moody, unzunz, tubes      |
+|    | 1997/v_Jestofunk - Stellar Funk (Lazzaro Shoes rmx).wav      | dark, bass-lead, drums                                   |
+|    | 1997/v_Jestofunk - Stellar Funk (Original Album).wav         | dark, bass-lead, drums                                   |
+|    | 1997/v_Jestofunk - Stellar Funk (Perquotilamir rmx).wav      | tribal, drums                                            |
+| H  | 1997/v_Jestofunk - Stellar Funk (T.World Zapp rmx).wav       | F, unzunz, female, Song, pa-pa, drama, loud              |
+|    | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Accappella).wav | female, shout                                            |
+| H  | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Philly World Mix).wav | F, tztz, kick, bass, female, shout, trumpet, pa-pa, melody, fast |
+| H  | 1997/v_Joey Negro ft Taka Boom - Can't Get High Without You (Sessomatto Dub).wav | kick, tztz, bass, tight, fast, female, melody, pa-pa     |
+| F  | 1997/v_Joey Negro ft Taka Boom - New York City Woman.wav     | slow, 70s, sexy, paradise, gay, bass-lead, city          |
+| T  | 1997/v_Kings Of Tomorrow - Czar.wav                          | kick, minimal, industrial                                |
+| H  | 1997/v_Kings Of Tomorrow - Set My Spirit Free.wav            | S, female, loopy, paradise, song, tight, mellow          |
+| H  | 1997/v_Lovebeads - This Is The Only Way (Mount Rushmore's Superfly Mix).wav | energy, male, spoken, pa-pa, organ, sexy                 |
+| S  | 1997/v_MAW - To Be In Love (MAW Dub).wav                     | kick, slow, female, complicated, voices, lounge, [M?]    |
+| H  | 1997/v_MAW - To Be In Love (The Black Science Swingtime Mastadub).wav | bass-lead, female, energy, voices, zanzara, dark         |
+| H  | 1997/v_MAW - To Be In Love (The Tribal Science Xtra Kut).wav | ethereal, bass, chirps, female, energy                   |
+| H  | 1997/v_Sex-o-Sonique - I Thought It Was You (12 Inch Mix).wav | kick, tztz, tight, choir, spoken, strings, bass, volo    |
+| F  | 1997/v_Soul Grabber Pt.3 - 1978.wav                          | disco, tztz, triangle, bass, melody, male                |
+| H  | 1997/v_Soul Grabber Pt.3 - Disco 12.wav                      | chirps, tztz, bass-lead, tight, kick, trip, hi-energy    |
+| S  | 1997/v_The Brand New Heavies - Shelter (Dan's Groove Part 1).wav | male, Song, upbeat, bass, melody, trumpet, happy         |
+| F  | 1997/v_The Brand New Heavies - Shelter (Harvey's Disco Stomp).wav | bass-lead, funkyG, tiro, male                            |
+| B  | 1997/v_The Brand New Heavies - Shelter (Jan's Big Funk ft Rodney P.).wav | male, Song, dirty, hiphop                                |
+| B  | 1997/v_The Brand New Heavies - Shelter (Spike's Remix).wav   | male, Song, 70s, melody                                  |
+| D  | 1997/v_The Deep - Dom Dom Jump (Original Mix).wav            | tribal, drums, vocalizzi, tztz, loopy, kick, steady      |
+| D  | 1997/v_The Deep - Dom Dom Jump (Sax Mix).wav                 | tribal, drums, vocalizzi, tztz, loopy, kick, steady, sax |
+| D  | 1997/v_The Ladbroke Groovers - Seasons Of Time (Red Zone Mix).wav | kick, tight, trip, high-pitch, hipnotic, tztz, complicated |
+| D  | 1997/v_The Ladbroke Groovers - Seasons Of Time (Spaced Out Beats).wav | tztz, kick, space, tight, tiro, tubes, effects           |
+| H  | 1997/v_Urban Soul - Show Me, Part II (Def Dubapella).wav     | male, Song, shout, kick, steady, epic                    |
+| S  | 1997/v_Urban Soul - Show Me, Part II (Him & Her Mix).wav     | H, kick, male, female, Song, drama, bass, energy, organ, shout |
+| S  | 1997/v_Urban Soul - Show Me, Part II (Phillip and Danny's Twilo Edit).wav | H, getdown, pa-pa, male, chic, vocalizzi, kick           |
 | D  | 1998/Basil - City Streets (Kerri Chandler Kaoz On City Streets).wav | male, spoken, strings, warm, soft, kick, bass            |
 | H  | 1998/Danny Tenaglia - The Better Days.wav                    | D, male, spoken, space, deep, bass-lead, kick, keys      |
 | H  | 1998/Danny Tenaglia + Celeda - Music Is The Answer (Original Mix).wav | female, anthem, horns, loud, bouncy, bass                |
@@ -895,7 +900,7 @@
 | hH | 1999/v_Jamiroquai - Supersonic (Sharp Razor Remix).wav       | kick, aggressive, male, tight, song                      |
 | F  | 1999/v_Jamiroquai - Supersonic.wav                           | B, bass-lead, deep, male, song, ethnic, trip             |
 | H  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (99 Prayer Remix).wav | S, happy, choir, song, afro, bass, kick, chirps          |
-| H  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (99 Prayer Remix).wav | choir, voices, song, happy, ducks, strings, bass, tztz   |
+| H  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (99 Prayer Remix).wav | choir, voices, song, happy, pa-pa, strings, bass, tztz   |
 | S  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (Acroostic Mix).wav |                                                          |
 | H  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (La Oracion Remix).wav | kick, upbeat, funkyG, tztz, voices, strings, warm        |
 | H  | 1999/v_Jephte' Guillaume - Priye'-a (The Prayer) (Le 1978 Remix).wav | choir, bass, deep, afro, silly, blip, tztz               |
@@ -937,12 +942,12 @@
 | H  | 1999/v_Moltosugo - Activate (Tommy Vee In The Mix).wav       | sax, robot, loopy, cheesy, kick, bass-lead, train        |
 | H  | 1999/v_Mongobonix - Mas-Pito.wav                             | sax, train, drama, epic, trip, bass                      |
 | D  | 1999/v_Mongobonix - So Deep.wav                              | H, male, hypnotic, dark, vocalizzi, space                |
-| H  | 1999/v_NSK Tune - Out Of My Mind (NR Main Dub).wav           | loud, energy, opaque, bass, epic, horns??                |
-| H  | 1999/v_NSK Tune - Out Of My Mind (NR Main Mix).wav           | bass, epic, male, song, energy, horns??                  |
+| H  | 1999/v_NSK Tune - Out Of My Mind (NR Main Dub).wav           | loud, energy, opaque, bass, epic, tubes                  |
+| H  | 1999/v_NSK Tune - Out Of My Mind (NR Main Mix).wav           | bass, epic, male, song, energy, tubes                    |
 | H  | 1999/v_NSK Tune - Out Of My Mind (Out Of My House).wav       | silly, happy, unzunz, funkyG                             |
 | H  | 1999/v_NSK Tune - Out Of My Mind (SK Train Mix).wav          | male, song, silly, funkyG, bass                          |
-| H  | 1999/v_Pete Heller - Big Love (Pete Heller's Original Mix).wav | epic, ducks, volo, female, bass, kick                    |
-| H  | 1999/v_Pete Heller - Big Love (The Dronez Dub).wav           | ducks, horns, tztz, female, anthem, bass                 |
+| H  | 1999/v_Pete Heller - Big Love (Pete Heller's Original Mix).wav | epic, pa-pa, volo, female, bass, kick                    |
+| H  | 1999/v_Pete Heller - Big Love (The Dronez Dub).wav           | pa-pa, horns, tztz, female, anthem, bass                 |
 | T  | 1999/v_Robbie Rivera - Funky Mama.wav                        | kick, dark, aggressive, horns, tribal                    |
 | T  | 1999/v_Robbie Rivera - This is Juicy.wav                     | aggressive, scary, kick, rough, rock, train              |
 | H  | 1999/v_Session #9 - Welcome To The Magic Sessions (Choo-Choo's Deep In Jersey Remix Part #1).wav | dark, bouncy, bass-lead, effects, space                  |
@@ -1064,7 +1069,7 @@
 | H  | 2000/v_Mutiny UK - Secrets (Secrets Dub).wav                 | tztz, bass-lead, deep, kick, female, train               |
 | S  | 2000/v_Romain & Danny Krivit - Philly's Groove.wav           | silly, cocktail, unzunz, brass, sax                      |
 | TH | 2000/v_Rui Da Silva - Touch Me (Original 12" Mix).wav        | female, trancey, progressive, hi-pitch                   |
-| D  | 2000/v_Rui Da Silva - Touch Me (Peace Division Mix).wav      | dark, paura, kick, tight, bass-lead, empty, tiro         |
+| D  | 2000/v_Rui Da Silva - Touch Me (Peace Division Mix).wav      | dark, scary, kick, tight, bass-lead, empty, tiro         |
 |    | 2000/v_Simon - Door Burst.wav                                | effects                                                  |
 | D  | 2000/v_Simon - Free At Last (Inst).wav                       | bass-lead, tztz, volo, effects, minimal                  |
 | D  | 2000/v_Simon - Free At Last (Vocal).wav                      | H, bass-lead, tztz, volo, effects, minimal, male         |
@@ -1072,19 +1077,19 @@
 |    | 2000/v_Simon - White Wash.wav                                |                                                          |
 | H  | 2000/v_Snowboy - Casa Forte (Joe Claussel's Spiritual Life Samba Remix).wav | D, train, hi-energy, female, samba, epic, bass           |
 | H  | 2000/v_Soul Providers - Rise (Bini+Martini Mix).wav          | female, song, uplifting, bass-lead, tztz, bouncy         |
-| T  | 2000/v_Soul Providers - Rise (S. Greppi's Dark Vocal Mix).wav | dark, paura, deep, female, song, rough, kick             |
+| T  | 2000/v_Soul Providers - Rise (S. Greppi's Dark Vocal Mix).wav | dark, scary, deep, female, song, rough, kick             |
 | D  | 2000/v_Taz - Whistle (Dj Simi & Master Kev Dub).wav          | bass-lead, dark, tiro, kick, ethereal, trumpet           |
 | D  | 2000/v_Taz - Whistle (Original).wav                          | melody, dirty, ethereal, trip, kick, chic                |
 | hH | 2000/v_The Goodfellas - Soul Heaven (Dave Clarke Remix).wav  | aggressive, train, female, song                          |
 | H  | 2000/v_The Goodfellas - Soul Heaven (Original Vocal Mix).wav | S, female, Song, soul, uplifting, tztz, bass             |
-| H  | 2000/v_Toni Braxton - Spanish Guitar (Joe Claussel Dub).wav  | space, bass-lead, voices, open, brass, ethreal, gentle, tiro |
-| S  | 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (95 North Classic Remix).wav | female, song, ducks, unzunz, choir, dull, M??            |
-| S  | 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (Original Friday Night Live Vocal Mix).wav | female, Song, moving, strings, uplifting, gentle         |
-| S  | 2001/Eminence - Give It Up (Clepto's Classic Vocal Mix).wav  | female, song, chic, bass, hi-pitch??, M??                |
-| H  | 2001/Harry 'Choo Choo' Romero - Tania (Original Mix).wav     | steady, hypnotic, minimal, bass, tztz, hi-pitch, M??     |
+| H  | 2000/v_Toni Braxton - Spanish Guitar (Joe Claussel Dub).wav  | space, bass-lead, voices, open, brass, ethereal, gentle, tiro |
+| H  | 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (95 North Classic Remix).wav | S, female, song, pa-pa, unzunz, choir, dull              |
+| S  | 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (Original Friday Night Live Vocal Mix).wav | female, Song, moving, strings, uplifting, gentle, piano  |
+| S  | 2001/Eminence - Give It Up (Clepto's Classic Vocal Mix).wav  | female, song, energy, kick, bass, sexy, uplifting        |
+| H  | 2001/Harry 'Choo Choo' Romero - Tania (Original Mix).wav     | steady, hypnotic, minimal, bass, tztz, hi-pitch, pa-pa   |
+|    | 2001/iiO - Rapture (Deep Dish Space Remix).wav               |                                                          |
 | D  | 2001/Jamico ft Jackie Cohen - Sometimes (Angel Moraes Deep & Dark Dub).wav | bass-lead, tztz, trip, tiro, piano                       |
-|    | 2001/KC Flightt & Funky Junction - Voices (Lost Found Original Dub).wav |                                                          |
-| D  | 2001/KC Flightt vs Funky Junction - Voices (Pete Heller Main Mix).wav | kick, aggressive, voices, tiro, drums, volo, electro     |
+| TH | 2001/KC Flightt vs Funky Junction - Voices (Pete Heller Main Mix).wav | kick, aggressive, voices, train, drums, electro          |
 | H  | 2001/Kings of Tomorrow - Finally (Danny Tenaglia Dub).wav    | epic, voices, female, anthem, deep, kick                 |
 | H  | 2001/Kings of Tomorrow - Finally (Danny Tenaglia Vocal Club Mix).wav | bass-lead, female, Song, anthem, epic                    |
 | H  | 2001/Kings of Tomorrow - Finally (Original Extended Mix).wav | bass-lead, female, Song, tight, steady, anthem           |
@@ -1094,16 +1099,15 @@
 | H  | 2001/Rhythmcentric - New School Fusion Pt. 1 (Basement Boys Drum Dub).wav | drums, afro, kick, tiro, male, tztz, loopy               |
 |    | 2001/Slam - Lifetimes.wav                                    |                                                          |
 | H  | 2001/Soul Providers - Rise (Ricky Montanari & Stefano Greppi Dark Vocal Mix).wav | dark, deep, slow, female, song, bass, scary              |
-| D  | 2001/T-Kolai - 9.11.wav                                      | trip, moving, strings, melody, tztz, bass                |
-| S  | 2001/T-Kolai - Exodus (Andalu Vocal Mix).wav                 | afro, female, choir, sax, brass, gentle, happy, volo     |
-| H  | 2001/Una Mas - I Will Follow You (Full Intention Club Mix).wav | bouncy, tztz, hi-energy, female, shout, 70s              |
-|    | 2001/iiO - Rapture (Deep Dish Space Remix).wav               |                                                          |
+| D  | 2001/T-Kolai - 9.11.wav                                      | trip, moving, strings, melody, tztz, bass, kick          |
+| S  | 2001/T-Kolai - Exodus (Andalu Vocal Mix).wav                 | afro, female, choir, sax, brass, gentle, happy, open     |
+| H  | 2001/Una Mas - I Will Follow You (Full Intention Club Mix).wav | bouncy, tztz, hi-energy, female, shout, 70s, kick        |
 | H  | 2001/v_Alistair Colling - Cafe Sol (Para Carolina) (Mutiny's "Lost Without You" Remix).wav | melody, unzunz, female, song, drama                      |
 | H  | 2001/v_Alistair Colling - Cafe Sol (Para Carolina) (Mutiny's NY Satellite Dub).wav | aggressive, bass-lead, tztz, zanzara, tiro, tight        |
-| F  | 2001/v_Alistair Colling - Cafe Sol (Para Carolina) (Original).wav | latin, paradise, trip, melody, bass-lead, no-kick        |
+| F  | 2001/v_Alistair Colling - Cafe Sol (Para Carolina) (Original).wav | latin, paradise, trip, melody, bass-lead                 |
 | H  | 2001/v_Dajae & Full Intention - What Do You Want?.wav        | kick, female, song, unzunz, filler, bass                 |
-| H  | 2001/v_Deepswing - In The Music (Original Version).wav       | sax, tztz, male, happy, energy, getdown                  |
-| hH | 2001/v_Deepswing - In The Music (Superchumbo's High Octane Mix).wav | T, aggressive, robot, drums, scary, fast                 |
+| H  | 2001/v_Deepswing - In The Music (Original Version).wav       | sax, tztz, male, happy, energy, getdown, kick            |
+| hH | 2001/v_Deepswing - In The Music (Superchumbo's High Octane Mix).wav | T, kick, aggressive, robot, drums, scary, fast           |
 | E  | 2001/v_Depeche Mode - Dirt.wav                               | rock                                                     |
 | T  | 2001/v_Depeche Mode - I Feel Loved (Chamber's Remix).wav     | ambient, male, song                                      |
 | T  | 2001/v_Depeche Mode - I Feel Loved (Danny Tenaglia's Labor of Love Edit).wav | bass-lead, trip, male, Song, xylo, electro               |
@@ -1127,7 +1131,7 @@
 | H  | 2001/v_Dj Spiller - Groovejet (If This Ain't Love) (Spiller's Extended Vocal Mix).wav | S, funkyG, female, song, soft, bells, chic               |
 | H  | 2001/v_Dj Spiller - Groovejet (If This Ain't Love) (Spiller's Radio Edit).wav | S, funkyG, female, song, soft, bells, chic               |
 | H  | 2001/v_Dr. Kucho! - Belmondo Rulez 2.0 (Original Mix).wav    | cheesy, drama, piano, strings, unzunz                    |
-| H  | 2001/v_Dr. Kucho! - Belmondo Rulez 2.0 (Reprise).wav         | cheesy, drama, piano, strings, uplifting, no-kick        |
+| H  | 2001/v_Dr. Kucho! - Belmondo Rulez 2.0 (Reprise).wav         | cheesy, drama, piano, strings, uplifting                 |
 | D  | 2001/v_Ernest Saint Laurent - Clumsy Lobster.wav             | trip, volo, effects, space, electro, blip, deep, progressive |
 | F  | 2001/v_Eternal Sun - Growing Up (Album Instrumental).wav     | funkyG, jazzy, bass, upbeat, melody                      |
 | D  | 2001/v_Eternal Sun - Growing Up (Dub Mix).wav                | steady, tztz, keys, jazzy, trumpet, energy, bass         |
@@ -1150,7 +1154,7 @@
 | S  | 2001/v_Kim English - Been So Long (Wamdue Speakeasy Remix).wav | H, female, song, warm, kick, strings, open, ethereal     |
 | H  | 2001/v_Lil' Devious - Come Home (Agent Sumo Remix).wav       | tight, male, song, kick, bass-lead, chic                 |
 | hH | 2001/v_Lil' Devious - Come Home (Dave Clarke Remix).wav      | male, song                                               |
-| H  | 2001/v_Little Louie Vega ft Blaze - Elements Of Life (Groovylizer's Magic Intervention Mix).wav | S, 70s, choir, male, Song, drama, melody, M??, [Pastaboys] |
+| H  | 2001/v_Little Louie Vega ft Blaze - Elements Of Life (Groovylizer's Magic Intervention Mix).wav | S, 70s, choir, male, Song, drama, melody, funkyG, [Pastaboys] |
 | H  | 2001/v_Little Louie Vega ft Blaze - Elements Of Life (Groovylizer's Magic Orchestral Dub).wav | 70s, hi-pitch, melody, drama, strings, unzunz            |
 | F  | 2001/v_MAW - Unreleased Project (Clouds).wav                 | funkyG, melody, getdown, lounge                          |
 | F  | 2001/v_MAW - Unreleased Project (MAW's Theme).wav            | piano, deep, chic, bass-lead, melody, jazzy, sax         |
@@ -1194,110 +1198,110 @@
 | H  | 2001/v_Todd Terry - Raining.wav                              | ethereal, tztz, kick, tight, steady, bass, female, [MAW] |
 | H  | 2001/v_Urban Magic - Dreams (For The Heads).wav              | 70s, hi-pitch, melody, strings, drama, unzunz, funkyG    |
 | H  | 2001/v_Urban Magic - Dreams (Original Mix).wav               | kick, tztz, melody, drama, strings, funkyG, hi-pitch, 70s |
-| H  | 2001/v_Urban Magic - Dreams (Wet Dreams).wav                 | unzunz, upbeat, happy, 70s, strings,                     |
-|    | 2002/Dennis Ferrer - Reach 4 Freedom (Dennis Ferrer's Vocal Mix).wav |                                                          |
-|    | 2002/Dj Gregory - Tropical Soundclash.wav                    |                                                          |
-|    | 2002/Julie McKnight - Home (Knee Deep Club Mix).wav          |                                                          |
-|    | 2002/Louie Vega & Jay Sinister ft Julie McKnight - Diamond Life.wav |                                                          |
-|    | 2002/Peven Everett - I Can't Believe I Loved Her (Main Mix).wav |                                                          |
-|    | 2002/Shaun Escoffery - Days Like This (Dj Spinna & Ticklah Club Mix).wav |                                                          |
-|    | 2002/v_Africanism - Balearic (Dub).wav                       |                                                          |
-|    | 2002/v_Africanism - Balearic (Main Mix).wav                  |                                                          |
-|    | 2002/v_Automagic ft Nashom - I'll Be Here (Morales' Dark & Lovely Mix).wav |                                                          |
-|    | 2002/v_Automagic ft Nashom - I'll Be Here (The Automagic Original).wav |                                                          |
-|    | 2002/v_Bent - Magic Love (Ashley Beedle's Black Magic Vocal Remix).wav |                                                          |
-|    | 2002/v_C&M Productions - True House (More Filter Mix).wav    |                                                          |
-|    | 2002/v_Chris Harris - Heeby Jeeby.wav                        |                                                          |
-|    | 2002/v_Chris Harris - Scheme Swing.wav                       |                                                          |
-|    | 2002/v_Colorsound - Fly With Me (Ashley Beedle's Air America Vocal).wav |                                                          |
-|    | 2002/v_Colorsound - Fly With Me (Main Mix).wav               |                                                          |
-|    | 2002/v_Cosmos - Take Me With You (Instrumental Club Mix).wav |                                                          |
-|    | 2002/v_Cosmos - Take Me With You (Vocal Club Mix).wav        |                                                          |
-|    | 2002/v_David Guetta - Love, Don't Let Me Go (1987 Rister Remix).wav |                                                          |
-|    | 2002/v_David Guetta - Love, Don't Let Me Go (House Remix).wav |                                                          |
-|    | 2002/v_David Guetta - Love, Don't Let Me Go (Main Mix).wav   |                                                          |
-|    | 2002/v_David Guetta - Love, Don't Let Me Go (Scream Mix).wav |                                                          |
-|    | 2002/v_Dennis DeSantis - Braining.wav                        |                                                          |
-|    | 2002/v_Dennis DeSantis - Clock Wise.wav                      |                                                          |
-|    | 2002/v_Dennis DeSantis - Hiatus.wav                          |                                                          |
-|    | 2002/v_Dennis DeSantis - Shifted.wav                         |                                                          |
-|    | 2002/v_Dennis DeSantis - Sugar.wav                           |                                                          |
-|    | 2002/v_Dennis DeSantis - Thin Air.wav                        |                                                          |
-|    | 2002/v_Dennis DeSantis - Under The Wire.wav                  |                                                          |
-|    | 2002/v_Dennis DeSantis - Variant.wav                         |                                                          |
-|    | 2002/v_Dj All*Star - Luxus (Orbital Mix).wav                 |                                                          |
-|    | 2002/v_Dj All*Star - Luxus (Original Mix).wav                |                                                          |
-|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Accapella).wav |                                                          |
-|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Chus Mucho Drums Mix).wav |                                                          |
-|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Circus Night Boncho Remix).wav |                                                          |
-|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (De Poniente Mix).wav |                                                          |
-|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Original Stereo Mix).wav |                                                          |
-|    | 2002/v_Dj Luccio - Brothers & Sisters (Extended Mix).wav     |                                                          |
-|    | 2002/v_Dj Luccio - Brothers & Sisters (Praxparis Mix).wav    |                                                          |
-|    | 2002/v_Hi Fi Mike - Stereo Flavas (Funk Corporation Remix).wav |                                                          |
-|    | 2002/v_Hi Fi Mike - Stereo Flavas (Lum's Original Flavas).wav |                                                          |
-|    | 2002/v_Hi Fi Mike - Stereo Flavas (Original Extended Mix).wav |                                                          |
-|    | 2002/v_Hi-Fi Mike - Stereo Flavas (Jamie Lewis Dub).wav      |                                                          |
-|    | 2002/v_Jamie Lewis ft Michael Watford - For You (Kings of Tomorrow and Haze Mix).wav |                                                          |
-|    | 2002/v_Jamie Lewis ft Michael Watford - For You (Reprise).wav |                                                          |
-|    | 2002/v_Joe Montana - City Of Angels (Dub Mix).wav            |                                                          |
-|    | 2002/v_John Ciafone - Everyday.wav                           |                                                          |
-|    | 2002/v_Josh One - Contemplation (Alex Neri Road Trip Remix).wav |                                                          |
-|    | 2002/v_Josh One - Contemplation (King Britt Funke Remix).wav |                                                          |
-|    | 2002/v_Kluster ft Ron Carroll - My Love (Dr. Kucho Weekend Remix).wav |                                                          |
-|    | 2002/v_Kluster ft Ron Carroll - My Love (Junior Jack Extra Filtered Dub).wav |                                                          |
-|    | 2002/v_Linda Clifford - Sunshine (Moulton Studio Dub).wav    |                                                          |
-|    | 2002/v_Linda Clifford - Sunshine (Respect To Linda Vocal Mix).wav |                                                          |
-|    | 2002/v_Lith De Lanka - Dreamoz (D'julz Mix).wav              |                                                          |
-|    | 2002/v_Mafikizolo - Loot (African Mix).wav                   |                                                          |
-|    | 2002/v_Mafikizolo - Loot (Instrumental).wav                  |                                                          |
-|    | 2002/v_Markus Enochson & E-Man - I Am The Road (MAW Mix).wav |                                                          |
-|    | 2002/v_Markus Enochson & E-Man - I Am The Road (The Elements Mix).wav |                                                          |
-|    | 2002/v_Michelle Weeks - The Light (A1).wav                   |                                                          |
-|    | 2002/v_Michelle Weeks - The Light (Jamie Lewis Dub Mix).wav  |                                                          |
-|    | 2002/v_Michelle Weeks - The Light (Jamie Lewis Main Mix).wav |                                                          |
-|    | 2002/v_Michelle Weeks - The Light (Tool Accapella).wav       |                                                          |
-|    | 2002/v_Mimosa - Wind Chime (Summer Mix).wav                  |                                                          |
-|    | 2002/v_Moby - Extreme Ways (Dj Tiesto's Instrumental Remix).wav |                                                          |
-|    | 2002/v_Moby - Extreme Ways (Dj Tiesto's Vocal Remix).wav     |                                                          |
-|    | 2002/v_Moby - Extreme Ways (John Creamer + Stephane K Remix).wav |                                                          |
-|    | 2002/v_Moby - Extreme Ways (Junior Jack's Club Mix).wav      |                                                          |
-|    | 2002/v_Octave One - Blackwater (Instrumental Mix).wav        |                                                          |
-|    | 2002/v_Octave One - Blackwater (Vocal Mix).wav               |                                                          |
-|    | 2002/v_Peven Everett - I Can't Believe I Loved Her (Calypso Mix).wav |                                                          |
-|    | 2002/v_Peven Everett - I Can't Believe I Loved Her (Main Mix).wav |                                                          |
-|    | 2002/v_Rise Ashen - Second Wind EP (Patrick Dream Sax Dub.wav |                                                          |
-|    | 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Club Dub).wav |                                                          |
-|    | 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Original Mix).wav |                                                          |
-|    | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (D-Wynn & KMS Deep Soul Mix).wav |                                                          |
-|    | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (King Britt Scuba Mix).wav |                                                          |
-|    | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (Original).wav |                                                          |
-|    | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Instrumental).wav |                                                          |
-|    | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Lee-Cabrera "Free America" Mix).wav |                                                          |
-|    | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Pasta Boys Dub).wav |                                                          |
-|    | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Pasta Boys Main Vocal Mix).wav |                                                          |
-|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Accappella A).wav  |                                                          |
-|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Accappella B).wav  |                                                          |
-|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Club Mix).wav      |                                                          |
-|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Joey Negro Unreleased Mix).wav |                                                          |
-|    | 2002/v_The Shadow Kings - Get Stronger (Troublemen remix A).wav |                                                          |
-|    | 2002/v_The Shadow Kings - Get Stronger (Troublemen remix B).wav |                                                          |
-|    | 2002/v_The Streets - Weak Become Heroes (Royksopp's Memory Lane Mix).wav |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (K1).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (K2).wav                   |                                                          |
+| H  | 2001/v_Urban Magic - Dreams (Wet Dreams).wav                 | unzunz, upbeat, happy, 70s, strings                      |
+| S  | 2002/Dennis Ferrer - Reach 4 Freedom (Dennis Ferrer's Vocal Mix).wav | drama, unzunz, male, song, guitarF, choir                |
+| H  | 2002/Dj Gregory - Tropical Soundclash.wav                    | anthem, unzunz, choir, guitarF, afro, zanzara            |
+| H  | 2002/Julie McKnight - Home (Knee Deep Club Mix).wav          | unzunz, female, Song, cocktail, moderate, piano, pa-pa   |
+| H  | 2002/Louie Vega & Jay Sinister ft Julie McKnight - Diamond Life.wav | bass, female, Song, elegant                              |
+| D  | 2002/Peven Everett - I Can't Believe I Loved Her (Main Mix).wav | S, melody, xylo, trumpet, male, song                     |
+| S  | 2002/Shaun Escoffery - Days Like This (Dj Spinna & Ticklah Club Mix).wav | male, Song, drama, slow, bass, choir, gay                |
+|    | 2002/v_Africanism - Balearic (Dub).wav                       | drums, beats                                             |
+| TH | 2002/v_Africanism - Balearic (Main Mix).wav                  | bass, electro, keys, space, empty, silly, blip           |
+| H  | 2002/v_Automagic ft Nashom - I'll Be Here (Morales' Dark & Lovely Mix).wav | bouncy, male, song, bass, tztz, tubes, effects, tight    |
+| H  | 2002/v_Automagic ft Nashom - I'll Be Here (The Automagic Original).wav | bass, deep, volo, male, song, slow, warm                 |
+| H  | 2002/v_Bent - Magic Love (Ashley Beedle's Black Magic Vocal Remix).wav | S, unzunz, female, Song, moving, strings                 |
+| H  | 2002/v_C&M Productions - True House (More Filter Mix).wav    | D, tight, empty, steady, kick, loopy, spoken             |
+| D  | 2002/v_Chris Harris - Heeby Jeeby.wav                        | bass-lead, kick, loopy, empty, effects, fast             |
+| D  | 2002/v_Chris Harris - Scheme Swing.wav                       | kick, bass, steady, voices, opaque, empty                |
+| H  | 2002/v_Colorsound - Fly With Me (Ashley Beedle's Air America Vocal).wav | kick, male, keys, trip, complicated, pa-pa               |
+| F  | 2002/v_Colorsound - Fly With Me (Main Mix).wav               | H, bass-lead, male, getdown                              |
+| H  | 2002/v_Cosmos - Take Me With You (Instrumental Club Mix).wav | ethereal, electro, keys, bass, kick, 80s                 |
+| H  | 2002/v_Cosmos - Take Me With You (Vocal Club Mix).wav        | male, electro, keys, bass, kick, silly                   |
+| H  | 2002/v_David Guetta - Love, Don't Let Me Go (1987 Rister Remix).wav | mainstream, choir, dark, loud, 80s                       |
+| H  | 2002/v_David Guetta - Love, Don't Let Me Go (House Remix).wav | kick, bass, happy, upbeat, circus, male                  |
+| H  | 2002/v_David Guetta - Love, Don't Let Me Go (Main Mix).wav   | choir, dark, epic, bass, kick, 80s, cheesy               |
+| H  | 2002/v_David Guetta - Love, Don't Let Me Go (Scream Mix).wav | choir, dark, epic, bass, kick, 80s, cheesy               |
+| T  | 2002/v_Dennis DeSantis - Braining.wav                        | tubes, dark, minimal, kick, bass-lead, industrial        |
+| T  | 2002/v_Dennis DeSantis - Clock Wise.wav                      | electro, filler, mild, effects, space                    |
+| T  | 2002/v_Dennis DeSantis - Hiatus.wav                          | kick, bass-lead, upbeat, electro, deep, dark, [Silicone] |
+| T  | 2002/v_Dennis DeSantis - Shifted.wav                         | fast, industrial, minimal, kick, bass                    |
+| T  | 2002/v_Dennis DeSantis - Sugar.wav                           | fast, dark, bass, minimal, industrial                    |
+| E  | 2002/v_Dennis DeSantis - Thin Air.wav                        | ambient                                                  |
+| T  | 2002/v_Dennis DeSantis - Under The Wire.wav                  | train, dark, bass, space, open, moody                    |
+| T  | 2002/v_Dennis DeSantis - Variant.wav                         | bass, space, scary, tubes, dark, [Silicone]              |
+| H  | 2002/v_Dj All*Star - Luxus (Orbital Mix).wav                 | tztz, kick, upbeat, empty, filler, energy                |
+| H  | 2002/v_Dj All*Star - Luxus (Original Mix).wav                | cheesy, unzunz, funkyG, loopy, happy                     |
+|    | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Accapella).wav | acappella                                                |
+| H  | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Chus Mucho Drums Mix).wav | drums, kick, tribal, male                                |
+| H  | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Circus Night Boncho Remix).wav | bass-lead, kick, sax, tiro                               |
+| H  | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (De Poniente Mix).wav | drama, funkyG, kick, bass, [dreams]                      |
+| H  | 2002/v_Dj Chus pres The Groove Foundation - That Feeling (Original Stereo Mix).wav | drama, sax, unzunz, male                                 |
+| H  | 2002/v_Dj Luccio - Brothers & Sisters (Extended Mix).wav     | bass, kick, spoken, loopy, warm, guitarF, [M?]           |
+| H  | 2002/v_Dj Luccio - Brothers & Sisters (Praxparis Mix).wav    | F, bass-lead, happy, voices                              |
+| H  | 2002/v_Hi Fi Mike - Stereo Flavas (Funk Corporation Remix).wav | female, bass-lead, happy, upbeat, violin                 |
+| H  | 2002/v_Hi Fi Mike - Stereo Flavas (Lum's Original Flavas).wav | female, mellow, violin, melody, 1/2                      |
+| H  | 2002/v_Hi Fi Mike - Stereo Flavas (Original Extended Mix).wav | female, song, piano, bass, elegant, violin               |
+| H  | 2002/v_Hi-Fi Mike - Stereo Flavas (Jamie Lewis Dub).wav      | bass-lead, piano, tiro, happy, jazzy, sax                |
+| S  | 2002/v_Jamie Lewis ft Michael Watford - For You (Kings of Tomorrow and Haze Mix).wav | H, male, Song, bass, kick, getdown                       |
+| S  | 2002/v_Jamie Lewis ft Michael Watford - For You (Reprise).wav | H, male, Song, bass, kick, getdown                       |
+| D  | 2002/v_Joe Montana - City Of Angels (Dub Mix).wav            | tiro, kick, pa-pa, keys, tight, energy                   |
+| H  | 2002/v_John Ciafone - Everyday.wav                           | complicated, pa-pa, drums, epic, female, nature          |
+| TH | 2002/v_Josh One - Contemplation (Alex Neri Road Trip Remix).wav | blip, voices, hi-pitch, loopy                            |
+| H  | 2002/v_Josh One - Contemplation (King Britt Funke Remix).wav | minimal, voices, ethereal, pa-pa, strings, dark          |
+| H  | 2002/v_Kluster ft Ron Carroll - My Love (Dr. Kucho Weekend Remix).wav | kick, tight, energy, space, tubes                        |
+| H  | 2002/v_Kluster ft Ron Carroll - My Love (Junior Jack Extra Filtered Dub).wav | bouncy, tiro, bass-lead, kick, tztz, circus, [Le Knight Club] |
+| H  | 2002/v_Linda Clifford - Sunshine (Moulton Studio Dub).wav    | female, bass-lead, tubes, shout, unzunz, loopy           |
+| S  | 2002/v_Linda Clifford - Sunshine (Respect To Linda Vocal Mix).wav | H, female, Song, latin, shout, uplifting                 |
+| D  | 2002/v_Lith De Lanka - Dreamoz (D'julz Mix).wav              | bass-lead, loopy, trumpet, sax, steady                   |
+| H  | 2002/v_Mafikizolo - Loot (African Mix).wav                   | tztz, bass, female, silly, loopy, happy, upbeat          |
+| H  | 2002/v_Mafikizolo - Loot (Instrumental).wav                  | tztz, bass, loopy, happy, upbeat                         |
+| S  | 2002/v_Markus Enochson & E-Man - I Am The Road (MAW Mix).wav | male, Song, complicated, paradise, gay                   |
+|    | 2002/v_Markus Enochson & E-Man - I Am The Road (The Elements Mix).wav | acappella                                                |
+| H  | 2002/v_Michelle Weeks - The Light (A1).wav                   | female, song, unzunz, choir, organ, steady, bass         |
+| H  | 2002/v_Michelle Weeks - The Light (Jamie Lewis Dub Mix).wav  | female, unzunz, organ, steady                            |
+| H  | 2002/v_Michelle Weeks - The Light (Jamie Lewis Main Mix).wav | female, song, unzunz, choir, organ, steady, bass         |
+|    | 2002/v_Michelle Weeks - The Light (Tool Accapella).wav       | acappella                                                |
+| D  | 2002/v_Mimosa - Wind Chime (Summer Mix).wav                  | pa-pa, drama, melody, piano, cocktail, silky, kick       |
+| Tr | 2002/v_Moby - Extreme Ways (Dj Tiesto's Instrumental Remix).wav | T, dark, scary, electro, kick                            |
+| Tr | 2002/v_Moby - Extreme Ways (Dj Tiesto's Vocal Remix).wav     | T, dark, scary, electro, kick                            |
+| T  | 2002/v_Moby - Extreme Ways (John Creamer + Stephane K Remix).wav | pa-pa, dark, kick, metal                                 |
+| H  | 2002/v_Moby - Extreme Ways (Junior Jack's Club Mix).wav      | loopy, bass-lead, strings, volo                          |
+| H  | 2002/v_Octave One - Blackwater (Instrumental Mix).wav        | drama, strings, fast, bass-lead, trip                    |
+| H  | 2002/v_Octave One - Blackwater (Vocal Mix).wav               | drama, strings, fast, bass-lead, trip, female, song      |
+| S  | 2002/v_Peven Everett - I Can't Believe I Loved Her (Calypso Mix).wav | D, trumpet, xylo, bass, melody, male                     |
+| S  | 2002/v_Peven Everett - I Can't Believe I Loved Her (Main Mix).wav | xylo, male, song, soft, gay, lounge                      |
+| D  | 2002/v_Rise Ashen - Second Wind EP (Patrick Dream Sax Dub.wav | tubes, dirty, trumpet, bass, lounge, tztz, steady        |
+| D  | 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Club Dub).wav | S, 1/2, complicated, female, epic, trumpet               |
+| S  | 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Original Mix).wav | jazzy, female, trumpet, complicated, epic, chic          |
+| H  | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (D-Wynn & KMS Deep Soul Mix).wav | kick, keys, voices, happy, moderate, strings, complicated |
+| D  | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (King Britt Scuba Mix).wav | kick, ethereal, voices, upbeat, strings, trip, chirps, [M?] |
+| B  | 2002/v_Stylophonic - If Everybody In The World Loved Everybody In The World (Original).wav | male, strings, happy, keys                               |
+| H  | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Instrumental).wav | kick, epic, pa-pa, bass, tztz, strings, steady, disco    |
+| H  | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Lee-Cabrera "Free America" Mix).wav | kick, tight, male, pa-pa, aggressive, bass               |
+| H  | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Pasta Boys Dub).wav | epic, male, bass, tztz, pa-pa, opaque, upbeat            |
+| H  | 2002/v_Team Factor ft Kenny Bobien - It Feels Good (Pasta Boys Main Vocal Mix).wav | circus, male, song, happy, tztz, upbeat, disco           |
+|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Accappella A).wav  | acappella                                                |
+|    | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Accappella B).wav  | acappella                                                |
+| S  | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Club Mix).wav      | complicated, Song, choir, lounge, soft, piano            |
+| H  | 2002/v_The Blackbyrds ‎– Mysterious Vibes (Joey Negro Unreleased Mix).wav | S, bass-lead, energy, trumpet, melody, male, Song        |
+| H  | 2002/v_The Shadow Kings - Get Stronger (Troublemen remix A).wav | kick, tztz, steady, male, spoken, funkyG, loopy, triangle |
+| H  | 2002/v_The Shadow Kings - Get Stronger (Troublemen remix B).wav | kick, tztz, steady, male, spoken, funkyG, loopy, triangle |
+| H  | 2002/v_The Streets - Weak Become Heroes (Royksopp's Memory Lane Mix).wav | british, male, spoken, rock, kick                        |
+|    | 2002/v_X-Press2 - Bits And Pieces (K1).wav                   | acappella, male                                          |
+|    | 2002/v_X-Press2 - Bits And Pieces (K2).wav                   | beats                                                    |
 |    | 2002/v_X-Press2 - Bits And Pieces (K3).wav                   |                                                          |
 |    | 2002/v_X-Press2 - Bits And Pieces (K4).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (K5).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (K6).wav                   |                                                          |
+|    | 2002/v_X-Press2 - Bits And Pieces (K5).wav                   | beats, drums                                             |
+|    | 2002/v_X-Press2 - Bits And Pieces (K6).wav                   | acappella, loopy, male                                   |
 |    | 2002/v_X-Press2 - Bits And Pieces (L1).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (L2).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (L3).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (L4).wav                   |                                                          |
-|    | 2002/v_X-Press2 - Bits And Pieces (L5).wav                   |                                                          |
+|    | 2002/v_X-Press2 - Bits And Pieces (L2).wav                   | beats                                                    |
+|    | 2002/v_X-Press2 - Bits And Pieces (L3).wav                   | horns                                                    |
+|    | 2002/v_X-Press2 - Bits And Pieces (L4).wav                   | horns                                                    |
+|    | 2002/v_X-Press2 - Bits And Pieces (L5).wav                   | acappella, loopy, male                                   |
 |    | 2002/v_X-Press2 - Bits And Pieces (L6).wav                   |                                                          |
 |    | 2002/v_X-Press2 - Bits And Pieces (L7).wav                   |                                                          |
-|    | 2002/v_X-Press2 - I Want You Back.wav                        |                                                          |
-|    | 2002/v_X-Press2 - Lazy.wav                                   |                                                          |
+| H  | 2002/v_X-Press2 - I Want You Back.wav                        | male, song, rough, kick, complicated, train, hypnotic    |
+| H  | 2002/v_X-Press2 - Lazy.wav                                   | pa-pa, strings, drama, male, piano, song, spoken, upbeat |
 |    | 2003/Ben Onono - Badagry Beach.wav                           |                                                          |
 |    | 2003/Black Science Orchestra - New Jersey Deep (Swag Edit).wav |                                                          |
 |    | 2003/Chelonis R Jones - I Don't Know (Butch Remix V2).wav    |                                                          |
@@ -1989,21 +1993,23 @@
 
 
 
-1989/v_The Beloved - Sun Rising (Son of the Rising House).wav   -> dirty, rerecord    
-1991/v_Urban Soul - Alright (Super Dub Mix).wav                 -> disaster
-1999/v_Soul Ascendants - Tribute. wav                           -> not playing      
-1999/v_The Ones - Flawless (Dj Will & Gant Johnson Mix).wav     -> RERECORD        
-1998/v_Daft Punk - Around The World (Kenlou Mix).wav            -> skips
-1999/v_Aztec Mystic - Jaguar.wav                                -> skips
-1999/v_D.J Spen - Da Changez.wav                                -> dirty
-1999/v_Mang'e Le Funk - I Still Want You (Pazazz Ma Tazz Remix).wav -> skip -> BUY
-1999/v_Three Fierce Divas - Sweet Love (Spen & Karizma 12" Remix).wav -> dirty
-2000/v_Kerri Chandler - Escravos De Jo (Demo Dub).wav           -> skips?
-2000/v_Mutiny UK - Secrets (Original Mix).wav                   -> fries
-2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (95 North Classic Remix)     -> kind of dirty
-2001/v_Deepswing - In The Music (Superchumbo's High             -> dirty?
-2001/v_Didier Sinclair - Take A Trip.wav                        -> dirty?
-2001/v_Soldiers Of Twilight - Believe (Demon Ritchie Mix)       -> skype @ 1:40
+| 1989/v_The Beloved - Sun Rising (Son of the Rising House).wav                   | dirty         |
+| 1991/v_Urban Soul - Alright (Super Dub Mix).wav                                 | disaster      |
+| 1999/v_Soul Ascendants - Tribute. wav                                           | not playing   |
+| 1999/v_The Ones - Flawless (Dj Will & Gant Johnson Mix).wav                     | RERECORD      |
+| 1998/v_Daft Punk - Around The World (Kenlou Mix).wav                            | skips         |
+| 1999/v_Aztec Mystic - Jaguar.wav                                                | skips         |
+| 1999/v_D.J Spen - Da Changez.wav                                                | dirty         |
+| 1999/v_Mang'e Le Funk - I Still Want You (Pazazz Ma Tazz Remix).wav             | skip BUY      |
+| 1999/v_Three Fierce Divas - Sweet Love (Spen & Karizma 12" Remix).wav           | dirty         |
+| 2000/v_Kerri Chandler - Escravos De Jo (Demo Dub).wav                           | skips?        |
+| 2000/v_Mutiny UK - Secrets (Original Mix).wav                                   | fries         |
+| 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (95 North Classic Remix) | kind of dirty |
+| 2001/v_Deepswing - In The Music (Superchumbo's High Octane Mix).wav             | skip @ 3:28   |
+| 2001/v_Didier Sinclair - Take A Trip.wav                                        | dirty?        |
+| 2001/v_Soldiers Of Twilight - Believe (Demon Ritchie Mix)                       | skype @ 1:40  |
+| 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Original Mix).wav              | grainy        |
+| 2002/v_The Streets - Weak Become Heroes (Royksopp's Memory Lane Mix).wav        | dirty         |
 
 
 

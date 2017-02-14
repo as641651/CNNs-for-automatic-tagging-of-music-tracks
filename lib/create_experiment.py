@@ -203,7 +203,7 @@ def main(args):
       print FAIL + "Path does not exist :" + ENDC + h5_path
       exit(-1)
 
-   split_info_file = split_config["data_h5"]+str(split_config["train_percent"])+str(split_config["val_percent"])+str(split_config["test_percent"])+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
+   split_info_file = split_config["data_json"]+str(split_config["train_percent"])+str(split_config["val_percent"])+str(split_config["test_percent"])+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
 
    split_info_file = split_info_file + ".json"
    split_info_path = os.path.join("../cache",split_info_file)

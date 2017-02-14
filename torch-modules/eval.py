@@ -37,10 +37,11 @@ def evaluate(pred,scores):
      f1[th] = 2*tp/float(2*tp+fp+fn)
    
    
-   ap = ap + prec[0.2]*(rec[0.2])           
+   ap = ap + prec[0.2]*(1.0-rec[0.2])           
    ap = ap + prec[0.4]*(rec[0.2] - rec[0.4])           
    ap = ap + prec[0.6]*(rec[0.4] - rec[0.6])           
-   ap = ap + prec[0.8]*(rec[0.6] - rec[0.8])
+   ap = ap + prec[0.8]*(rec[0.6] - rec[0.8]) 
+   
 
    results = {}
    results["acc"] = acc           

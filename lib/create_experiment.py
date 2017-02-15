@@ -179,6 +179,47 @@ def random_split(dataDict,exp):
       if j == train+val:
          it = 2
 
+def defined_split(dataDict,exp):
+   vocab,info_vocab = build_vocab(dataDict,exp["use_year"],exp["use_artist"],exp["use_other_tags"])
+   exp["gt"],exp["info_tags"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["info_token_to_idx"],exp["info_idx_to_token"],exp["song_clips"],num_songs,exp["clips_song"] = encodeGroundTruth(dataDict,vocab,info_vocab,exp["label_min_freq"],exp["info_tag_min_freq"])
+
+   exp["vocab_size"] = len(exp["idx_to_token"])
+   exp["info_vocab_size"] = len(exp["info_idx_to_token"])
+
+   print("Vocab in use : Total(%d)"%len(exp["idx_to_token"]))
+   print(exp["idx_to_token"])
+
+   print("info Vocab in use : Total(%d)"%len(exp["info_idx_to_token"]))
+   print(exp["info_idx_to_token"])
+   
+   num_samples = num_clips
+   sample_idx = exp["gt"]
+   if exp["group"]:
+      print("Group mode not supported for defined split")
+      exit(-1)
+
+   tval = []
+   for line in open(exp["val_split"]):
+      sname = line.split("/")[1].rstrip()[:-4]
+      try: 
+        dataDict[sname]
+        sid = dataDict[sname]["song_id"]
+        tval.append(exp["song_clips"][sid][0])
+      except KeyError:
+        print sname + "not found"
+
+   for k,v in sample_idx.iteritems():
+      if int(k) in tval:
+        exp["val_idxs"].append(k)
+      else:
+        exp["train_idxs"].append(k)
+
+   print "Total Songs :" + str(num_songs) 
+   print "Total clips :" + str(num_clips) 
+   print "Group by songs :" + str(exp["group"]) 
+   print OKGREEN + "Split : " + str(len(exp["train_idxs"])) + "/" + str(len(exp["val_idxs"])) + "/" + "0" + ENDC
+   exit(-1)
+   
                        
 def write_comm(split_path,db_path,json_path):
    comm = {}
@@ -245,8 +286,10 @@ def main(args):
    experiment["idx_to_token"] = {}
    experiment["vocab_size"] = 0
    experiment["info_vocab_size"] = 0
+   experiment["val_split"] = "classify-Dec16_test.txt"
 
    random_split(dataDict,experiment)
+   #defined_split(dataDict,experiment)
    #u,b,t = ngrams(experiment["gt"], experiment["vocab_size"])
    #experiment["unigrams"] = u
    #experiment["bigrams"] = b

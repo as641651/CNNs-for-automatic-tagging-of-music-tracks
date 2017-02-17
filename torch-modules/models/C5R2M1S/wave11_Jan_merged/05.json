@@ -11,6 +11,7 @@
   "use_year": false,
   "use_artist": false,
   "use_other_tags": false,
+  "val_split": "classify-Dec16_test.txt",
 
   "val_images_use" : -1, 
   "seed": 123,

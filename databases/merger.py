@@ -15,6 +15,19 @@ def replace(phrase):
     "pads": "strings",
     "silly": "cheesy",
     "jazzy": "sax",
+    "trance": "Tr",
+    "trancy": "Tr",
+    "disco": "70s",
+    "calm":"soft",
+    "gentle":"soft",
+    "mild":"soft",
+    "soul":"S",
+    "soulful":"S",
+    "elegant":"chic",
+    "bitch":"sexy",
+    "deep":"D",
+    "funkyG":"F",
+    "industrial":"metal",
   }
   for k, v in replacements.iteritems():
     phrase = phrase.replace(k, v)

@@ -218,7 +218,6 @@ def defined_split(dataDict,exp):
    print "Total clips :" + str(num_clips) 
    print "Group by songs :" + str(exp["group"]) 
    print OKGREEN + "Split : " + str(len(exp["train_idxs"])) + "/" + str(len(exp["val_idxs"])) + "/" + "0" + ENDC
-   exit(-1)
    
                        
 def write_comm(split_path,db_path,json_path):
@@ -244,7 +243,16 @@ def main(args):
       print FAIL + "Path does not exist :" + ENDC + h5_path
       exit(-1)
 
-   split_info_file = split_config["data_json"]+str(split_config["train_percent"])+str(split_config["val_percent"])+str(split_config["test_percent"])+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
+   split_type = None
+   try:
+     split_type = split_config["val_split"]
+   except KeyError:
+     pass
+
+   if split_type == None:
+     split_info_file = split_config["data_json"]+str(split_config["train_percent"])+str(split_config["val_percent"])+str(split_config["test_percent"])+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
+   else:
+     split_info_file = split_config["data_json"]+split_type+str(split_config["min_label_freq"])+str(split_config["min_info_tag_freq"])+str(split_config["group"])+str(split_config["use_year"])+str(split_config["use_artist"])+str(split_config["use_other_tags"])
 
    split_info_file = split_info_file + ".json"
    split_info_path = os.path.join("../cache",split_info_file)
@@ -286,10 +294,18 @@ def main(args):
    experiment["idx_to_token"] = {}
    experiment["vocab_size"] = 0
    experiment["info_vocab_size"] = 0
-   experiment["val_split"] = "classify-Dec16_test.txt"
+   try:
+     experiment["val_split"] = split_config["val_split"]
+   except KeyError:
+     experiment["val_split"] = None
 
-   random_split(dataDict,experiment)
-   #defined_split(dataDict,experiment)
+   if experiment["val_split"] == None:
+     print "Using Random Split"
+     random_split(dataDict,experiment)
+   else:
+     print "Using Defined split : " + experiment["val_split"]
+     defined_split(dataDict,experiment)
+
    #u,b,t = ngrams(experiment["gt"], experiment["vocab_size"])
    #experiment["unigrams"] = u
    #experiment["bigrams"] = b

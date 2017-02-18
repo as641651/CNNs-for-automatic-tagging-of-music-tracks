@@ -200,7 +200,7 @@ def defined_split(dataDict,exp):
 
    tval = []
    for line in open(exp["val_split"]):
-      sname = line.split("/")[1].rstrip()[:-4]
+      sname = line.rstrip()
       try: 
         dataDict[sname]
         sid = dataDict[sname]["song_id"]

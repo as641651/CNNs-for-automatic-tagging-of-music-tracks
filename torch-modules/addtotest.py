@@ -23,7 +23,7 @@ if __name__ == '__main__':
   args = parser.parse_args()
   song = args.s
 
-  cache_file = "../cache/test_cache.json"
+  cache_file = "test_cache.json"
   if args.r:
     if os.path.exists(cache_file):
       os.remove(cache_file)

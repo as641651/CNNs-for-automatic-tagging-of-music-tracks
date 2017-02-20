@@ -297,9 +297,9 @@ def main(args):
    try:
      experiment["val_split"] = split_config["val_split"]
    except KeyError:
-     experiment["val_split"] = None
+     experiment["val_split"] = ""
 
-   if experiment["val_split"] == None:
+   if experiment["val_split"] == "":
      print "Using Random Split"
      random_split(dataDict,experiment)
    else:

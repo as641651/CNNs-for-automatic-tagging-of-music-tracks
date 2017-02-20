@@ -1,7 +1,7 @@
 { 
-  "data_h5": "magna01_full.h5",
-  "db_dir": "../databases/",
-  "data_json": "magna01_full_processed.json",  
+  "data_h5": "magna_192.h5",
+  "db_dir": "/work/as641651/database/",
+  "data_json": "magna_192_processed.json",  
   "train_percent": 0.8,
   "val_percent": 0.2,
   "test_percent": 0,
@@ -16,10 +16,10 @@
   "seed": 123,
   "max_clips_per_song":8,
   "feature_xdim":1366,
-  "feature_ydim":96,
+  "feature_ydim":192,
 
   "classifier": "models.C5R2M2S.classifier",
-  "cnn_model": "cnns.models.choi_cnn.choi_cnn", 
+  "cnn_model": "cnns.models.choi_cnn.choi_cnn_192", 
   "rnn_model": "rnns.models.lstm_model1",
   "rnn_feature_input_dim": 1024,
   "rnn_encoding_dim": 1024,

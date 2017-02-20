@@ -55,7 +55,7 @@
   "mlp_gamma": 0.1,
   "mlp_optim": "adam",
 
-  "max_iters": 5000,
+  "max_iters": 30000,
   "save_checkpoint_every": 5000,
 
   "load_cnn_chpt":true,

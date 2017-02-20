@@ -1,9 +1,9 @@
 {
-  "data": "classify-Dec16.org", 
-  "input_dir": "/home/sankaran/Thesis/music_data/Waves/",
-  "parser": "paolo_parser",
+  "data": "../music_data/magna/clip_info_final.csv,../music_data/magna/annotations_final.csv", 
+  "input_dir": "../music_data/magna/",
+  "parser": "magna_parser",
   "audio_processor": "melgram",
-  "h5_output": "databases/waves_9Feb.h5",
+  "h5_output": "/work/as641651/database/magna_192_24.h5",
   "max_samples": -1
 }
 

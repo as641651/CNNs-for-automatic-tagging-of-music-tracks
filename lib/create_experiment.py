@@ -179,6 +179,12 @@ def random_split(dataDict,exp):
       if j == train+val:
          it = 2
 
+   total_instances = 0
+   for k,v in vocab.iteritems():
+      total_instances = total_instances + v
+   for k,v in exp["token_to_idx"].iteritems():
+      exp["vocab_weights"][v] = float(vocab[k])/float(total_instances)
+
 def defined_split(dataDict,exp):
    vocab,info_vocab = build_vocab(dataDict,exp["use_year"],exp["use_artist"],exp["use_other_tags"])
    exp["gt"],exp["info_tags"],num_clips,exp["token_to_idx"],exp["idx_to_token"],exp["info_token_to_idx"],exp["info_idx_to_token"],exp["song_clips"],num_songs,exp["clips_song"] = encodeGroundTruth(dataDict,vocab,info_vocab,exp["label_min_freq"],exp["info_tag_min_freq"])

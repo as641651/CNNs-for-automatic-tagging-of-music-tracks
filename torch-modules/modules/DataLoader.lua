@@ -46,6 +46,12 @@ function DataLoader:__init(opt,debug)
   end
   self.info.idx_to_token = idx_to_token
   
+  local idx_to_wts = {}
+  for k, v in pairs(self.info.vocab_weights) do
+    idx_to_wts[tonumber(k)+1] = v
+  end
+  self.info.vocab_weights = idx_to_wts
+
   local info_idx_to_token = {}
   for k, v in pairs(self.info.info_idx_to_token) do
     info_idx_to_token[tonumber(k)+1] = v

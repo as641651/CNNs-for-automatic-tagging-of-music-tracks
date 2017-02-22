@@ -36,7 +36,8 @@ function classifier.init()
    classifier.sigmoid = nn.Sigmoid()
    classifier.wts = torch.zeros(classifier.vocab_size)
    for i = 1,classifier.vocab_size do
-     classifier.wts[i] = classifier.loader_info.vocab_weights[tostring(i-1)]
+     classifier.wts[i] = classifier.loader_info.vocab_weights[i]*classifier.vocab_size
+--     print(classifier.loader_info.idx_to_token[i], classifier.wts[i])
    end
    classifier.crit = nn.BCECriterion(classifier.wts)
 end

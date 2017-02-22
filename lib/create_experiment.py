@@ -214,6 +214,14 @@ def defined_split(dataDict,exp):
       else:
         exp["train_idxs"].append(k)
 
+   total_instances = 0
+   for k,v in vocab.iteritems():
+      total_instances = total_instances + v
+   for k,v in exp["token_to_idx"].iteritems():
+      exp["vocab_weights"][v] = float(vocab[k])/float(total_instances)
+
+  # print(exp["vocab_weights"])
+
    print "Total Songs :" + str(num_songs) 
    print "Total clips :" + str(num_clips) 
    print "Group by songs :" + str(exp["group"]) 
@@ -292,6 +300,7 @@ def main(args):
    experiment["test_idxs"] = []
    experiment["token_to_idx"] = {}
    experiment["idx_to_token"] = {}
+   experiment["vocab_weights"] = {}
    experiment["vocab_size"] = 0
    experiment["info_vocab_size"] = 0
    try:

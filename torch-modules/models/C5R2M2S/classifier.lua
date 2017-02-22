@@ -34,7 +34,11 @@ function classifier.init()
    classifier.mlp:get(4).weight:normal(0,1e-3)
    classifier.mlp:get(4).bias:fill(0)
    classifier.sigmoid = nn.Sigmoid()
-   classifier.crit = nn.BCECriterion()   
+   classifier.wts = torch.zeros(classifier.vocab_size)
+   for i = 1,classifier.vocab_size do
+     classifier.wts[i] = classifier.loader_info.vocab_weights[tostring(i-1)]
+   end
+   classifier.crit = nn.BCECriterion(classifier.wts)
 end
 
 function classifier.type(dtype)
@@ -43,6 +47,7 @@ function classifier.type(dtype)
    classifier.mlp:type(dtype)
    classifier.sigmoid:type(dtype)
    classifier.crit:type(dtype)
+   classifier.wts:type(dtype)
 end
 
 function get_seq_prob(seq_l)

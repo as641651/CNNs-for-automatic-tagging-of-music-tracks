@@ -22,6 +22,8 @@ function classifier.setOpts(opt)
    classifier.seq_wt = opt.seq_wt --
    classifier.linear_hidden = opt.linear_hidden or 512
    classifier.linear_dropout = opt.linear_dropout or 0.3
+   classifier.thresh = opt.classifier_thresh or 0.2
+   classifier.seq_len = opt.seq_len or 10
 end
 
 function classifier.init()
@@ -127,10 +129,10 @@ function classifier.forward_test(input,add)
 
    --sort the results and choose the top  10 results greater than certain thresh
    local Y, cls_label= torch.sort(smooth_out,1,true)
-   if cls_label:numel() > 10 then cls_label = cls_label[{{1,10}}] end
+   if cls_label:numel() > classifier.seq_len then cls_label = cls_label[{{1,classifier.seq_len}}] end
    smooth_out = smooth_out:index(1,cls_label)
    for i = 1,smooth_out:size(1) do
-     if smooth_out[i] > 0.2 then output[cls_label[i]] = smooth_out[i] end
+     if smooth_out[i] > classifier.thresh then output[cls_label[i]] = smooth_out[i] end
    end
    return output
 end

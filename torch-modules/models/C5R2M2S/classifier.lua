@@ -20,17 +20,21 @@ function classifier.setOpts(opt)
    classifier.loader_info = opt.loader_info
    classifier.sigmoid_wt =  opt.sigmoid_wt --
    classifier.seq_wt = opt.seq_wt --
+   classifier.linear_hidden = opt.linear_hidden or 512
+   classifier.linear_dropout = opt.linear_dropout or 0.3
 end
 
 function classifier.init()
    classifier.cnn.init_cnn()
    classifier.rnn.init_rnn()
    local mlp = nn.Sequential()
-   mlp:add(nn.Linear(classifier.rnn.opt.rnn_hidden_size,512))
+   mlp:add(nn.Linear(classifier.rnn.opt.rnn_hidden_size,classifier.linear_hidden))
    mlp:add(nn.Sigmoid())
-   mlp:add(nn.Dropout(0.3))
-   mlp:add(nn.Linear(512,classifier.vocab_size))
+   mlp:add(nn.Dropout(classifier.linear_dropout))
+   mlp:add(nn.Linear(classifier.linear_hidden,classifier.vocab_size))
    classifier.mlp = mlp
+   classifier.mlp:get(1).weight:normal(0,1e-3)
+   classifier.mlp:get(1).bias:fill(0)
    classifier.mlp:get(4).weight:normal(0,1e-3)
    classifier.mlp:get(4).bias:fill(0)
    classifier.sigmoid = nn.Sigmoid()

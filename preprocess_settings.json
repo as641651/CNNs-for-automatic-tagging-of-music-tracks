@@ -3,7 +3,7 @@
   "input_dir": "../music_data/magna/",
   "parser": "magna_parser",
   "audio_processor": "melgram",
-  "h5_output": "/work/as641651/database/magna_192_24.h5",
+  "h5_output": "/work/as641651/database/magna_fft4096.h5",
   "max_samples": -1
 }
 

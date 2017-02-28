@@ -11,7 +11,7 @@ class melgram(processor_base):
       self._feature_length = 192
       self._max_duration = 29.12
       self._num_channels = 1
-      self.hop_length = 256
+      self.hop_length = 2000
       self.sr = 24000
       self._num_samples = (self._max_duration*self.sr/self.hop_length) + 1
 
@@ -32,7 +32,7 @@ class melgram(processor_base):
    
        # mel-spectrogram parameters
        SR = self.sr
-       N_FFT = 512
+       N_FFT = 4096
        N_MELS = self._feature_length
        HOP_LEN = self.hop_length
        DURA = self._max_duration  # to make it 1366 frame..

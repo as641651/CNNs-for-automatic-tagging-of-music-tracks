@@ -1,3 +1,4 @@
+# coding=utf8
 import _init_paths
 import argparse, os, json
 import numpy as np

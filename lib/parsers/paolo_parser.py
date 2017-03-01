@@ -57,7 +57,11 @@ class paolo_parser(parser_base):
                   wordDict[la] = 1
                   num_words = num_words+1
                   
-             year = int(lines[l].split("/")[0].split("|")[-1])
+             year = lines[l].split("/")[0].split("|")[-1]
+             try:
+                year = int(year)
+             except ValueError:
+                year = year.lstrip()
              path = str(year) + "/" + lines[l].split("/")[1].split("|")[0].rstrip()
              path = os.path.join(args["input_dir"],path)
              title = lines[l].split("/")[1].split("|")[0].rstrip()[:-4]

@@ -247,7 +247,8 @@ while true do
       split='val',
       max_samples=opt.val_images_use,
       dtype=dtype,
-      vocab_size = opt.classifier_vocab_size
+      vocab_size = opt.classifier_vocab_size,
+      log_path = platform.c .. "_results.json"
       }
      local results = eval_utils.eval_split(eval_kwargs)
      local model = {}

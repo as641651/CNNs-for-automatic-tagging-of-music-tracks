@@ -38,6 +38,7 @@ function eval_utils.eval_split(kwargs)
   local thresh = utils.getopt(kwargs, 'thresh', 1)
   local dtype = utils.getopt(kwargs, 'dtype', 'torch.FloatTensor')
   local num_cls = utils.getopt(kwargs, 'vocab_size', 50)
+  local log_path = utils.getopt(kwargs, 'log_path', '')
   assert(split == 'val' or split == 'test', 'split must be "val" or "test"')
   assert(thresh <= 1 and thresh >= 0, "Threshold must be between 0 and 1")
 
@@ -95,8 +96,10 @@ function eval_utils.eval_split(kwargs)
   labels_in_test = toJsonTable(labels_in_test)
   evaluator["labels_in_test"] = labels_in_test
   evaluator["info_json"] = loader.json_file
+  evaluator["log_path"] = log_path
   utils.write_json("tmp.json",evaluator)
-  os.execute('python eval.py')
+  os.execute('python eval_check.py')
+  --os.remove("tmp.json")
   local results = {}
   results.ap_results = {}
   results.auc_results = {}

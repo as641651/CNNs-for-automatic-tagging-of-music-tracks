@@ -127,7 +127,7 @@ function DataLoader:getSample(iterate)
 
   if not self.group then
      local input, labels = self:getClip(ix)
-     input = self:splitInput(input,1366)
+     input = self:splitInput(input,self.feature_xdim)
      local song_id = self.info.clips_song[tostring(ix)]
      local info_tags = self.info.info_tags[tostring(song_id)]
      return ix,input:type(self.dtype),self:tableToTensor(labels):add(1):type(self.dtype),self:tableToTensor(info_tags):add(1+self.vocab_size):type(self.dtype)

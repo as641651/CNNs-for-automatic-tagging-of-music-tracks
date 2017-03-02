@@ -1,4 +1,4 @@
-| VOICE   | male    | female  | song    | Song    | acappella | spoken  | voices  | choir   | vocalizzi | shout   | gospel? |       |
+| VOICE   | male    | female  | song    | Song    | acappella | spoken  | voices  | choir   | vocalizzi | shout   |         |       |
 | RYTHMIC | bass    | beats   | kick    | drums   | tztz    | unzunz  | fart    | complicated |         |         |         |       |
 | PACE    | slow    | moderate | steady  | upbeat  | fast    | train   | tiro    |         |         |         |         |       |
 | SOUND TYPE | brass   | dirty   | rough   | deep    | dark    | opaque  | open    | tight   | warm    | melody  | zanzara | noise |
@@ -686,17 +686,17 @@ sax :jazzy
 | B  | 1997/v_The Brand New Heavies - Shelter (Spike's Remix).wav   | male, Song, 70s, melody                                  |
 | D  | 1997/v_The Deep - Dom Dom Jump (Original Mix).wav            | tribal, drums, vocalizzi, tztz, loopy, kick, steady      |
 | D  | 1997/v_The Deep - Dom Dom Jump (Sax Mix).wav                 | tribal, drums, vocalizzi, tztz, loopy, kick, steady, sax |
-| D  | 1997/v_The Ladbroke Groovers - Seasons Of Time (Red Zone Mix).wav | kick, tight, trip, high-pitch, hipnotic, tztz, complicated |
+| D  | 1997/v_The Ladbroke Groovers - Seasons Of Time (Red Zone Mix).wav | kick, tight, trip, hi-pitch, hipnotic, tztz, complicated |
 | D  | 1997/v_The Ladbroke Groovers - Seasons Of Time (Spaced Out Beats).wav | tztz, kick, space, tight, tiro, tubes, effects           |
 | H  | 1997/v_Urban Soul - Show Me, Part II (Def Dubapella).wav     | male, Song, shout, kick, steady, epic                    |
 | S  | 1997/v_Urban Soul - Show Me, Part II (Him & Her Mix).wav     | H, kick, male, female, Song, drama, bass, energy, organ, shout |
 | S  | 1997/v_Urban Soul - Show Me, Part II (Phillip and Danny's Twilo Edit).wav | H, getdown, pa-pa, male, chic, vocalizzi, kick           |
-| D  | 1998/Basil - City Streets (Kerri Chandler Kaoz On City Streets).wav | male, spoken, strings, warm, soft, kick, bass            |
-| H  | 1998/Danny Tenaglia - The Better Days.wav                    | D, male, spoken, space, deep, bass-lead, kick, keys      |
-| H  | 1998/Danny Tenaglia + Celeda - Music Is The Answer (Original Mix).wav | female, anthem, horns, loud, bouncy, bass                |
-|    | 1998/Departure Lounge ft SOR - DL2 (Facedowns reEdit).wav    |                                                          |
-| H  | 1998/Erick 'More' Morillo - Dancin'.wav                      | female, tztz, upbeat, bass, bells, [barbara]             |
-|    | 1998/Jark Prongo - Wave 2081 (Vinyl Album Version).wav       |                                                          |
+| D  | 1998/Basil - City Streets (Kerri Chandler Kaoz On City Streets).wav | male, spoken, strings, warm, silky, kick, bass           |
+| H  | 1998/Danny Tenaglia - The Better Days.wav                    | D, male, spoken, space, deep, bass-lead, kick, piano, tubes |
+| H  | 1998/Danny Tenaglia + Celeda - Music Is The Answer (Original Mix).wav | female, anthem, horns, loud, epic, bouncy, bass, tztz    |
+| T  | 1998/Departure Lounge ft SOR - DL2 (Facedowns reEdit).wav    | electro, deep, space, moderate, tztz, bass, male         |
+| H  | 1998/Erick 'More' Morillo - Dancin'.wav                      | female, tztz, shout, bass, bells, silly, [barbara]       |
+| T  | 1998/Jark Prongo - Wave 2081 (Vinyl Album Version).wav       | open, ethereal, space, moderate, rock,                   |
 | S  | 1998/The Ananda Project - Cascades Of Colour (Wamdue Black Mix).wav | H, female, tztz, open, chirps, nature, kick              |
 | T  | 1998/v_Aril Brikha - Groove La Chord.wav                     | tiro, space, tztz, fart, effects                         |
 | H  | 1998/v_Backroom Congregation - Sunday Morning (Church Mix).wav | S, male, female, choir, song, organ, kick, happy         |
@@ -717,11 +717,11 @@ sax :jazzy
 | H  | 1998/v_Bob Sinclair - Gym Tonic.wav                          | female, tztz, bass, kick, tight, city                    |
 | F  | 1998/v_Bob Sinclair - Intro.wav                              | B, female, bass, bouncy, 70s                             |
 | H  | 1998/v_Bob Sinclair - Mo Undergournd People.wav              | male, song, paradise, upbeat, piano                      |
-| F  | 1998/v_Bob Sinclair - New York City Music.wav                | breaks, 70s, bells                                       |
-|    | 1998/v_Bob Sinclair - The Guetto.wav                         |                                                          |
-|    | 1998/v_Bob Sinclair - Ultimate Funk.wav                      |                                                          |
-|    | 1998/v_Bob Sinclair - Vision of Paradise.wav                 |                                                          |
-| F  | 1998/v_Brother Of Soul - Celebration Of Life.wav             | male, latin, drums                                       |
+| F  | 1998/v_Bob Sinclair - New York City Music.wav                | breaks, 70s, bells, getdown, bass                        |
+| H  | 1998/v_Bob Sinclair - The Guetto.wav                         | opaque, dull, blip, female                               |
+| H  | 1998/v_Bob Sinclair - Ultimate Funk.wav                      | funkyG, kick, tight, steady, bass                        |
+| H  | 1998/v_Bob Sinclair - Vision of Paradise.wav                 | happy, voices, tztz, fast, kick, piano                   |
+| F  | 1998/v_Brother Of Soul - Celebration Of Life.wav             | male, afro, drums, fast                                  |
 | S  | 1998/v_Brother Of Soul - Eyes Of Love.wav                    | male, song, tight kick                                   |
 | F  | 1998/v_Brother Of Soul - Ife Bobowa.wav                      | 70s, paradise, gay, bass, mellow                         |
 |    | 1998/v_Brother Of Soul - Pops Digs The Be-Bop.wav            | male, spoken                                             |
@@ -809,18 +809,18 @@ sax :jazzy
 | H  | 1998/v_The Rolling Stones - Saint Of Me (Deep Dish Grunge Garage Remix).wav | male, rough, song, rock, guitar, bass-lead, kick         |
 | H  | 1998/v_The Rolling Stones - Saint Of Me (Deep Dish Rolling Dub).wav | rough, dark, bass-lead, kick, rock                       |
 | H  | 1999/Capriccio - Everybody Get Up (Jazz-N-Groove Dub).wav    | S, female, keys, mellow, melody                          |
-| T  | 1999/Danny Tenaglia - Turn Me On (John Ciafone's Chiapet Dub).wav | H, kick, steady, scary, tztz, zanzara                    |
+| T  | 1999/Danny Tenaglia - Turn Me On (John Ciafone's Chiapet Dub).wav | kick, steady, scary, tztz, zanzara                       |
 | D  | 1999/Davidson Ospina - Strings (Original Mix).wav            | strings, bass, kick, gentle, warm                        |
 | H  | 1999/Eddie Amador - Rise (Deep Dish vs Eddie Amador mix).wav | tztz, bass-lead, kick, female, loopy, steady             |
-|    | 1999/Fire Island ft Love Nelson - There But For The Grace Of God (Joey Negro Mix).wav |                                                          |
+| H  | 1999/Fire Island ft Love Nelson - There But For The Grace Of God (Joey Negro Mix).wav | happy, choir, trumpet, unzunz, latin, female             |
 | H  | 1999/Jamie Lewis ft Michael Watford - For You (Moodbangers Mix).wav | S, male, song, upbeat, shout, bass, kick                 |
-|    | 1999/Jason Jinx - The NY Experience (Jinx Super Chunk Mix).wav |                                                          |
+| T  | 1999/Jason Jinx - The NY Experience (Jinx Super Chunk Mix).wav | train, electro, complicated, scary, bass-lead            |
 | D  | 1999/Kerri Chandler - Coro (Kaoz 6-23 Dark Mix).wav          | bass-lead, tribal, brass, train, drums, male             |
 | D  | 1999/Kerri Chandler & Jerome Sydenham & Talib Kibwe - Powder (Deep @ Legends Mix).wav | bass, uplifting, strings, flute, volo, bells, female, epic |
 | S  | 1999/Kimara Lovelace - I Luv You More (Sean McCabe Demo Mix).wav | gentle, female, Song, choir, elegant, moving             |
-|    | 1999/Mike Delgado - Byrdman's Revenge (Original Mix).wav     |                                                          |
-|    | 1999/Mike Delgado - Byrdman's Revenge (Rhythm Masters Upstairs Mix).wav |                                                          |
-|    | 1999/SOL - Quantensprung 1.wav                               |                                                          |
+| D  | 1999/Mike Delgado - Byrdman's Revenge (Original Mix).wav     | pa-pa, hypnotic, strings, warm, steady, french           |
+| D  | 1999/Mike Delgado - Byrdman's Revenge (Rhythm Masters Upstairs Mix).wav | kick, tight, pa-pa, steady, warm, strings, french        |
+| T  | 1999/SOL - Quantensprung 1.wav                               | fast, tztz, space, blip, ethereal, kick                  |
 | hH | 1999/v_Aaron-Carl - Dance Naked (C&M Balearic Drama Remix).wav | male, female, spoken, horns                              |
 | H  | 1999/v_Aaron-Carl - Dance Naked (C&M Sticky Fingers Remix).wav | dark, kick, tztz, steady, male, female, spoken, slow     |
 |    | 1999/v_Aaron-Carl - Dance Naked (Club 69 Accapella).wav      | acappella                                                |
@@ -1000,7 +1000,7 @@ sax :jazzy
 |    | 1m4a/Steve Jablonsky - My Name Is Lincoln.2005.m4a           |                                                          |
 |    | 1m4a/Stromae - Alors On Danse (Extended Mix).2009.m4a        |                                                          |
 |    | 1m4a/Stromae - Alors On Danse (Mowgli Remix).2009.m4a        |                                                          |
-|    | 1m4a/Stromba - Giddy Up.2004.m4a                             |                                                          |
+| F  | 1m4a/Stromba - Giddy Up.2004.m4a                             | [Hit it off]                                             |
 |    | 1m4a/Sybil - Walk On By.m4a                                  |                                                          |
 |    | 1m4a/Talk Talk - Such a Shame (Remastered 1997).m4a          |                                                          |
 |    | 1m4a/Tasmin Archer - Sleeping Satellite (Extended Version).1992.m4a |                                                          |
@@ -1021,13 +1021,13 @@ sax :jazzy
 | H  | 2000/Danny Tenaglia vs Giorgio Moroder - From Here To Eternity (Danny Tenaglia Dub).wav | dark, bass-lead, space, trip, male, ethereal             |
 | T  | 2000/Fischerspooner - Emerge.wav                             | electro, male, female, train, rough                      |
 | D  | 2000/Fluid X - Change.wav                                    | bass, strings, gentle, hypnotic                          |
-|    | 2000/Fred Falke & Alan Braxe - Intro.wav                     |                                                          |
+| H  | 2000/Fred Falke & Alan Braxe - Intro.wav                     | kick, drama, bass, ethereal, loopy                       |
 | H  | 2000/Giorgio Moroder vs Eric D Clark ft Amanda Lear - From Here To Eternity (Eric D Clark mix).wav | female, song, choir, happy, kick, shout, upbeat          |
 | S  | 2000/Kimara Lovelace - Misery (Lil Louis Extended Club Mix).wav | female, song, bass-lead, tztz, warm, elegant             |
-|    | 2000/Kings Of Tomorrow - Tear It Up (Lenny Fontana Garage Vocal Mix).wav |                                                          |
-| H  | 2000/Kings Of Tomorrow - Tear It Up.wav                      | female, Song, bass-lead, tiro, getdown                   |
-|    | 2000/Smoked - Metropolis (US Mix).wav                        |                                                          |
-|    | 2000/Tanga Chicks - Brasil Over Zurich (BOZ Bongo Mongo Mix).wav |                                                          |
+| H  | 2000/Kings Of Tomorrow - Tear It Up (Lenny Fontana Garage Vocal Mix).wav | S, bass-lead, organ, female, Song, drama                 |
+| H  | 2000/Kings Of Tomorrow - Tear It Up.wav                      | S, female, Song, bass-lead, upbeat, drama                |
+| T  | 2000/Smoked - Metropolis (US Mix).wav                        | train, fast, industrial, rough, kick, tztz               |
+| H  | 2000/Tanga Chicks - Brasil Over Zurich (BOZ Bongo Mongo Mix).wav | tribal, drums, energy                                    |
 | S  | 2000/The Ananda Project - Cascades Of Colour (Danny Tenaglia's Edit Of The Saffron Mix).wav | female, drama, paradise, open, soft, nature, bass        |
 |    | 2000/v_Africanism - Bisou Sucre' (Beatbass).wav              | beats, bass, kick                                        |
 | D  | 2000/v_Africanism - Bisou Sucre'.wav                         | kick, drums, tribal, upbeat, tiro, hypnotic, xylo        |
@@ -1087,7 +1087,7 @@ sax :jazzy
 | S  | 2001/DJ Oji & Una - We Lift Our Hands In The Sanctuary (Original Friday Night Live Vocal Mix).wav | female, Song, moving, strings, uplifting, gentle, piano  |
 | S  | 2001/Eminence - Give It Up (Clepto's Classic Vocal Mix).wav  | female, song, energy, kick, bass, sexy, uplifting        |
 | H  | 2001/Harry 'Choo Choo' Romero - Tania (Original Mix).wav     | steady, hypnotic, minimal, bass, tztz, hi-pitch, pa-pa   |
-|    | 2001/iiO - Rapture (Deep Dish Space Remix).wav               |                                                          |
+| T  | 2001/iiO - Rapture (Deep Dish Space Remix).wav               | scary, kick, dark, deep, tubes                           |
 | D  | 2001/Jamico ft Jackie Cohen - Sometimes (Angel Moraes Deep & Dark Dub).wav | bass-lead, tztz, trip, tiro, piano                       |
 | TH | 2001/KC Flightt vs Funky Junction - Voices (Pete Heller Main Mix).wav | kick, aggressive, voices, train, drums, electro          |
 | H  | 2001/Kings of Tomorrow - Finally (Danny Tenaglia Dub).wav    | epic, voices, female, anthem, deep, kick                 |
@@ -1097,7 +1097,7 @@ sax :jazzy
 | H  | 2001/Live Element - Be Free (Original Vocal).wav             | bass-lead, happy, uplifting, choir, kick, loopy          |
 | S  | 2001/Nick Holder - Summer Daze (12").wav                     | paradise, happy, male, vocalizzi, melody, bass, gentle   |
 | H  | 2001/Rhythmcentric - New School Fusion Pt. 1 (Basement Boys Drum Dub).wav | drums, afro, kick, tiro, male, tztz, loopy               |
-|    | 2001/Slam - Lifetimes.wav                                    |                                                          |
+| T  | 2001/Slam - Lifetimes.wav                                    | dark, zanzara, male, kick, Song, strings, steady, epic   |
 | H  | 2001/Soul Providers - Rise (Ricky Montanari & Stefano Greppi Dark Vocal Mix).wav | dark, deep, slow, female, song, bass, scary              |
 | D  | 2001/T-Kolai - 9.11.wav                                      | trip, moving, strings, melody, tztz, bass, kick          |
 | S  | 2001/T-Kolai - Exodus (Andalu Vocal Mix).wav                 | afro, female, choir, sax, brass, gentle, happy, open     |
@@ -1597,49 +1597,49 @@ sax :jazzy
 |    | 2005/v_UDA ft Barbara Tucker - Most Precious Love (DF Future 3000 Instrumental).wav |                                                          |
 |    | 2005/v_UDA ft Barbara Tucker - Most Precious Love (DF Future 3000 Mix).wav |                                                          |
 |    | 2005/v_UDA ft Barbara Tucker - Most Precious Love (Dj Tool Mix).wav |                                                          |
-|    | 2006/Ame - Rej (Pastasboys Club Mix).wav                     |                                                          |
-|    | 2006/Audion - Mouth To Mouth.wav                             |                                                          |
-|    | 2006/Christopher Cross - Ride Like The Wind (Joey Negro Extended Disco Mix).wav |                                                          |
-|    | 2006/Coldcut ft Robert Owens - Walk A Mile In My Shoes (Henrik Schwarz remix).wav |                                                          |
-|    | 2006/Coldcut ft Robert Owens - Walk A Mile In My Shoes.wav   |                                                          |
-|    | 2006/Daft Punk - Prime Time Of Your Life (Para One Remix).wav |                                                          |
-|    | 2006/Dennis Ferrer - Transitions.wav                         |                                                          |
-|    | 2006/Henrik Schwarz - Where We At (Live).wav                 |                                                          |
-|    | 2006/Joi Cardwell - What It Feels Like (Quentin Harris Club Mix).wav |                                                          |
-|    | 2006/Lifelike & Kris Menace - Discopolis (Original).wav      |                                                          |
-|    | 2006/Rodamaal - Insomnia (Ame Remix).wav                     |                                                          |
-|    | 2006/v_Agora Rhythm - Crossroads.wav                         |                                                          |
-|    | 2006/v_Agora Rhythm - Viaje (Mysterious Dub).wav             |                                                          |
-|    | 2006/v_Armand Van Helden - The Funk Phenomena (Original Mix).wav |                                                          |
-|    | 2006/v_Bent - To Be Loved (Soulchild Remix).wav              |                                                          |
-|    | 2006/v_Dennis Ferrer - Change The World.wav                  |                                                          |
-|    | 2006/v_Dennis Ferrer - Church Lady.wav                       |                                                          |
-|    | 2006/v_Dennis Ferrer - Hit It Off.wav                        |                                                          |
-|    | 2006/v_Dennis Ferrer - How Do I Let Go.wav                   |                                                          |
-|    | 2006/v_Dennis Ferrer - I Can't Imagine.wav                   |                                                          |
-|    | 2006/v_Dennis Ferrer - P 2 Da J.wav                          |                                                          |
-|    | 2006/v_Dennis Ferrer - Run Free.wav                          |                                                          |
-|    | 2006/v_Dennis Ferrer - Touched The Sky.wav                   |                                                          |
-|    | 2006/v_Druw & Perez ft Don-E - Bonafide (Mood II Swing Mix).wav |                                                          |
-|    | 2006/v_Gladys Knight - My Imagination (I've Got To Use My Imagination).wav |                                                          |
-|    | 2006/v_Kerri Chandler - So Let The Wind Come (Special Edit).wav |                                                          |
-|    | 2006/v_Kerri Chandler - So Let The Wind Come (Tomo Edit).wav |                                                          |
-|    | 2006/v_Kerri Chandler - The Sun's Coming Up (Edit).wav       |                                                          |
-|    | 2006/v_Lifelike & Kris Menace - Discopolis (A Hundred Birds Remix).wav |                                                          |
-|    | 2006/v_Lifelike & Kris Menace - Discopolis (Chris Lake Remix).wav |                                                          |
-|    | 2006/v_Lifelike & Kris Menace - Discopolis (Original Mix).wav |                                                          |
-|    | 2006/v_Liquid People - Son Of Dragon.wav                     |                                                          |
-|    | 2006/v_Nic Fanciulli - Lucky Heather (Dubfire's Lucky 13 Remix - Parts 1+2).wav |                                                          |
-|    | 2006/v_Sander Kleinenberg - This is Miami (David Vendetta's This Is NOT Miami Mix).wav |                                                          |
-|    | 2006/v_Sander Kleinenberg - This is Miami (Emjae & Jerome Robins South Beach Sleeze Mix).wav |                                                          |
-|    | 2006/v_Sander Kleinenberg - This is Miami (Funkagenda's This Is The Wetherspoons Mix).wav |                                                          |
-|    | 2006/v_Soul Central - In-Ten-City.wav                        |                                                          |
-|    | 2006/v_T Connection - Do What You Wanna Do (Full Intention Remix).wav |                                                          |
-|    | 2006/v_Tommyboy & Mannel - Naturelize (Muzzaik Remix).wav    |                                                          |
-|    | 2006/v_Tommyboy & Mannel - Naturelize (Original Mix).wav     |                                                          |
-|    | 2006/v_Tommyboy & Mannel - Naturelize (Sultan & Tone Depth Remix).wav |                                                          |
-|    | 2006/v_VMC - To The Rock (Praise Party Vocal).wav            |                                                          |
-|    | 2006/v_VMC - To The Rock (Spiritually Sound Dub).wav         |                                                          |
+| TH | 2006/Ame - Rej (Pastasboys Club Mix).wav                     | drama, keys, hi-pitch, hypnotic, [strings]               |
+| T  | 2006/Audion - Mouth To Mouth.wav                             | electro, bouncy, zanzara, loopy, kick                    |
+| F  | 2006/Christopher Cross - Ride Like The Wind (Joey Negro Extended Disco Mix).wav | H, male, Song, epic, energy, guitar, 70s                 |
+| D  | 2006/Coldcut ft Robert Owens - Walk A Mile In My Shoes (Henrik Schwarz remix).wav | S, male, Song, brass, drama, kick, xylo                  |
+| D  | 2006/Coldcut ft Robert Owens - Walk A Mile In My Shoes.wav   | S, male, Song, complicated, drama, brass, 1/2, strings   |
+| TH | 2006/Daft Punk - Prime Time Of Your Life (Para One Remix).wav | kick, breaks, robot, tight, hypnotic, steady             |
+| D  | 2006/Dennis Ferrer - Transitions.wav                         | strings, bass-lead, steady, minimal, male, drums         |
+| H  | 2006/Henrik Schwarz - Where We At (Live).wav                 | tztz, fast, male, aggressive, drums, spoken, tribal      |
+| S  | 2006/Joi Cardwell - What It Feels Like (Quentin Harris Club Mix).wav | female, Song, unzunz, strings, gentle                    |
+| TH | 2006/Lifelike & Kris Menace - Discopolis (Original).wav      | ethereal, hi-pitch, kick, bass, drama, slow, trumpet     |
+| H  | 2006/Rodamaal - Insomnia (Ame Remix).wav                     | female, hi-pitch, loopy, blip, strings, deep, hypnotic   |
+| F  | 2006/v_Agora Rhythm - Crossroads.wav                         | slow, rock, guitar, drums                                |
+| D  | 2006/v_Agora Rhythm - Viaje (Mysterious Dub).wav             | silky, hypnotic, bass, trancey, trumpet, strings, volo   |
+| H  | 2006/v_Armand Van Helden - The Funk Phenomena (Original Mix).wav | 1/2, male, silly, blip, loopy                            |
+| H  | 2006/v_Bent - To Be Loved (Soulchild Remix).wav              | bass-lead, voices, loopy, french, fart, kick             |
+| H  | 2006/v_Dennis Ferrer - Change The World.wav                  | F, male, bass-lead, song, 70s, tztz, choir               |
+| H  | 2006/v_Dennis Ferrer - Church Lady.wav                       | bouncy, kick, female, sexy, song, choir, soul            |
+| F  | 2006/v_Dennis Ferrer - Hit It Off.wav                        | S, gay, female, vocalizzi, bass, open, strings, 70s, [Giddy up, Free] |
+| S  | 2006/v_Dennis Ferrer - How Do I Let Go.wav                   | male, choir, Song, unzunz, silky, strings                |
+| S  | 2006/v_Dennis Ferrer - I Can't Imagine.wav                   | complicated, male, mellow, song, lounge, kick            |
+| D  | 2006/v_Dennis Ferrer - P 2 Da J.wav                          | vocalizzi, complicated, bass, horns, tiro, empty         |
+| S  | 2006/v_Dennis Ferrer - Run Free.wav                          | male, Song, silky, drums, kick, latin                    |
+| H  | 2006/v_Dennis Ferrer - Touched The Sky.wav                   | S, tztz, female, Song, upbeat, silky, drama, kick        |
+| S  | 2006/v_Druw & Perez ft Don-E - Bonafide (Mood II Swing Mix).wav | male, song, filler, bass, mellow, soft, choir, gay       |
+| H  | 2006/v_Gladys Knight - My Imagination (I've Got To Use My Imagination).wav | song, energy, female, loud, bass, kick, getdown, trumpet |
+| D  | 2006/v_Kerri Chandler - So Let The Wind Come (Special Edit).wav | kick, tztz, brass, pa-pa, tiro, uplifting                |
+| D  | 2006/v_Kerri Chandler - So Let The Wind Come (Tomo Edit).wav | kick, tztz, brass, pa-pa, tiro, uplifting                |
+| S  | 2006/v_Kerri Chandler - The Sun's Coming Up (Edit).wav       | choir, gay, mellow, kick, filler                         |
+| TH | 2006/v_Lifelike & Kris Menace - Discopolis (A Hundred Birds Remix).wav | bass-lead, drama, violin, kick, strings, melody          |
+| Tr | 2006/v_Lifelike & Kris Menace - Discopolis (Chris Lake Remix).wav | zanzara, hi-pitch, blip, rough, kick                     |
+| TH | 2006/v_Lifelike & Kris Menace - Discopolis (Original Mix).wav | bass, drama, kick, slow, electro, blip, hi-pitch         |
+| D  | 2006/v_Liquid People - Son Of Dragon.wav                     | drama, strings, kick, warm, open, brass, tztz            |
+| T  | 2006/v_Nic Fanciulli - Lucky Heather (Dubfire's Lucky 13 Remix - Parts 1+2).wav | blip, electro, kick, hypnotic, chirps                    |
+| hH | 2006/v_Sander Kleinenberg - This is Miami (David Vendetta's This Is NOT Miami Mix).wav | male, kick, silly, rock, electro                         |
+| hH | 2006/v_Sander Kleinenberg - This is Miami (Emjae & Jerome Robins South Beach Sleeze Mix).wav | male, slow, rough, dark, electro                         |
+| H  | 2006/v_Sander Kleinenberg - This is Miami (Funkagenda's This Is The Wetherspoons Mix).wav | bouncy, silly, kick, male, blip                          |
+| S  | 2006/v_Soul Central - In-Ten-City.wav                        | piano, melody, paradise, elegant, open, warm, brass      |
+| F  | 2006/v_T Connection - Do What You Wanna Do (Full Intention Remix).wav | hi-energy, circus, bass-lead, drums, 70s                 |
+| T  | 2006/v_Tommyboy & Mannel - Naturelize (Muzzaik Remix).wav    | kick, bouncy, keys, opaque                               |
+| D  | 2006/v_Tommyboy & Mannel - Naturelize (Original Mix).wav     | kick, warm, drums, empty, bass                           |
+| TH | 2006/v_Tommyboy & Mannel - Naturelize (Sultan & Tone Depth Remix).wav | kick, space, male, bass, pa-pa, gentle                   |
+| H  | 2006/v_VMC - To The Rock (Praise Party Vocal).wav            | female, Song, unzunz, choir, drama, shout                |
+| H  | 2006/v_VMC - To The Rock (Spiritually Sound Dub).wav         | bass-lead, kick, upbeat, melody, piano, choir            |
 |    | 2007/Danny Tenaglia ft Scott White & Dana Vlcek - World Of Plenty (Original Mix).wav |                                                          |
 |    | 2007/Dj Le Roi ft Roland Clark - I Get Deep (Original Mix).wav |                                                          |
 |    | 2007/Dusty Kid - I Love Richie (Original Mix).wav            |                                                          |
@@ -1995,12 +1995,13 @@ sax :jazzy
 
 | 1989/v_The Beloved - Sun Rising (Son of the Rising House).wav                   | dirty         |
 | 1991/v_Urban Soul - Alright (Super Dub Mix).wav                                 | disaster      |
-| 1999/v_Soul Ascendants - Tribute. wav                                           | not playing   |
-| 1999/v_The Ones - Flawless (Dj Will & Gant Johnson Mix).wav                     | RERECORD      |
+| 1998/Bob Sinclair                                                               | wrong naming  |
 | 1998/v_Daft Punk - Around The World (Kenlou Mix).wav                            | skips         |
 | 1999/v_Aztec Mystic - Jaguar.wav                                                | skips         |
 | 1999/v_D.J Spen - Da Changez.wav                                                | dirty         |
 | 1999/v_Mang'e Le Funk - I Still Want You (Pazazz Ma Tazz Remix).wav             | skip BUY      |
+| 1999/v_Soul Ascendants - Tribute. wav                                           | not playing   |
+| 1999/v_The Ones - Flawless (Dj Will & Gant Johnson Mix).wav                     | RERECORD      |
 | 1999/v_Three Fierce Divas - Sweet Love (Spen & Karizma 12" Remix).wav           | dirty         |
 | 2000/v_Kerri Chandler - Escravos De Jo (Demo Dub).wav                           | skips?        |
 | 2000/v_Mutiny UK - Secrets (Original Mix).wav                                   | fries         |
@@ -2010,7 +2011,7 @@ sax :jazzy
 | 2001/v_Soldiers Of Twilight - Believe (Demon Ritchie Mix)                       | skype @ 1:40  |
 | 2002/v_Rise Ashen - Second Wind EP (Rise Ashen's Original Mix).wav              | grainy        |
 | 2002/v_The Streets - Weak Become Heroes (Royksopp's Memory Lane Mix).wav        | dirty         |
-
-
+| 2006/v_Dennis Ferrer - Run Free.wav                                             | quality       |
+|                                                                                 |               |
 
 

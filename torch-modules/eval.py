@@ -3,6 +3,7 @@ import json
 import numpy as np
 from sklearn.metrics import roc_auc_score
 from DrawMatrix import DrawMatrix 
+import os
 #from sklearn.metrics import precision_recall_curve as prc
 #from sklearn.metrics import average_precision_score as aps 
 
@@ -90,6 +91,14 @@ with open("tmp.json","r") as f:
 with open(records["info_json"],"r") as f:
   idx_to_token = json.load(f)["idx_to_token"]
 
+ch_id = 0
+results = {}
+if records["log_path"] != '':
+  if os.path.exists(records["log_path"]):
+     with open(records["log_path"],"r") as f:
+       results = json.load(f)
+       ch_id = len(results)
+
 pm = getPatternMatrix(records,0.2,idx_to_token)
 print json.dumps(pm,sort_keys=True,indent=4)
 #DrawMatrix(pm)
@@ -99,6 +108,15 @@ cls_auc = []
 cls_ap = []
 cls_f1 = []
 weights = []
+log = {}
+
+log["ap"] = {}
+log["auc"] = {}
+log["prec"] = {}
+log["rec"] = {}
+log["f1"] = {}
+log["count"] = {}
+
 for cls in records["labels_in_test"]:
    count = 0
    scores = []
@@ -109,9 +127,6 @@ for cls in records["labels_in_test"]:
       pred.append(v["target"])
       if(v["target"] == 1):    
         count = count+1
-    #  auc = roc_auc_score(pred,scores)
-    #  prec, recall, th = prc(pred,scores)
-    #  ap = average_precision(prec,recall)
    res = evaluate(pred,scores)
    auc = res["auc"]
    ap = res["ap"]
@@ -123,6 +138,12 @@ for cls in records["labels_in_test"]:
    cls_ap.append(ap)
    cls_f1.append(f1)
    weights.append(count)
+   log["ap"][str(idx_to_token[str(cls-1)])] = ap
+   log["auc"][str(idx_to_token[str(cls-1)])] = auc -0.5
+   log["rec"][str(idx_to_token[str(cls-1)])] = rec
+   log["prec"][str(idx_to_token[str(cls-1)])] = prec
+   log["f1"][str(idx_to_token[str(cls-1)])] = f1
+   log["count"][str(idx_to_token[str(cls-1)])] = count
 
 weights = np.array(weights)
 cls_auc = np.array(cls_auc)
@@ -133,8 +154,16 @@ weights = weights/float(sum(weights))
 m_auc = sum(cls_auc*weights)#/float(len(cls_auc))
 m_ap = sum(cls_ap*weights)#/float(len(cls_ap))
 m_f1 = sum(cls_f1*weights)
+log["m_auc"] = m_auc - 0.5
+log["m_ap"] = m_ap
+log["m_f1"] = m_f1
+
 print("W.MEAN AUC : ", m_auc)
 print("W.MEAN AP : ", m_ap)
 print("W.MEAN F1@0.2 : ", m_f1)
 
-
+if records["log_path"] != '':
+  results[ch_id] = log
+  with open(records["log_path"],"w") as f:
+     json.dump(results,f)
+   

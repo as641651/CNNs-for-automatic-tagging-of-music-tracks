@@ -98,7 +98,7 @@ function eval_utils.eval_split(kwargs)
   evaluator["info_json"] = loader.json_file
   evaluator["log_path"] = log_path
   utils.write_json("tmp.json",evaluator)
-  os.execute('python eval_check.py')
+  os.execute('python eval.py')
   --os.remove("tmp.json")
   local results = {}
   results.ap_results = {}

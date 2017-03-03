@@ -61,29 +61,38 @@ function eval_utils.eval_split(kwargs)
     local data = {}
 
     data.clip_id,data.input,data.gt_tags,data.info_tags = loader:getSample()
-    for i = 1,data.gt_tags:size(1) do labels_in_test[data.gt_tags[i]] = data.gt_tags[i]  end
-
-    -- Call forward_test to make predictions, and pass them to evaluator
     loader:printSongInfo(data.clip_id)
-    print("Predictions :")
-    -- model.rnn.getModel():get(1):evaluate()
-    local label_prob = model.forward_test(data.input,data.info_tags)
-    for k,v in utils.spairs(label_prob,function(t,a,b) return t[b] < t[a] end) do
-       print(loader.info.idx_to_token[k],v)
-    end
-    
-    for cls = 1,num_cls do
-       addResult(data.clip_id,label_prob[cls],cls,data.gt_tags,evaluator[cls])
-    end
-   -- print("gt ", data.gt_tags)
---    print("GT")
---    for i = 1,data.gt_tags:size(1) do print(loader.info.idx_to_token[data.gt_tags[i]]) end
- --   for cls = 1,data.gt_tags:size(1) do
- --      evaluator[data.gt_tags[cls]]:addResult(data.clip_id,1.0,data.gt_tags[cls],data.gt_tags)
- --   end
 
-    model.clearState()
+    print("Predictions :")
+    if type(data.gt_tags) ~= "table"  then
+       for i = 1,data.gt_tags:size(1) do labels_in_test[data.gt_tags[i]] = data.gt_tags[i]  end
+
+      -- Call forward_test to make predictions, and pass them to evaluator
+       local label_prob = model.forward_test(data.input,data.info_tags)
+       for k,v in utils.spairs(label_prob,function(t,a,b) return t[b] < t[a] end) do
+          print(loader.info.idx_to_token[k],v)
+       end
     
+       for cls = 1,num_cls do
+          addResult(data.clip_id,label_prob[cls],cls,data.gt_tags,evaluator[cls])
+       end
+      model.clearState()
+    else
+      for k,v in pairs(data.gt_tags) do
+        print("Clip .. " .. tostring(k))
+        for i = 1,v:size(1) do labels_in_test[v[i]] = v[i]  end
+        local d_input = data.input[tonumber(k)]
+        d_input = d_input:view(1,d_input:size(1),d_input:size(2),d_input:size(3))
+        local label_prob = model.forward_test(d_input,data.info_tags)
+        for k1,v1 in utils.spairs(label_prob,function(t,a,b) return t[b] < t[a] end) do
+          print(loader.info.idx_to_token[k1],v1)
+        end
+        for cls = 1,num_cls do
+          addResult(data.clip_id,label_prob[cls],cls,v,evaluator[cls])
+        end
+        model.clearState()
+      end
+    end
     -- Print a message to the console
     local msg = 'Processed sample %s (%d / %d) of split %s'
     local num_samples = max_samples --todo

@@ -9,102 +9,65 @@ classifier.cnn = cnn
 classifier.rnn = rnn
 
 function classifier.setOpts(opt)
+   assert(opt.group_batch or not opt.group, "should group batch or disable group for this classifier") 
    classifier.cnn.opt.model = opt.cnn_model --
-   classifier.rnn.opt.rnn_model = opt.rnn_model --
-   classifier.rnn.opt.cnn_out_dim = opt.rnn_feature_input_dim --
-   classifier.rnn.opt.input_encoding_size = opt.rnn_encoding_dim --
-   classifier.rnn.opt.rnn_hidden_size = opt.rnn_hidden_dim --
-   classifier.rnn.opt.rnn_layers = opt.rnn_num_layers --
-   classifier.rnn.opt.dropout = opt.rnn_dropout --
    classifier.vocab_size = opt.classifier_vocab_size
    classifier.loader_info = opt.loader_info
-   classifier.sigmoid_wt =  opt.sigmoid_wt --
-   classifier.seq_wt = opt.seq_wt --
 end
 
 function classifier.init()
    classifier.cnn.init_cnn()
    local mlp = nn.Sequential()
---   mlp:add(nn.Linear(classifier.rnn.opt.rnn_hidden_size,512))
---   mlp:add(nn.Sigmoid())
---   mlp:add(nn.Dropout(0.3))
    mlp:add(nn.Linear(1024,classifier.vocab_size))
    classifier.mlp = mlp
    classifier.mlp:get(1).weight:normal(0,1e-3)
    classifier.mlp:get(1).bias:fill(0)
    classifier.sigmoid = nn.Sigmoid()
-   classifier.crit = nn.BCECriterion()   
+   classifier.wts = torch.zeros(classifier.vocab_size)
+   for i = 1,classifier.vocab_size do
+     classifier.wts[i] = classifier.loader_info.vocab_weights[i]*classifier.vocab_size
+   end
+   classifier.crit = nn.BCECriterion(classifier.wts)
 end
 
 function classifier.type(dtype)
    classifier.cnn.type(dtype)
-   --classifier.rnn.type(dtype)
    classifier.mlp:type(dtype)
    classifier.sigmoid:type(dtype)
    classifier.crit:type(dtype)
 end
 
-function get_seq_prob(seq_l)
-   seq_prob = torch.zeros(classifier.vocab_size)
-   for i=1,classifier.vocab_size do
-     local pw = 1./3.
-     local u = classifier.loader_info.unigrams[i]/classifier.loader_info.num_instances
-     local b = 0
-     if classifier.loader_info.unigrams[seq_l[1]] ~= 0 then 
-        local b1 = classifier.loader_info.bigrams[i][seq_l[1]]/classifier.loader_info.unigrams[seq_l[1]]
-        local b2 = classifier.loader_info.bigrams[i][seq_l[2]]/classifier.loader_info.unigrams[seq_l[2]]
-        b = 0.5*b1 + 0.5*b2
-     end
-     local t = 0
-     if classifier.loader_info.bigrams[seq_l[1]][seq_l[2]] ~= 0 then
-        t = classifier.loader_info.trigrams[i][seq_l[1]][seq_l[2]]/classifier.loader_info.bigrams[seq_l[1]][seq_l[2]]
-     end
-             
-     seq_prob[i] = pw*u + pw*b + pw*t
-   end
-
-   return seq_prob
-end
-
-function smooth_with_seq(sigmoid_out)
-   local Y, cls_label= torch.sort(sigmoid_out,1,true)
-   cls_label = cls_label[{{1,2}}]
-   local seq_prob = get_seq_prob(cls_label)
-
-   sigmoid_out = sigmoid_out:view(-1)
-   seq_prob = seq_prob:type(sigmoid_out:type())
-   local smooth_out = sigmoid_out:mul(classifier.sigmoid_wt) + seq_prob:mul(classifier.seq_wt)
-   return smooth_out
-end
 
 function classifier.forward(input,add)
- 
-   print("input: ", input:size())
+   --print("input: ", input:size())
    classifier.cache.cnn_output = classifier.cnn.forward(input)
-   print("cnn_out: ", classifier.cache.cnn_output:size())
-   --classifier.cache.rnn_output = classifier.rnn.forward(classifier.cache.cnn_output)
+   --print("cnn_out: ", classifier.cache.cnn_output:size())
    classifier.cache.linear_output = classifier.mlp:forward(classifier.cache.cnn_output)
-   print("linear_out: ", classifier.cache.linear_output:size())
+   --print("linear_out: ", classifier.cache.linear_output:size())
    local sigmoid_out = classifier.sigmoid:forward(classifier.cache.linear_output)
-   local smooth_out = smooth_with_seq(sigmoid_out:view(-1))
-   return smooth_out
+   return sigmoid_out
 end
 
 function classifier.forward_backward(input,add,gt_seq)
 
 --FORWARD
    classifier.cache.sigmoid_out = classifier.forward(input)
+   
+   local target = nil
+   if type(gt_seq) == "table" then
+     target = torch.zeros(utils.count_keys(gt_seq), classifier.vocab_size):type(gt_seq[1]:type())
+     for k,v in pairs(gt_seq) do target[tonumber(k)] = utils.n_of_k(v,classifier.vocab_size)  end
+   else
+     target = utils.n_of_k(gt_seq,classifier.vocab_size)
+   end
 
-   local target = utils.n_of_k(gt_seq,classifier.vocab_size)
    local loss = classifier.crit:forward(classifier.cache.sigmoid_out,target) 
-
+   
 --BACKWARD
    classifier.cache.grad_sigmoid_out = classifier.crit:backward(classifier.cache.sigmoid_out,target)
-   classifier.cache.grad_linear_out  = classifier.sigmoid:backward(classifier.cache.linear_output, classifier.cache.grad_sigmoid_out:view(1,classifier.cache.grad_sigmoid_out:size(1)))
+   classifier.cache.grad_linear_out  = classifier.sigmoid:backward(classifier.cache.linear_output, classifier.cache.grad_sigmoid_out)
    classifier.cache.grad_cnn_out  = classifier.mlp:backward(classifier.cache.cnn_output, classifier.cache.grad_linear_out)
---   classifier.cache.grad_cnn_out = classifier.rnn.backward(classifier.cache.cnn_output,classifier.cache.grad_rnn_out)
    classifier.cache.grad_input = classifier.cnn.backward(input,classifier.cache.grad_cnn_out)
-
    return loss
 end
 
@@ -112,37 +75,32 @@ function classifier.forward_test(input,add)
 
    local output = {}
    local cnn_output = classifier.cnn.forward(input)
--- local rnn_output = classifier.rnn.forward(cnn_output)
    local linear_output = classifier.mlp:forward(cnn_output)
    local sigmoid_out = classifier.sigmoid:forward(linear_output)
-   local smooth_out = smooth_with_seq(sigmoid_out:view(-1))
-
+   sigmoid_out = sigmoid_out:view(-1)
    --sort the results and choose the top  10 results greater than certain thresh
-   local Y, cls_label= torch.sort(smooth_out,1,true)
+   local Y, cls_label= torch.sort(sigmoid_out,1,true)
    if cls_label:numel() > 10 then cls_label = cls_label[{{1,10}}] end
-   smooth_out = smooth_out:index(1,cls_label)
-   for i = 1,smooth_out:size(1) do
-     if smooth_out[i] > 0.2 then output[cls_label[i]] = smooth_out[i] end
+   sigmoid_out = sigmoid_out:index(1,cls_label)
+   for i = 1,sigmoid_out:size(1) do
+     if sigmoid_out[i] > 0.2 then output[cls_label[i]] = sigmoid_out[i] end
    end
    return output
 end
 
 function classifier.clearState()
    classifier.cnn.getModel():clearState()
---   classifier.rnn.getModel():clearState()
    classifier.mlp:clearState()
    classifier.sigmoid:clearState()
 end
 
 function classifier.training()
    classifier.cnn.getModel():training()
---   classifier.rnn.getModel():training()
    classifier.mlp:training()
 end
 
 function classifier.evaluate()
    classifier.cnn.getModel():evaluate()
---   classifier.rnn.getModel():evaluate()
    classifier.mlp:evaluate()
 end
 
@@ -153,7 +111,6 @@ end
 
 function classifier.loadRNN(rnn)
   print("no RNN to load  ")
---  classifier.rnn.setModel(rnn)
 end
 
 function classifier.loadMLP(mlp)

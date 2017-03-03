@@ -13,7 +13,8 @@ function DataLoader:__init(opt,debug)
   self.feature_ydim = opt.feature_ydim
   self.max_clips_per_song = opt.max_clips_per_song
   self.debug_max_train_samples = utils.getopt(opt, 'debug_max_train_samples', -1)
- 
+  self.group_batch = opt.group_batch or false
+
   cmd = 'python ../lib/create_experiment.py -c ' .. opt.platform.c
   os.execute(cmd)
 
@@ -150,9 +151,19 @@ function DataLoader:getSample(iterate)
        end--]]
        input[{i}] = input1
      end
-     local labels = self:tableKeyToTensor(self:unionOfLabels(labels_table))
-     local info_tags = self:tableToTensor(self.info.info_tags[tostring(ix)])
-     return ix,input:type(self.dtype),labels:add(1):type(self.dtype),info_tags:add(1+self.vocab_size):type(self.dtype)
+     if not self.group_batch then
+       local labels = self:tableKeyToTensor(self:unionOfLabels(labels_table))
+       local info_tags = self:tableToTensor(self.info.info_tags[tostring(ix)])
+       return ix,input:type(self.dtype),labels:add(1):type(self.dtype),info_tags:add(1+self.vocab_size):type(self.dtype)
+     else
+       for k,v in pairs(labels_table) do
+         labels_table[k] = self:tableToTensor(v)
+         labels_table[k] = labels_table[k]:add(1):type(self.dtype)
+       end
+       local info_tags = self:tableToTensor(self.info.info_tags[tostring(ix)])
+       return ix,input:type(self.dtype),labels_table,info_tags:add(1+self.vocab_size):type(self.dtype)
+     end
+
   end           
 end
 

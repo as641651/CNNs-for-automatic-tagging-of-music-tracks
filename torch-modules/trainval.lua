@@ -241,6 +241,7 @@ while true do
   --periodic validation
   if (iter > 0 and iter % opt.save_checkpoint_every == 0) or (iter+1 == opt.max_iters) or (opt.max_iters == 0) or (iter == 1) then
      classifier.evaluate()
+
      local eval_kwargs = {
       model=classifier,
       loader=loader,
@@ -251,6 +252,7 @@ while true do
       log_path = platform.c .. "_results.json"
       }
      local results = eval_utils.eval_split(eval_kwargs)
+     
      local model = {}
      model.cnn = classifier.cnn.getModel()
      model.rnn = classifier.rnn.getModel()

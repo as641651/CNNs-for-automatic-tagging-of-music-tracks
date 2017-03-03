@@ -1,0 +1,10 @@
+{
+  "voice":["male","female","song","acappella","spoken","voices","choir","vocalizzi","shout","gospel"],
+  "rythmic":["bass","basslead","beats","kick","drums","tztz","unzunz","fart","complicated"],
+  "pace":["slow","moderate","steady","upbeat","fast","train","tiro"],
+  "sound_type":["brass","dirty","rough","deep","dark","opaque","open","tight","warm","melody","zanzara","noise","anthem","cheesy","silly","mainstream","circus"],
+  "adj":["bouncy","energy","hi-energy","loopy","hypnotic","loud","aggressive","empty","minimal","dull","filler","background","calm","gentle","mild","soft","mellow","soul","happy","drama","moving","epic","scary","uplifting","trip","space","volo","elegant","chic","cocktail","getdown","jazzy","ethereal","gay","hi-pitch","bitch","sexy","silky"],
+  "instruments":["bells","blip","chirps","flute","guitar","funkyG","horns","keys","organ","triangle","strings","xylo","sax","piano","trumpet","tubes","instruments","whistle","violin","pa-pa"],
+  "details":["city","elicopter","robot","nature","effects","industrial","metal"],
+  "genre":["12","breaks","dnb","hiphop","electro","ambient","rock","progressive","trancey","70s","disco","80s","lounge","paradise","afro","tribal","samba","spanish","latin","arab","ethnic","french","british","b","h","d","e","f","hh","s","t","tr","th"]
+ }

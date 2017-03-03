@@ -13,12 +13,13 @@ function classifier.setOpts(opt)
    classifier.cnn.opt.model = opt.cnn_model --
    classifier.vocab_size = opt.classifier_vocab_size
    classifier.loader_info = opt.loader_info
+   classifier.linear_hidden = opt.linear_hidden or 1024
 end
 
 function classifier.init()
    classifier.cnn.init_cnn()
    local mlp = nn.Sequential()
-   mlp:add(nn.Linear(1024,classifier.vocab_size))
+   mlp:add(nn.Linear(classifier.linear_hidden,classifier.vocab_size))
    classifier.mlp = mlp
    classifier.mlp:get(1).weight:normal(0,1e-3)
    classifier.mlp:get(1).bias:fill(0)

@@ -14,6 +14,7 @@ def addWeights(layer,k,hf):
    for k2 in data.keys():
       print "  " + str(k2)
       layer[str(k)][str(k2)] = np.array(data.get(str(k2)))
+      print(layer[str(k)][str(k2)].shape)
 
 def transferW(b,a):
   print b.size()

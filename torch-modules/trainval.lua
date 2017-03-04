@@ -129,7 +129,7 @@ print(classifier.rnn.getModel())
 print(classifier.mlp)
 
 if opt.fine_tune_cnn then
-    cnn_params, cnn_grad_params = classifier.cnn.getModel():get(2):getParameters()
+    cnn_params, cnn_grad_params = classifier.cnn.getModel():getParameters()
 end
 if opt.fine_tune_rnn then
     rnn_params, rnn_grad_params = classifier.rnn.getModel():getParameters()

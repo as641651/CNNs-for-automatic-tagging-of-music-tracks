@@ -1,0 +1,58 @@
+{ 
+  "data_h5": "magna01_full.h5",
+  "db_dir": "../databases/",
+  "data_json": "magna_filtered_waves.json",  
+  "train_percent": 0.8,
+  "val_percent": 0.2,
+  "test_percent": 0,
+  "min_label_freq": 1,
+  "min_info_tag_freq": 2,
+  "group": true,
+  "use_year": false,
+  "use_artist": false,
+  "use_other_tags": false,
+
+  "val_images_use" : -1, 
+  "seed": 123,
+  "max_clips_per_song":8,
+  "feature_xdim":1366,
+  "feature_ydim":96,
+  "group_batch":true,
+
+  "classifier": "models.C5M1S.classifier",
+  "cnn_model": "cnns.models.compact_cnn.compact_cnn_l128", 
+  "rnn_model": "rnns.models.lstm_model2",
+  "linear_hidden":128,
+  "linear_dropout":0.3,
+
+  "weight_decay": 1e-6,
+  "optim_alpha": 0.9,
+  "optim_beta": 0.99,
+  "optim_epsilon": 1e-8,
+  "avg_loss_every": 20,
+  "fresh_optim": true,
+
+  "fine_tune_cnn": true,
+  "cnn_learning_rate": 1e-3,
+  "cnn_step": 40000,
+  "cnn_gamma": 0.1,
+  "cnn_optim": "adam",
+
+  "fine_tune_rnn": false,
+  "rnn_learning_rate": -1,
+  "rnn_step": -1,
+  "rnn_gamma": -1,
+  "rnn_optim": "adam",
+
+  "mlp_learning_rate": 1e-3,
+  "mlp_step": 50000,
+  "mlp_gamma": 0.1,
+  "mlp_optim": "adam",
+
+  "max_iters": 150000,
+  "save_checkpoint_every": 10000,
+
+  "load_cnn_chpt":true,
+  "load_rnn_chpt":false,
+  "load_mlp_chpt":true
+}

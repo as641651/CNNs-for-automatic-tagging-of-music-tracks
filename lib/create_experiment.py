@@ -7,6 +7,8 @@ import math
 from parsers.factory import get_parser
 import string
 from ngrams import ngrams
+import random
+random.seed(12345)
 
 OKGREEN = '\033[92m'
 FAIL = '\033[91m'
@@ -166,7 +168,9 @@ def random_split(dataDict,exp):
    it = 0
    j=0
 
-   for k,v in sample_idx.iteritems():
+   sample_idx_list = sample_idx.keys()
+   random.shuffle(sample_idx_list)
+   for k in sample_idx_list:
       if it == 0:
          exp["train_idxs"].append(int(k))
       if it == 1:

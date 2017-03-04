@@ -87,7 +87,7 @@ function cnn_5(model)
    local elu4 = nn.ELU()
    elu4.inplace = true
    net:add(elu4)
-   --net:add(nn.SpatialMaxPooling(2,2,2,2,0,0))
+   net:add(nn.SpatialMaxPooling(2,2,2,2,0,0))
 
    return net
 end

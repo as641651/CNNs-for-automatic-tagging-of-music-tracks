@@ -50,6 +50,7 @@ def evaluate(pred,scores):
    results["rec"] = rec
    results["f1"] = f1
    results["ap"] = ap
+   #print(pred,scores)
    results["auc"] = roc_auc_score(pred,scores)
 
    return results
@@ -107,6 +108,7 @@ cls = 0
 cls_auc = []
 cls_ap = []
 cls_f1 = []
+cls_acc = []
 weights = []
 log = {}
 
@@ -115,6 +117,7 @@ log["auc"] = {}
 log["prec"] = {}
 log["rec"] = {}
 log["f1"] = {}
+log["acc"] = {}
 log["count"] = {}
 
 for cls in records["labels_in_test"]:
@@ -133,34 +136,41 @@ for cls in records["labels_in_test"]:
    prec = res["prec"][0.2]
    rec = res["rec"][0.2]
    f1 = res["f1"][0.2]
-   print str(idx_to_token[str(cls-1)]) + " :\n AUC: %.2f, AP: %.2f, PREC@0.2: %.2f, RECALL@0.2: %.2f, F1@0.2: %.2f, COUNT: %d "%(auc,ap,prec,rec,f1,count)
+   acc = res["acc"][0.2]
+   print str(idx_to_token[str(cls-1)]) + " :\n AUC: %.2f, AP: %.2f, PREC@0.2: %.2f, RECALL@0.2: %.2f, F1@0.2: %.2f, ACC@0.2: %.2f COUNT: %d "%(auc,ap,prec,rec,f1,acc,count)
    cls_auc.append(auc)
    cls_ap.append(ap)
    cls_f1.append(f1)
+   cls_acc.append(acc)
    weights.append(count)
    log["ap"][str(idx_to_token[str(cls-1)])] = ap
    log["auc"][str(idx_to_token[str(cls-1)])] = auc -0.5
    log["rec"][str(idx_to_token[str(cls-1)])] = rec
    log["prec"][str(idx_to_token[str(cls-1)])] = prec
    log["f1"][str(idx_to_token[str(cls-1)])] = f1
+   log["acc"][str(idx_to_token[str(cls-1)])] = acc
    log["count"][str(idx_to_token[str(cls-1)])] = count
 
 weights = np.array(weights)
 cls_auc = np.array(cls_auc)
 cls_ap = np.array(cls_ap)
 cls_f1 = np.array(cls_f1)
+cls_acc = np.array(cls_acc)
 
 weights = weights/float(sum(weights))
 m_auc = sum(cls_auc*weights)#/float(len(cls_auc))
 m_ap = sum(cls_ap*weights)#/float(len(cls_ap))
 m_f1 = sum(cls_f1*weights)
+m_acc = sum(cls_acc*weights)
 log["m_auc"] = m_auc - 0.5
 log["m_ap"] = m_ap
 log["m_f1"] = m_f1
+log["m_acc"] = m_acc
 
 print("W.MEAN AUC : ", m_auc)
 print("W.MEAN AP : ", m_ap)
 print("W.MEAN F1@0.2 : ", m_f1)
+print("W.MEAN ACC@0.2 : ", m_acc)
 
 if records["log_path"] != '':
   results[ch_id] = log

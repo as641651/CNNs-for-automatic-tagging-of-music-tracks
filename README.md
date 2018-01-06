@@ -1,6 +1,6 @@
 # CNNs-for-automatic-tagging-of-music-tracks
 
-This project was carried out as a part of my Master thesis - ["Analyses of CNNs for automatic tagging of music tracks"](https://drive.google.com/file/d/1ljEz-KJPpg3KZHLHEh891Tl3DNh2V1Lp/view?usp=sharing). This repository just contains the framework to train CNNs according to experiments mentioned in my thesis. I have a another ["repository"](https://github.com/as641651/RythmCap) for testing. 
+This project was carried out as a part of my Master thesis - ["Analyses of CNNs for automatic tagging of music tracks"](https://drive.google.com/file/d/1ljEz-KJPpg3KZHLHEh891Tl3DNh2V1Lp/view?usp=sharing). This repository just contains the framework to train CNNs according to experiments mentioned in my thesis. I have a another [repository](https://github.com/as641651/RythmCap) for testing. 
 
 ## Using the training framework
 
